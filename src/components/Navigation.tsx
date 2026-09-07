@@ -23,7 +23,7 @@ export const Navigation: React.FC<NavigationProps> = ({
   onReturnToGameHub
 }) => {
   const tabs: Array<{ id: NavigationTab; label: string; icon: React.ComponentType<{ className?: string }>; badge?: string }> = [
-    { id: 'play', label: 'PLAY', icon: Gamepad2 },
+    { id: 'play', label: 'SINGLE PLAYER', icon: Gamepad2 },
     { id: 'multiplayer', label: 'MULTIPLAYER', icon: Users, badge: 'LIVE' },
     { id: 'leaderboard', label: 'LEADERBOARD', icon: Trophy },
     { id: 'profile', label: 'PROFILE', icon: User }

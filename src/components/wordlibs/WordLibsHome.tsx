@@ -16,13 +16,16 @@ import {
   Volume2,
   VolumeX,
   RefreshCw,
-  Trophy
+  Trophy,
+  ArrowRight,
+  Gamepad2
 } from 'lucide-react';
 
 interface WordLibsHomeProps {
   userProfile: UserProfile;
   sfxEnabled: boolean;
   onToggleSfx: () => void;
+  onSelectSolo: () => void;
   onOpenCreate: () => void;
   onOpenJoin: () => void;
   onQuickMatch: () => void;
@@ -36,6 +39,7 @@ export const WordLibsHome: React.FC<WordLibsHomeProps> = ({
   userProfile,
   sfxEnabled,
   onToggleSfx,
+  onSelectSolo,
   onOpenCreate,
   onOpenJoin,
   onQuickMatch,
@@ -44,6 +48,7 @@ export const WordLibsHome: React.FC<WordLibsHomeProps> = ({
   onDirectJoinRoom,
   isQuickMatching
 }) => {
+  const [activeSection, setActiveSection] = useState<'both' | 'multiplayer'>('both');
   const [publicLobbies, setPublicLobbies] = useState<
     Array<{
       code: string;
@@ -153,44 +158,122 @@ export const WordLibsHome: React.FC<WordLibsHomeProps> = ({
             MAKE WORDS. MAKE STORIES. CREATE CHAOS.
           </motion.p>
 
-          {/* Action Buttons Row */}
-          <div className="flex flex-wrap items-center justify-center gap-3 max-w-xl mx-auto">
-            <button
-              id="wordlibs-home-create-room-btn"
+          {/* Mode Selector Options */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-8 text-left">
+            {/* SINGLE PLAYER OPTION */}
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              id="wordlibs-home-single-player-card"
               onClick={() => {
                 sound.pop();
-                onOpenCreate();
+                onSelectSolo();
               }}
-              className="flex-1 min-w-[160px] py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-amber-500/25 transition-all active:scale-[0.98]"
+              className="p-5 rounded-2xl bg-gradient-to-br from-amber-500/20 via-amber-600/10 to-transparent border-2 border-amber-500/50 hover:border-amber-400 cursor-pointer shadow-xl shadow-amber-500/10 flex flex-col justify-between transition-all"
             >
-              <PlusCircle className="w-4 h-4" />
-              <span>Create Room</span>
-            </button>
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-black text-xs font-mono">
+                    SOLO
+                  </span>
+                  <span className="text-[10px] font-mono font-bold text-amber-400 tracking-wider">
+                    NO WAITING • OFFLINE
+                  </span>
+                </div>
+                <h2 className="text-xl font-black text-white group-hover:text-amber-300">
+                  SINGLE PLAYER
+                </h2>
+                <p className="text-xs text-slate-300 font-mono mt-1.5 leading-relaxed">
+                  5 unique modes (Classic, Speed, Chaos, One Word, Endless), 20 topics, difficulty tiers, and career stats.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-amber-500/30 flex items-center justify-between text-xs font-mono font-bold text-amber-400">
+                <span>Start Single Player</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </motion.div>
 
-            <button
-              id="wordlibs-home-join-room-btn"
+            {/* MULTIPLAYER OPTION */}
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              id="wordlibs-home-multiplayer-card"
               onClick={() => {
                 sound.pop();
-                onOpenJoin();
+                setActiveSection('multiplayer');
               }}
-              className="flex-1 min-w-[160px] py-3.5 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+              className={`p-5 rounded-2xl border-2 cursor-pointer shadow-xl flex flex-col justify-between transition-all ${
+                activeSection === 'multiplayer'
+                  ? 'bg-gradient-to-br from-violet-500/20 via-purple-600/10 to-transparent border-violet-500/60 shadow-violet-500/10'
+                  : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
+              }`}
             >
-              <LogIn className="w-4 h-4 text-amber-400" />
-              <span>Join Room</span>
-            </button>
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="px-2.5 py-1 rounded-lg bg-violet-500 text-white font-black text-xs font-mono">
+                    PARTY
+                  </span>
+                  <span className="text-[10px] font-mono font-bold text-violet-400 tracking-wider">
+                    ONLINE MULTIPLAYER
+                  </span>
+                </div>
+                <h2 className="text-xl font-black text-white group-hover:text-violet-300">
+                  MULTIPLAYER
+                </h2>
+                <p className="text-xs text-slate-300 font-mono mt-1.5 leading-relaxed">
+                  Create party rooms, invite friends, vote on hilarious completed stories, and trigger live chaos events.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-mono font-bold text-violet-400">
+                <span>Party Rooms & Matchmaking</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </motion.div>
+          </div>
 
-            <button
-              id="wordlibs-home-quick-match-btn"
-              onClick={() => {
-                sound.pop();
-                onQuickMatch();
-              }}
-              disabled={isQuickMatching}
-              className="flex-1 min-w-[160px] py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-600 to-rose-600 hover:opacity-90 disabled:opacity-50 text-white font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all active:scale-[0.98]"
-            >
-              <Zap className="w-4 h-4" />
-              <span>{isQuickMatching ? 'Finding...' : 'Quick Match'}</span>
-            </button>
+          {/* Multiplayer Action Buttons Row */}
+          <div className="border-t border-slate-800/80 pt-6">
+            <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-3">
+              Multiplayer Room Actions
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-3 max-w-xl mx-auto">
+              <button
+                id="wordlibs-home-create-room-btn"
+                onClick={() => {
+                  sound.pop();
+                  onOpenCreate();
+                }}
+                className="flex-1 min-w-[160px] py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-amber-500/25 transition-all active:scale-[0.98]"
+              >
+                <PlusCircle className="w-4 h-4" />
+                <span>Create Room</span>
+              </button>
+
+              <button
+                id="wordlibs-home-join-room-btn"
+                onClick={() => {
+                  sound.pop();
+                  onOpenJoin();
+                }}
+                className="flex-1 min-w-[160px] py-3.5 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+              >
+                <LogIn className="w-4 h-4 text-amber-400" />
+                <span>Join Room</span>
+              </button>
+
+              <button
+                id="wordlibs-home-quick-match-btn"
+                onClick={() => {
+                  sound.pop();
+                  onQuickMatch();
+                }}
+                disabled={isQuickMatching}
+                className="flex-1 min-w-[160px] py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-600 to-rose-600 hover:opacity-90 disabled:opacity-50 text-white font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all active:scale-[0.98]"
+              >
+                <Zap className="w-4 h-4" />
+                <span>{isQuickMatching ? 'Finding...' : 'Quick Match'}</span>
+              </button>
+            </div>
           </div>
         </div>
 

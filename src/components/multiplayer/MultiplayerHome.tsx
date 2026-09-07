@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Users, Plus, LogIn, Zap, Shield, Sparkles, Trophy, Globe, Flame } from 'lucide-react';
+import { Users, Plus, LogIn, Zap, Shield, Sparkles, Trophy, Globe, Flame, Gamepad2, ArrowRight } from 'lucide-react';
 import { sound } from '../../utils/audio';
 import { multiplayerClient } from '../../services/multiplayerClient';
 
 interface MultiplayerHomeProps {
+  onSelectSolo: () => void;
   onCreateRoom: () => void;
   onJoinRoom: () => void;
   onQuickMatch: () => void;
@@ -12,6 +13,7 @@ interface MultiplayerHomeProps {
 }
 
 export const MultiplayerHome: React.FC<MultiplayerHomeProps> = ({
+  onSelectSolo,
   onCreateRoom,
   onJoinRoom,
   onQuickMatch,
@@ -52,15 +54,82 @@ export const MultiplayerHome: React.FC<MultiplayerHomeProps> = ({
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.3 }}
-        className="mb-8 sm:mb-12 max-w-2xl"
+        className="mb-8 max-w-2xl"
       >
         <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 leading-tight">
-          PARTY MULTIPLAYER
+          CYBER HANGMAN
         </h1>
         <p className="text-sm sm:text-base text-slate-400 mt-3 font-medium">
-          Challenge your friends or jump into a match with word-guessers worldwide in real-time turn-based Hangman.
+          Choose your experience: play solo with 15 rich categories or challenge friends in real-time party multiplayer.
         </p>
       </motion.div>
+
+      {/* Two Clear Choices: SINGLE PLAYER vs MULTIPLAYER */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-3xl mx-auto mb-10 text-left">
+        {/* Choice 1: SINGLE PLAYER */}
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          id="hangman-home-single-player-card"
+          onClick={() => {
+            sound.pop();
+            onSelectSolo();
+          }}
+          className="p-6 rounded-3xl bg-gradient-to-br from-cyan-500/20 via-cyan-950/40 to-slate-950 border-2 border-cyan-500/50 hover:border-cyan-400 cursor-pointer shadow-xl shadow-cyan-500/10 flex flex-col justify-between transition-all"
+        >
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <span className="px-2.5 py-1 rounded-lg bg-cyan-500 text-slate-950 font-black text-xs font-mono flex items-center gap-1.5">
+                <Gamepad2 className="w-3.5 h-3.5" />
+                SOLO
+              </span>
+              <span className="text-[10px] font-mono font-bold text-cyan-400 tracking-wider">
+                NO WAITING • OFFLINE
+              </span>
+            </div>
+            <h2 className="text-2xl font-black text-white group-hover:text-cyan-300">
+              SINGLE PLAYER
+            </h2>
+            <p className="text-xs text-slate-300 font-mono mt-2 leading-relaxed">
+              15 categories, 3 difficulty tiers (Easy 8 lives, Med 6, Hard 5), win streaks, hint triggers, and career stats.
+            </p>
+          </div>
+          <div className="mt-5 pt-3 border-t border-cyan-500/30 flex items-center justify-between text-xs font-mono font-bold text-cyan-400">
+            <span>Start Single Player</span>
+            <ArrowRight className="w-4 h-4" />
+          </div>
+        </motion.div>
+
+        {/* Choice 2: MULTIPLAYER */}
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          id="hangman-home-multiplayer-card"
+          className="p-6 rounded-3xl bg-gradient-to-br from-purple-500/20 via-purple-950/40 to-slate-950 border-2 border-purple-500/60 shadow-xl shadow-purple-500/10 flex flex-col justify-between"
+        >
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <span className="px-2.5 py-1 rounded-lg bg-purple-500 text-white font-black text-xs font-mono flex items-center gap-1.5">
+                <Users className="w-3.5 h-3.5" />
+                PARTY
+              </span>
+              <span className="text-[10px] font-mono font-bold text-purple-400 tracking-wider">
+                ONLINE MULTIPLAYER
+              </span>
+            </div>
+            <h2 className="text-2xl font-black text-white">
+              MULTIPLAYER
+            </h2>
+            <p className="text-xs text-slate-300 font-mono mt-2 leading-relaxed">
+              Create private party rooms, invite friends via 6-character room codes, or quick-match with live players.
+            </p>
+          </div>
+          <div className="mt-5 pt-3 border-t border-purple-500/30 flex items-center justify-between text-xs font-mono font-bold text-purple-400">
+            <span>Room actions below</span>
+            <span>↓</span>
+          </div>
+        </motion.div>
+      </div>
 
       {/* Main Action Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 w-full max-w-4xl">

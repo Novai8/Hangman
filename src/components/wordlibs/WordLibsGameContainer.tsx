@@ -21,6 +21,7 @@ import { WordLibsStoryRevealView } from './WordLibsStoryRevealView';
 import { WordLibsVotingView } from './WordLibsVotingView';
 import { WordLibsRoundResultsView } from './WordLibsRoundResultsView';
 import { WordLibsFinalResultsView } from './WordLibsFinalResultsView';
+import { WordLibsSoloContainer } from './solo/WordLibsSoloContainer';
 import { ArrowLeft, Copy, Check, Flame } from 'lucide-react';
 
 interface WordLibsGameContainerProps {
@@ -38,6 +39,7 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
   onReturnToGameHub,
   initialRoomCode
 }) => {
+  const [isSoloMode, setIsSoloMode] = useState(false);
   const [currentRoom, setCurrentRoom] = useState<WordLibsRoom | null>(null);
   const [localPlayerId, setLocalPlayerId] = useState<string | null>(null);
 
@@ -270,7 +272,7 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
 
   // Top Nav Back click
   const handleHeaderBack = () => {
-    if (!currentRoom || currentRoom.status === 'waiting' || currentRoom.status === 'finished') {
+    if (!currentRoom || currentRoom.phase === 'lobby' || currentRoom.phase === 'final_results') {
       handleLeaveRoom();
       onReturnToGameHub();
     } else {
@@ -289,6 +291,12 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
   // ==========================================
   // VIEW ROUTING
   // ==========================================
+
+  // Single Player Mode
+  if (isSoloMode) {
+    return <WordLibsSoloContainer onBackToHome={() => setIsSoloMode(false)} />;
+  }
+
   if (!currentRoom) {
     return (
       <>
@@ -296,6 +304,7 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
           userProfile={userProfile}
           sfxEnabled={sfxEnabled}
           onToggleSfx={onToggleSfx}
+          onSelectSolo={() => setIsSoloMode(true)}
           onOpenCreate={() => setIsCreateOpen(true)}
           onOpenJoin={() => {
             setJoinError(null);
@@ -397,9 +406,9 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
         </div>
       </header>
 
-      {/* Main Game Screen depending on Room status */}
+      {/* Main Game Screen depending on Room phase */}
       <main className="flex-1 flex flex-col justify-center">
-        {currentRoom.status === 'waiting' && (
+        {currentRoom.phase === 'lobby' && (
           <WordLibsLobbyView
             room={currentRoom}
             localPlayerId={localPlayerId || ''}
@@ -410,7 +419,7 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
           />
         )}
 
-        {currentRoom.status === 'answering' && (
+        {currentRoom.phase === 'answering' && (
           <WordLibsAnsweringView
             room={currentRoom}
             localPlayerId={localPlayerId || ''}
@@ -419,7 +428,7 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
           />
         )}
 
-        {currentRoom.status === 'revealing' && (
+        {currentRoom.phase === 'story_reveal' && (
           <WordLibsStoryRevealView
             room={currentRoom}
             localPlayerId={localPlayerId || ''}
@@ -428,7 +437,7 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
           />
         )}
 
-        {currentRoom.status === 'voting' && (
+        {currentRoom.phase === 'voting' && (
           <WordLibsVotingView
             room={currentRoom}
             localPlayerId={localPlayerId || ''}
@@ -436,7 +445,7 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
           />
         )}
 
-        {currentRoom.status === 'round_results' && (
+        {currentRoom.phase === 'round_results' && (
           <WordLibsRoundResultsView
             room={currentRoom}
             localPlayerId={localPlayerId || ''}
@@ -445,7 +454,7 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
           />
         )}
 
-        {currentRoom.status === 'finished' && (
+        {currentRoom.phase === 'final_results' && (
           <WordLibsFinalResultsView
             room={currentRoom}
             localPlayerId={localPlayerId || ''}

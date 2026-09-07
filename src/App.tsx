@@ -27,6 +27,7 @@ import { InviteModal } from './components/multiplayer/InviteModal';
 // Game Hub & Word Libs
 import { GameHubView } from './components/GameHubView';
 import { WordLibsGameContainer } from './components/wordlibs/WordLibsGameContainer';
+import { HangmanSoloContainer } from './components/hangman/solo/HangmanSoloContainer';
 
 import { getRandomWord } from './data/words';
 import { sound } from './utils/audio';
@@ -698,6 +699,7 @@ export default function App() {
         <main className="flex-1 flex flex-col justify-center py-2 sm:py-6">
           {!currentRoom ? (
             <MultiplayerHome
+              onSelectSolo={() => setActiveTab('play')}
               onCreateRoom={() => setIsCreateModalOpen(true)}
               onJoinRoom={() => setIsJoinModalOpen(true)}
               onQuickMatch={handleQuickMatch}
@@ -750,95 +752,11 @@ export default function App() {
         </main>
       )}
 
-      {/* VIEW 2: SOLO PLAY VIEW (Original Single Player) */}
+      {/* VIEW 2: SOLO PLAY VIEW (Dedicated Hangman Single Player Flow) */}
       {activeTab === 'play' && (
-        <main className="flex-1 max-w-7xl mx-auto w-full py-2 pb-6 gap-6 relative z-20 flex flex-col">
-          <Header
-            score={soloScore}
-            bestScore={soloStats.bestScore}
-            streak={soloStats.currentStreak}
-            onOpenSettings={() => setIsSettingsOpen(true)}
-            onReturnToGameHub={handleReturnToHubFromHangman}
-          />
-
-          <GameControls
-            mode={soloMode}
-            onSelectMode={(m) => {
-              setSoloMode(m);
-              startSoloRound(soloCategory, soloDifficulty);
-            }}
-            difficulty={soloDifficulty}
-            onSelectDifficulty={(d) => {
-              setSoloDifficulty(d);
-              startSoloRound(soloCategory, d);
-            }}
-            category={soloCategory}
-            onSelectCategory={(c) => {
-              setSoloCategory(c);
-              startSoloRound(c, soloDifficulty);
-            }}
-            onNewWord={() => startSoloRound(soloCategory, soloDifficulty)}
-            onHint={handleSoloHint}
-            onReset={() => startSoloRound(soloCategory, soloDifficulty)}
-            timedRemaining={soloTimeRemaining}
-            timedDuration={SOLO_TIMED_DURATION}
-            hintDisabled={soloStatus !== 'playing'}
-          />
-
-          <div
-            className={`grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch transition-all ${
-              soloShaking ? 'animate-glitch-shake' : ''
-            }`}
-          >
-            <section className="lg:col-span-5 h-full flex flex-col">
-              <HangmanVisual
-                mistakes={soloMistakes}
-                maxMistakes={MAX_MISTAKES}
-                isGameOver={soloStatus === 'lost'}
-                isWon={soloStatus === 'won'}
-              />
-            </section>
-
-            <section className="lg:col-span-7 bg-white/5 border border-white/10 rounded-[32px] sm:rounded-[40px] p-6 sm:p-8 flex flex-col justify-between backdrop-blur-md shadow-2xl min-h-[340px]">
-              <WordDisplay
-                word={soloWord}
-                guessedLetters={soloGuessed}
-                category={soloActiveCategory}
-                streak={soloStats.currentStreak}
-                isGameOver={soloStatus === 'lost'}
-                activeHintText={soloHint}
-              />
-
-              <Keyboard
-                word={soloWord}
-                guessedLetters={soloGuessed}
-                onGuess={handleSoloGuess}
-                disabled={soloStatus !== 'playing'}
-              />
-            </section>
-          </div>
-
-          <VictoryModal
-            isOpen={soloStatus === 'won'}
-            word={soloWord}
-            pointsEarned={soloLastGain}
-            streak={soloStats.currentStreak}
-            isEndless={soloMode === 'endless'}
-            onNextWord={() => startSoloRound(soloCategory, soloDifficulty)}
-            onKeepPlaying={() => startSoloRound(soloCategory, soloDifficulty)}
-          />
-
-          <GameOverModal
-            isOpen={soloStatus === 'lost'}
-            word={soloWord}
-            score={soloScore}
-            bestScore={soloStats.bestScore}
-            onPlayAgain={() => startSoloRound(soloCategory, soloDifficulty)}
-            onChangeCategory={() => {
-              const nextCat = soloCategory === 'Technology' ? 'Movies' : 'Technology';
-              setSoloCategory(nextCat);
-              startSoloRound(nextCat, soloDifficulty);
-            }}
+        <main className="flex-1 max-w-7xl mx-auto w-full py-2 pb-6 relative z-20 flex flex-col justify-center">
+          <HangmanSoloContainer
+            onBackToHangmanHome={() => setActiveTab('multiplayer')}
           />
         </main>
       )}
