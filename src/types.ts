@@ -64,6 +64,7 @@ export type RoomPhase = 'lobby' | 'playing' | 'round_results' | 'match_results';
 
 export interface Room {
   code: string;
+  gameType?: 'hangman';
   hostId: string;
   settings: RoomSettings;
   players: Player[];

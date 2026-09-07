@@ -49,6 +49,10 @@ class RoomManager {
     return code;
   }
 
+  public hasRoom(code: string): boolean {
+    return this.rooms.has(code.toUpperCase());
+  }
+
   /**
    * Returns list of public rooms currently waiting in the lobby with open slots
    */
@@ -944,6 +948,7 @@ class RoomManager {
   public serializeRoom(room: ServerRoom): Room {
     return {
       code: room.code,
+      gameType: 'hangman',
       hostId: room.hostId,
       settings: room.settings,
       players: room.players,

@@ -98,6 +98,30 @@ class SoundEngine {
   public tick() {
     this.playTone(850, 'sine', 0.03, 0.04);
   }
+
+  public pop() {
+    this.playTone(600, 'sine', 0.05, 0.1);
+  }
+
+  public revealWord() {
+    this.playTone(440, 'triangle', 0.1, 0.12);
+    setTimeout(() => this.playTone(660, 'sine', 0.15, 0.14), 60);
+    setTimeout(() => this.playTone(880, 'triangle', 0.2, 0.12), 120);
+  }
+
+  public chaos() {
+    const freqs = [300, 450, 280, 520, 700];
+    freqs.forEach((f, i) => {
+      setTimeout(() => this.playTone(f, 'sawtooth', 0.12, 0.15), i * 50);
+    });
+  }
+
+  public fanfare() {
+    const melody = [523.25, 659.25, 783.99, 1046.5];
+    melody.forEach((f, i) => {
+      setTimeout(() => this.playTone(f, 'sine', 0.22, 0.18), i * 90);
+    });
+  }
 }
 
 export const sound = new SoundEngine();

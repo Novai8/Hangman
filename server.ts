@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
 import { roomManager } from './server/roomManager';
+import { wordLibsRoomManager } from './server/wordLibsRoomManager';
 
 async function startServer() {
   const app = express();
@@ -21,17 +22,29 @@ async function startServer() {
     res.json({ status: 'ok', timestamp: Date.now() });
   });
 
+  // Inspect room type (Game Hub router helper)
+  app.get('/api/rooms/:code/info', (req, res) => {
+    const code = req.params.code.toUpperCase();
+    if (wordLibsRoomManager.hasRoom(code)) {
+      res.json({ exists: true, gameType: 'wordlibs' });
+    } else if (roomManager.hasRoom(code)) {
+      res.json({ exists: true, gameType: 'hangman' });
+    } else {
+      res.json({ exists: false });
+    }
+  });
+
   // Live telemetry stats (players online, active rooms)
   app.get('/api/stats', (req, res) => {
     res.json(roomManager.getStats());
   });
 
-  // List open public lobby rooms
+  // List open public lobby rooms for Hangman
   app.get('/api/rooms/public', (req, res) => {
     res.json(roomManager.getPublicLobbies());
   });
 
-  // Create room
+  // Create room for Hangman
   app.post('/api/rooms/create', (req, res) => {
     const { profile, settings, isPublic } = req.body;
     if (!profile || !settings) {
@@ -42,19 +55,31 @@ async function startServer() {
     res.json(result);
   });
 
-  // Join room
+  // Join room (Supports both Hangman & Word Libs intelligently)
   app.post('/api/rooms/join', (req, res) => {
     const { code, profile } = req.body;
     if (!code || !profile) {
       res.status(400).json({ error: 'Missing room code or profile' });
       return;
     }
-    const result = roomManager.joinRoom(code, profile);
+
+    const cleanCode = code.toUpperCase();
+    if (wordLibsRoomManager.hasRoom(cleanCode)) {
+      const result = wordLibsRoomManager.joinRoom(cleanCode, profile);
+      if (!result.success) {
+        res.status(400).json({ error: result.error });
+        return;
+      }
+      res.json({ ...result, gameType: 'wordlibs' });
+      return;
+    }
+
+    const result = roomManager.joinRoom(cleanCode, profile);
     if (!result.success) {
       res.status(400).json({ error: result.error });
       return;
     }
-    res.json(result);
+    res.json({ ...result, gameType: 'hangman' });
   });
 
   // Quick match
@@ -201,6 +226,219 @@ async function startServer() {
     const { code } = req.params;
     const { playerId, playerName, emoji } = req.body;
     roomManager.sendReaction(code, playerId, playerName, emoji);
+    res.json({ success: true });
+  });
+
+  // ==========================================
+  // WORD LIBS DEDICATED MULTIPLAYER API ROUTES
+  // ==========================================
+
+  // List public Word Libs lobbies
+  app.get('/api/wordlibs/public', (req, res) => {
+    res.json(wordLibsRoomManager.getPublicLobbies());
+  });
+
+  // Create Word Libs room
+  app.post('/api/wordlibs/create', (req, res) => {
+    const { profile, settings, isPublic } = req.body;
+    if (!profile || !settings) {
+      res.status(400).json({ error: 'Missing profile or settings' });
+      return;
+    }
+    const result = wordLibsRoomManager.createRoom(
+      profile,
+      settings,
+      isPublic ?? true,
+      undefined
+    );
+    res.json(result);
+  });
+
+  // Join Word Libs room
+  app.post('/api/wordlibs/join', (req, res) => {
+    const { code, profile } = req.body;
+    if (!code || !profile) {
+      res.status(400).json({ error: 'Missing room code or profile' });
+      return;
+    }
+    const result = wordLibsRoomManager.joinRoom(code, profile);
+    if (!result.success) {
+      res.status(400).json({ error: result.error });
+      return;
+    }
+    res.json(result);
+  });
+
+  // Quick match Word Libs
+  app.post('/api/wordlibs/quickmatch', (req, res) => {
+    const { profile } = req.body;
+    if (!profile) {
+      res.status(400).json({ error: 'Missing profile' });
+      return;
+    }
+    const result = wordLibsRoomManager.quickMatch(profile);
+    res.json(result);
+  });
+
+  // Reconnect player in Word Libs
+  app.post('/api/wordlibs/:code/reconnect', (req, res) => {
+    const { code } = req.params;
+    const { playerId } = req.body;
+    if (!playerId) {
+      res.status(400).json({ error: 'Missing playerId' });
+      return;
+    }
+    const result = wordLibsRoomManager.reconnectPlayer(code, playerId);
+    if (!result.success) {
+      res.status(404).json({ error: result.error });
+      return;
+    }
+    res.json(result);
+  });
+
+  // Word Libs SSE Real-time stream
+  app.get('/api/wordlibs/:code/stream', (req, res) => {
+    const { code } = req.params;
+    const playerId = req.query.playerId as string;
+
+    if (!playerId) {
+      res.status(400).send('playerId required');
+      return;
+    }
+
+    res.writeHead(200, {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache, no-transform',
+      'Connection': 'keep-alive',
+      'X-Accel-Buffering': 'no'
+    });
+
+    if (res.flushHeaders) {
+      res.flushHeaders();
+    }
+
+    wordLibsRoomManager.registerSseClient(code, playerId, res);
+  });
+
+  // Keepalive heartbeat
+  app.post('/api/wordlibs/:code/heartbeat', (req, res) => {
+    const { code } = req.params;
+    const { playerId } = req.body;
+    if (playerId) {
+      wordLibsRoomManager.recordHeartbeat(code, playerId);
+    }
+    res.json({ success: true });
+  });
+
+  // Toggle ready status
+  app.post('/api/wordlibs/:code/ready', (req, res) => {
+    const { code } = req.params;
+    const { playerId } = req.body;
+    const result = wordLibsRoomManager.toggleReady(code, playerId);
+    if (!result.success) {
+      res.status(400).json({ error: result.error });
+      return;
+    }
+    res.json(result);
+  });
+
+  // Start game match
+  app.post('/api/wordlibs/:code/start', (req, res) => {
+    const { code } = req.params;
+    const { playerId } = req.body;
+    const result = wordLibsRoomManager.startGame(code, playerId);
+    if (!result.success) {
+      res.status(400).json({ error: result.error });
+      return;
+    }
+    res.json(result);
+  });
+
+  // Submit answers
+  app.post('/api/wordlibs/:code/submit', (req, res) => {
+    const { code } = req.params;
+    const { playerId, answers } = req.body;
+    if (!answers || typeof answers !== 'object') {
+      res.status(400).json({ error: 'Answers object required' });
+      return;
+    }
+    const result = wordLibsRoomManager.submitAnswers(code, playerId, answers);
+    if (!result.success) {
+      res.status(400).json({ error: result.error });
+      return;
+    }
+    res.json(result);
+  });
+
+  // Advance reveal paragraph
+  app.post('/api/wordlibs/:code/advance-reveal', (req, res) => {
+    const { code } = req.params;
+    const result = wordLibsRoomManager.advanceReveal(code);
+    res.json(result);
+  });
+
+  // Skip reveal directly to voting
+  app.post('/api/wordlibs/:code/skip-reveal', (req, res) => {
+    const { code } = req.params;
+    const result = wordLibsRoomManager.skipReveal(code);
+    res.json(result);
+  });
+
+  // Submit vote
+  app.post('/api/wordlibs/:code/vote', (req, res) => {
+    const { code } = req.params;
+    const { voterId, category, targetStoryId } = req.body;
+    if (!voterId || !category || !targetStoryId) {
+      res.status(400).json({ error: 'Missing vote parameters' });
+      return;
+    }
+    const result = wordLibsRoomManager.submitVote(code, voterId, category, targetStoryId);
+    if (!result.success) {
+      res.status(400).json({ error: result.error });
+      return;
+    }
+    res.json(result);
+  });
+
+  // Next round
+  app.post('/api/wordlibs/:code/next-round', (req, res) => {
+    const { code } = req.params;
+    const { playerId } = req.body;
+    const result = wordLibsRoomManager.nextRound(code, playerId);
+    if (!result.success) {
+      res.status(400).json({ error: result.error });
+      return;
+    }
+    res.json(result);
+  });
+
+  // Play again
+  app.post('/api/wordlibs/:code/play-again', (req, res) => {
+    const { code } = req.params;
+    const result = wordLibsRoomManager.playAgain(code);
+    res.json(result);
+  });
+
+  // Return to lobby
+  app.post('/api/wordlibs/:code/return-lobby', (req, res) => {
+    const { code } = req.params;
+    const result = wordLibsRoomManager.returnToLobby(code);
+    res.json(result);
+  });
+
+  // Leave room
+  app.post('/api/wordlibs/:code/leave', (req, res) => {
+    const { code } = req.params;
+    const { playerId } = req.body;
+    const result = wordLibsRoomManager.leaveRoom(code, playerId);
+    res.json(result);
+  });
+
+  // Reaction
+  app.post('/api/wordlibs/:code/react', (req, res) => {
+    const { code } = req.params;
+    const { playerId, playerName, emoji } = req.body;
+    wordLibsRoomManager.sendReaction(code, playerId, playerName, emoji);
     res.json({ success: true });
   });
 

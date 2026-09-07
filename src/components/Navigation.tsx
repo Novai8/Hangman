@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationTab, UserProfile } from '../types';
-import { Gamepad2, Users, Trophy, User, Settings, Volume2, VolumeX, Sparkles } from 'lucide-react';
+import { Gamepad2, Users, Trophy, User, Settings, Volume2, VolumeX, Sparkles, ArrowLeft } from 'lucide-react';
 import { sound } from '../utils/audio';
 
 interface NavigationProps {
@@ -10,6 +10,7 @@ interface NavigationProps {
   sfxEnabled: boolean;
   onToggleSfx: () => void;
   onOpenSettings: () => void;
+  onReturnToGameHub?: () => void;
 }
 
 export const Navigation: React.FC<NavigationProps> = ({
@@ -18,7 +19,8 @@ export const Navigation: React.FC<NavigationProps> = ({
   userProfile,
   sfxEnabled,
   onToggleSfx,
-  onOpenSettings
+  onOpenSettings,
+  onReturnToGameHub
 }) => {
   const tabs: Array<{ id: NavigationTab; label: string; icon: React.ComponentType<{ className?: string }>; badge?: string }> = [
     { id: 'play', label: 'PLAY', icon: Gamepad2 },
@@ -32,6 +34,21 @@ export const Navigation: React.FC<NavigationProps> = ({
       <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 p-2.5 sm:p-3 rounded-2xl bg-black/50 backdrop-blur-xl border border-white/10 shadow-2xl">
         {/* Brand Logo & Tagline */}
         <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start px-2">
+          {onReturnToGameHub && (
+            <button
+              id="nav-game-hub-back-btn"
+              onClick={() => {
+                sound.keyTap();
+                onReturnToGameHub();
+              }}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-slate-300 hover:text-cyan-400 text-xs font-mono font-bold transition-colors"
+              title="Return to Game Hub"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-cyan-400" />
+              <span>GAME HUB</span>
+            </button>
+          )}
+
           <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => onSelectTab('multiplayer')}>
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center text-black font-black text-lg shadow-[0_0_15px_rgba(168,85,247,0.5)]">
               H

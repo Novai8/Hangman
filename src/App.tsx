@@ -12,6 +12,7 @@ import { SettingsModal } from './components/SettingsModal';
 import { CyberBackground } from './components/CyberBackground';
 import { LeaderboardView } from './components/LeaderboardView';
 import { ProfileView } from './components/ProfileView';
+import { WelcomeOverlay } from './components/WelcomeOverlay';
 
 // Multiplayer components
 import { MultiplayerHome } from './components/multiplayer/MultiplayerHome';
@@ -22,6 +23,10 @@ import { MultiplayerGameView } from './components/multiplayer/MultiplayerGameVie
 import { RoundResultsModal } from './components/multiplayer/RoundResultsModal';
 import { MatchResultsModal } from './components/multiplayer/MatchResultsModal';
 import { InviteModal } from './components/multiplayer/InviteModal';
+
+// Game Hub & Word Libs
+import { GameHubView } from './components/GameHubView';
+import { WordLibsGameContainer } from './components/wordlibs/WordLibsGameContainer';
 
 import { getRandomWord } from './data/words';
 import { sound } from './utils/audio';
@@ -42,7 +47,8 @@ import {
 } from './types';
 import {
   loadUserProfile,
-  saveUserProfile
+  saveUserProfile,
+  hasSavedUserProfile
 } from './utils/userProfile';
 import { multiplayerClient } from './services/multiplayerClient';
 import { Sparkles, WifiOff } from 'lucide-react';
@@ -51,9 +57,14 @@ const MAX_MISTAKES = 7;
 const SOLO_TIMED_DURATION = 60;
 
 export default function App() {
+  // Game Selection (Game Hub)
+  const [activeGame, setActiveGame] = useState<'hub' | 'hangman' | 'wordlibs'>('hub');
+  const [wordLibsInitialCode, setWordLibsInitialCode] = useState<string | null>(null);
+
   // Navigation & User
   const [activeTab, setActiveTab] = useState<NavigationTab>('multiplayer');
   const [userProfile, setUserProfile] = useState<UserProfile>(() => loadUserProfile());
+  const [isWelcomeOpen, setIsWelcomeOpen] = useState<boolean>(() => !hasSavedUserProfile());
   const [sfxEnabled, setSfxEnabled] = useState<boolean>(() => sound.enabled);
   const [fxLevel, setFxLevel] = useState<'high' | 'eco'>('high');
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
@@ -115,8 +126,21 @@ export default function App() {
 
   // Save profile & stats
   useEffect(() => {
-    saveUserProfile(userProfile);
-  }, [userProfile]);
+    if (hasSavedUserProfile() || !isWelcomeOpen) {
+      saveUserProfile(userProfile);
+    }
+  }, [userProfile, isWelcomeOpen]);
+
+  const handleWelcomeComplete = (chosenName: string, chosenAvatar: string) => {
+    const updated: UserProfile = {
+      ...userProfile,
+      name: chosenName,
+      avatar: chosenAvatar
+    };
+    setUserProfile(updated);
+    saveUserProfile(updated);
+    setIsWelcomeOpen(false);
+  };
 
   useEffect(() => {
     localStorage.setItem('cyber_hangman_stats', JSON.stringify(soloStats));
@@ -267,7 +291,20 @@ export default function App() {
     setIsJoiningRoom(true);
     setJoinError(null);
     try {
-      const result = await multiplayerClient.joinRoom(code, userProfile);
+      // Check if this room code belongs to Word Libs
+      const clean = code.trim().toUpperCase();
+      const infoRes = await fetch(`/api/rooms/${clean}/info`).catch(() => null);
+      if (infoRes && infoRes.ok) {
+        const info = await infoRes.json();
+        if (info.gameType === 'wordlibs') {
+          setIsJoinModalOpen(false);
+          setWordLibsInitialCode(clean);
+          setActiveGame('wordlibs');
+          return;
+        }
+      }
+
+      const result = await multiplayerClient.joinRoom(clean, userProfile);
       setCurrentRoom(result.room);
       setIsJoinModalOpen(false);
       connectToRoomStream(result.room.code, userProfile.id);
@@ -550,6 +587,93 @@ export default function App() {
     currentStreak: 0
   };
 
+  const handleReturnToHubFromHangman = () => {
+    if (currentRoom && ['countdown', 'playing', 'round_results'].includes(currentRoom.phase)) {
+      if (!window.confirm('Leave active multiplayer match? Your progress will be lost.')) {
+        return;
+      }
+      handleLeaveRoom();
+    }
+    setActiveGame('hub');
+  };
+
+  const handleHubQuickJoin = async (code: string) => {
+    try {
+      const res = await fetch(`/api/rooms/${code}/info`);
+      const data = await res.json();
+      if (data.gameType === 'wordlibs') {
+        setWordLibsInitialCode(code);
+        setActiveGame('wordlibs');
+      } else {
+        setActiveGame('hangman');
+        setActiveTab('multiplayer');
+        handleJoinRoom(code);
+      }
+    } catch {
+      setActiveGame('hangman');
+      handleJoinRoom(code);
+    }
+  };
+
+  // -------------------------------------------------------------
+  // GAME HUB SCREEN
+  // -------------------------------------------------------------
+  if (activeGame === 'hub') {
+    return (
+      <>
+        <GameHubView
+          userProfile={userProfile}
+          sfxEnabled={sfxEnabled}
+          onToggleSfx={() => {
+            const isEnabled = sound.toggle();
+            setSfxEnabled(isEnabled);
+          }}
+          onSelectGame={(game) => {
+            setWordLibsInitialCode(null);
+            setActiveGame(game);
+          }}
+          onQuickJoinCode={handleHubQuickJoin}
+        />
+        <WelcomeOverlay
+          isOpen={isWelcomeOpen}
+          initialAvatar={userProfile.avatar}
+          onComplete={handleWelcomeComplete}
+        />
+      </>
+    );
+  }
+
+  // -------------------------------------------------------------
+  // WORD LIBS GAME SCREEN
+  // -------------------------------------------------------------
+  if (activeGame === 'wordlibs') {
+    return (
+      <>
+        <WordLibsGameContainer
+          userProfile={userProfile}
+          sfxEnabled={sfxEnabled}
+          onToggleSfx={() => {
+            const isEnabled = sound.toggle();
+            setSfxEnabled(isEnabled);
+          }}
+          onReturnToGameHub={() => {
+            setWordLibsInitialCode(null);
+            setActiveGame('hub');
+          }}
+          initialRoomCode={wordLibsInitialCode}
+        />
+        <WelcomeOverlay
+          isOpen={isWelcomeOpen}
+          initialAvatar={userProfile.avatar}
+          onComplete={handleWelcomeComplete}
+        />
+      </>
+    );
+  }
+
+  // -------------------------------------------------------------
+  // HANGMAN GAME SCREEN
+  // -------------------------------------------------------------
   return (
     <div className="min-h-screen flex flex-col relative z-10 text-[#e3e1e9] font-['Plus_Jakarta_Sans'] selection:bg-[#00f0ff] selection:text-[#00363a]">
       {/* Dynamic Cyber Ambient Background Canvas */}
@@ -566,6 +690,7 @@ export default function App() {
           setSfxEnabled(isEnabled);
         }}
         onOpenSettings={() => setIsSettingsOpen(true)}
+        onReturnToGameHub={handleReturnToHubFromHangman}
       />
 
       {/* VIEW 1: MULTIPLAYER PARTY VIEW */}
@@ -633,6 +758,7 @@ export default function App() {
             bestScore={soloStats.bestScore}
             streak={soloStats.currentStreak}
             onOpenSettings={() => setIsSettingsOpen(true)}
+            onReturnToGameHub={handleReturnToHubFromHangman}
           />
 
           <GameControls
@@ -739,6 +865,12 @@ export default function App() {
       )}
 
       {/* MODALS */}
+      <WelcomeOverlay
+        isOpen={isWelcomeOpen}
+        initialAvatar={userProfile.avatar}
+        onComplete={handleWelcomeComplete}
+      />
+
       <CreateRoomModal
         isOpen={isCreateModalOpen}
         onClose={() => setIsCreateModalOpen(false)}
