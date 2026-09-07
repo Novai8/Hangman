@@ -14,7 +14,8 @@ import {
   UtensilsCrossed, 
   Trophy, 
   Sparkles,
-  Layers
+  Layers,
+  HeartPulse
 } from 'lucide-react';
 import { Category, Difficulty, GameMode } from '../types';
 
@@ -40,6 +41,7 @@ const CATEGORY_ICONS: Record<Category, React.ElementType> = {
   Countries: Globe2,
   Food: UtensilsCrossed,
   Sports: Trophy,
+  Medical: HeartPulse,
   Random: Sparkles
 };
 
@@ -64,6 +66,7 @@ export const GameControls: React.FC<ControlsProps> = ({
     'Countries',
     'Food',
     'Sports',
+    'Medical',
     'Random'
   ];
 

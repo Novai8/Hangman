@@ -171,6 +171,8 @@ export interface WordLibsRoom {
   totalParagraphs: number;
   // Votes: category -> targetStoryId -> count
   votesReceived: Record<WordLibsVoteCategory, Record<string, number>>;
+  votedPlayerIds?: string[];
+  allMatchStories?: WordLibsStory[];
   roundWinners?: Array<{ category: WordLibsVoteCategory; winnerStoryId: string; winnerPlayerName: string; points: number }>;
   finalLeaderboard?: Array<{ rank: number; player: WordLibsPlayer; title: string }>;
   isPublic: boolean;

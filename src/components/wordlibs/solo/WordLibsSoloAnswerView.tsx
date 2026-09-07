@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { WordLibsSoloPrompt, WordLibsSoloMode } from '../../../types/wordLibsSolo';
 import { sound } from '../../../utils/audio';
+import { getRandomFunnyWord, FunnyWordCategory } from '../../../data/randomFunnyWords';
 import {
   Sparkles,
   ArrowRight,
@@ -10,7 +11,8 @@ import {
   AlertCircle,
   Zap,
   HelpCircle,
-  Tag
+  Tag,
+  Dices
 } from 'lucide-react';
 
 interface WordLibsSoloAnswerViewProps {
@@ -134,10 +136,55 @@ export const WordLibsSoloAnswerView: React.FC<WordLibsSoloAnswerViewProps> = ({
         {/* Subtle Ambient Glow */}
         <div className="absolute -top-12 -right-12 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
-        {/* Expected Type Badge */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/80 text-amber-400 font-mono text-xs font-bold mb-4">
-          <Tag className="w-3 h-3" />
-          <span>TYPE: {currentPrompt.inputType}</span>
+        {/* Expected Type Badge & Random Buttons */}
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/80 text-amber-400 font-mono text-xs font-bold">
+            <Tag className="w-3 h-3" />
+            <span>TYPE: {currentPrompt.inputType}</span>
+          </div>
+
+          <div className="flex items-center gap-1 bg-slate-950/80 p-1 rounded-xl border border-slate-800">
+            <button
+              type="button"
+              onClick={() => {
+                sound.pop();
+                const word = getRandomFunnyWord('any');
+                setCurrentInput(word);
+                if (validationError) setValidationError(null);
+              }}
+              className="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 transition-all flex items-center gap-1.5"
+              title="Insert a random funny word"
+            >
+              <Dices className="w-3.5 h-3.5" />
+              <span>Random</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                sound.pop();
+                const word = getRandomFunnyWord('brainrot');
+                setCurrentInput(word);
+                if (validationError) setValidationError(null);
+              }}
+              className="px-2 py-1 rounded-lg text-xs font-mono hover:bg-violet-500/20 text-violet-300 transition-colors"
+              title="Brainrot (Skibidi, Rizzler, Sigma...)"
+            >
+              🧠 Brainrot
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                sound.pop();
+                const word = getRandomFunnyWord('absurd');
+                setCurrentInput(word);
+                if (validationError) setValidationError(null);
+              }}
+              className="px-2 py-1 rounded-lg text-xs font-mono hover:bg-rose-500/20 text-rose-300 transition-colors hidden sm:inline-block"
+              title="Absurd humorous phrase"
+            >
+              🤪 Absurd
+            </button>
+          </div>
         </div>
 
         {/* Prompt Question */}
@@ -159,7 +206,7 @@ export const WordLibsSoloAnswerView: React.FC<WordLibsSoloAnswerViewProps> = ({
                 if (validationError) setValidationError(null);
               }}
               placeholder={currentPrompt.placeholder || 'Type your funniest answer...'}
-              className="w-full px-5 py-4 rounded-2xl bg-slate-950 border-2 border-slate-800 focus:border-amber-500 text-white placeholder-slate-500 text-base sm:text-lg font-medium outline-none transition-all pr-14"
+              className="w-full px-5 py-4 rounded-2xl bg-slate-950 border-2 border-slate-800 focus:border-amber-500 text-white placeholder-slate-500 text-base sm:text-lg font-medium outline-none transition-all pr-14 shadow-inner"
             />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 font-mono text-xs text-slate-500">
               {currentInput.length}/50
@@ -177,14 +224,16 @@ export const WordLibsSoloAnswerView: React.FC<WordLibsSoloAnswerViewProps> = ({
             </motion.div>
           )}
 
-          <button
+          <motion.button
             id="solo-submit-prompt-btn"
             type="submit"
-            className="w-full py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 active:scale-[0.99] transition-all"
+            whileHover={{ y: -1, scale: 1.01 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition-all cursor-pointer"
           >
             <span>{currentPromptIndex === prompts.length - 1 ? 'Reveal Story' : 'Next Prompt'}</span>
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </motion.button>
         </form>
       </motion.div>
 

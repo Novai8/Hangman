@@ -135,10 +135,11 @@ class WordLibsRoomManager {
       storyTitle: 'Story Lobby',
       currentPrompts: [],
       currentPromptIndex: 0,
-      timeRemaining: settings.timerDuration || 45,
+      timeRemaining: settings.timerDuration !== undefined ? settings.timerDuration : 45,
       timerStartedAt: Date.now(),
       submittedPlayerIds: [],
       revealedStories: [],
+      allMatchStories: [],
       currentRevealParagraph: 0,
       totalParagraphs: 0,
       votesReceived: {
@@ -260,6 +261,35 @@ class WordLibsRoomManager {
   }
 
   /**
+   * Allow Host to update room settings (e.g. timerDuration, topic, rounds) from the lobby
+   */
+  public updateRoomSettings(
+    code: string,
+    hostId: string,
+    settingsUpdate: Partial<WordLibsSettings>
+  ): { success: boolean; room?: WordLibsRoom; error?: string } {
+    const room = this.rooms.get(code.toUpperCase());
+    if (!room) return { success: false, error: 'Room not found.' };
+    if (room.hostId !== hostId) return { success: false, error: 'Only the host can adjust room settings.' };
+    if (room.phase !== 'lobby') return { success: false, error: 'Settings can only be changed before the game begins.' };
+
+    room.settings = {
+      ...room.settings,
+      ...settingsUpdate
+    };
+
+    if (settingsUpdate.rounds !== undefined) {
+      room.totalRounds = settingsUpdate.rounds;
+    }
+    if (settingsUpdate.timerDuration !== undefined) {
+      room.timeRemaining = settingsUpdate.timerDuration;
+    }
+
+    this.broadcastRoom(room.code);
+    return { success: true, room: this.serializeRoom(room) };
+  }
+
+  /**
    * Helper to pick story template and corresponding prompts
    */
   private setupRoundContent(room: ServerWordLibsRoom): void {
@@ -332,11 +362,13 @@ class WordLibsRoomManager {
       p.roundScore = 0;
     }
 
-    let timerDuration = room.settings.timerDuration || 45;
-    if (room.activeChaosEvent === 'speed_round') {
-      timerDuration = 20;
-    } else if (room.activeChaosEvent === 'last_second') {
-      timerDuration = 15;
+    let timerDuration = room.settings.timerDuration !== undefined ? room.settings.timerDuration : 45;
+    if (timerDuration > 0) {
+      if (room.activeChaosEvent === 'speed_round') {
+        timerDuration = 20;
+      } else if (room.activeChaosEvent === 'last_second') {
+        timerDuration = 15;
+      }
     }
     room.timeRemaining = timerDuration;
     room.timerStartedAt = Date.now();
@@ -417,19 +449,25 @@ class WordLibsRoomManager {
 
     if (room.settings.mode === 'battle') {
       // In Battle mode: Generate an individual anonymous story for each player
+      // Competitive Reveal Fix: Filter rawSubmissions so players do not see their own answers during the reveal phase
       const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
       playerList.forEach((p, idx) => {
-        const pAnswers = room.rawSubmissions[p.id] || {};
+        // Filter out p.id from the submissions pool for this story
+        const otherPlayers = playerList.filter((other) => other.id !== p.id);
+        const donorPool = otherPlayers.length > 0 ? otherPlayers : [p];
+
         const insertedMap: Record<string, { word: string; submitterName?: string; submitterId?: string }> = {};
 
-        // Fill template paragraphs
+        // Fill template paragraphs with answers drawn from other players
         const filledParagraphs = template.paragraphs.map((para) => {
           let text = para;
-          for (const key of template.requiredPromptKeys) {
-            const word = pAnswers[key] || 'something strange';
-            insertedMap[key] = { word, submitterName: p.name, submitterId: p.id };
+          template.requiredPromptKeys.forEach((key, kIdx) => {
+            const donor = donorPool[kIdx % donorPool.length];
+            const donorAnswers = room.rawSubmissions[donor.id] || {};
+            const word = donorAnswers[key] || 'something strange';
+            insertedMap[key] = { word, submitterName: donor.name, submitterId: donor.id };
             text = text.replace(new RegExp(`\\{${key}\\}`, 'g'), word.toUpperCase());
-          }
+          });
           return text;
         });
 
@@ -481,6 +519,12 @@ class WordLibsRoomManager {
     }
 
     room.revealedStories = generatedStories;
+    if (!room.allMatchStories) room.allMatchStories = [];
+    for (const st of generatedStories) {
+      if (!room.allMatchStories.some((existing) => existing.id === st.id)) {
+        room.allMatchStories.push(st);
+      }
+    }
     room.currentRevealParagraph = 1;
     room.totalParagraphs = template.paragraphs.length;
     room.phase = 'story_reveal';
@@ -502,10 +546,10 @@ class WordLibsRoomManager {
     }
 
     // Completed story reveal! Advance to voting phase
+    this.stopTimer(room);
     room.phase = 'voting';
-    room.timeRemaining = 35; // 35 seconds for voting
+    room.timeRemaining = 0; // No countdown timer; voting concludes when all players cast their votes
     room.timerStartedAt = Date.now();
-    this.startVotingTimer(room);
     this.broadcastRoom(room.code);
 
     return { success: true, room: this.serializeRoom(room) };
@@ -518,11 +562,11 @@ class WordLibsRoomManager {
     const room = this.rooms.get(code.toUpperCase());
     if (!room) return { success: false };
 
+    this.stopTimer(room);
     room.currentRevealParagraph = room.totalParagraphs;
     room.phase = 'voting';
-    room.timeRemaining = 35;
+    room.timeRemaining = 0;
     room.timerStartedAt = Date.now();
-    this.startVotingTimer(room);
     this.broadcastRoom(room.code);
 
     return { success: true, room: this.serializeRoom(room) };
@@ -541,9 +585,13 @@ class WordLibsRoomManager {
     if (!room) return { success: false, error: 'Room not found.' };
     if (room.phase !== 'voting') return { success: false, error: 'Not in voting phase.' };
 
-    // Prevent self-voting in battle mode
-    if (room.settings.mode === 'battle' && targetStoryOrPlayerId === `story_${voterId}`) {
+    // Prevent self-voting
+    const targetStory = room.revealedStories.find((s) => s.id === targetStoryOrPlayerId);
+    if (targetStory && targetStory.authorPlayerId === voterId) {
       return { success: false, error: 'You cannot vote for your own story!' };
+    }
+    if (targetStoryOrPlayerId === `story_${voterId}` || targetStoryOrPlayerId === voterId) {
+      return { success: false, error: 'You cannot vote for yourself!' };
     }
 
     if (!room.rawVotes[voterId]) {
@@ -573,14 +621,29 @@ class WordLibsRoomManager {
 
     // Check if all connected players have cast at least 1 vote
     const connectedPlayers = room.players.filter((p) => p.connectionStatus === 'connected');
-    const allVoted = connectedPlayers.every((p) => room.rawVotes[p.id] && Object.keys(room.rawVotes[p.id]).length >= 2);
+    const votedPlayerIds = Object.keys(room.rawVotes).filter((pid) => {
+      const pVotes = room.rawVotes[pid];
+      return pVotes && Object.keys(pVotes).length > 0;
+    });
 
-    if (allVoted && connectedPlayers.length > 1) {
+    const allVoted = connectedPlayers.length > 0 && connectedPlayers.every((p) => votedPlayerIds.includes(p.id));
+
+    if (allVoted) {
       this.finalizeRoundScores(room);
     } else {
       this.broadcastRoom(room.code);
     }
 
+    return { success: true, room: this.serializeRoom(room) };
+  }
+
+  public forceFinalizeVoting(code: string, hostId: string): { success: boolean; room?: WordLibsRoom; error?: string } {
+    const room = this.rooms.get(code.toUpperCase());
+    if (!room) return { success: false, error: 'Room not found.' };
+    if (room.hostId !== hostId) return { success: false, error: 'Only the host can finalize voting.' };
+    if (room.phase !== 'voting') return { success: false, error: 'Not in voting phase.' };
+
+    this.finalizeRoundScores(room);
     return { success: true, room: this.serializeRoom(room) };
   }
 
@@ -814,7 +877,10 @@ class WordLibsRoomManager {
 
   private startRoundTimer(room: ServerWordLibsRoom): void {
     this.stopTimer(room);
-    if (room.timeRemaining <= 0) return;
+    if (room.settings.timerDuration === 0 || room.timeRemaining <= 0) {
+      // Unlimited timer! No automatic submission or countdown
+      return;
+    }
 
     room.turnTimer = setInterval(() => {
       if (room.phase !== 'answering') {
@@ -835,22 +901,6 @@ class WordLibsRoomManager {
           }
         }
         this.compileStoriesAndReveal(room);
-      } else {
-        this.broadcastRoom(room.code);
-      }
-    }, 1000);
-  }
-
-  private startVotingTimer(room: ServerWordLibsRoom): void {
-    this.stopTimer(room);
-    room.turnTimer = setInterval(() => {
-      if (room.phase !== 'voting') {
-        this.stopTimer(room);
-        return;
-      }
-      room.timeRemaining -= 1;
-      if (room.timeRemaining <= 0) {
-        this.finalizeRoundScores(room);
       } else {
         this.broadcastRoom(room.code);
       }
@@ -919,6 +969,11 @@ class WordLibsRoomManager {
   }
 
   public serializeRoom(room: ServerWordLibsRoom): WordLibsRoom {
+    const votedPlayerIds = Object.keys(room.rawVotes || {}).filter((pid) => {
+      const pVotes = room.rawVotes[pid];
+      return pVotes && Object.keys(pVotes).length > 0;
+    });
+
     return {
       code: room.code,
       gameType: 'wordlibs',
@@ -936,9 +991,11 @@ class WordLibsRoomManager {
       timerStartedAt: room.timerStartedAt,
       submittedPlayerIds: room.submittedPlayerIds,
       revealedStories: room.revealedStories,
+      allMatchStories: room.allMatchStories || [],
       currentRevealParagraph: room.currentRevealParagraph,
       totalParagraphs: room.totalParagraphs,
       votesReceived: room.votesReceived,
+      votedPlayerIds,
       roundWinners: room.roundWinners,
       finalLeaderboard: room.finalLeaderboard,
       isPublic: room.isPublic

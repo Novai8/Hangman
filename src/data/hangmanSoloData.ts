@@ -113,9 +113,16 @@ export const HANGMAN_SOLO_CATEGORIES: CategoryInfo[] = [
     sample: 'DOCTOR • ASTRONAUT • SOFTWARE ENGINEER'
   },
   {
+    id: 'Medical',
+    name: 'Medical & Healthcare',
+    description: 'Doctors, treatments, human anatomy, clinical tools, and pharmaceuticals',
+    icon: '🩺',
+    sample: 'DOCTOR • STETHOSCOPE • ANESTHESIA'
+  },
+  {
     id: 'Random',
     name: 'Random Mashup',
-    description: 'Surprise mix drawn from all 14 categories for the ultimate challenge',
+    description: 'Surprise mix drawn from all 15 categories for the ultimate challenge',
     icon: '🎲',
     sample: 'ANY CATEGORY • MAXIMUM VARIETY'
   }
@@ -506,6 +513,44 @@ export const HANGMAN_SOLO_WORD_BANK: Record<
       { word: 'PHOTOGRAPHER', hint: 'Visual artist capturing images through lenses, light, and composition' },
       { word: 'METEOROLOGIST', hint: 'Scientist analyzing atmospheric pressure to forecast daily weather' },
       { word: 'SOFTWARE ENGINEER', hint: 'Specialist designing and building computer applications and systems' }
+    ]
+  },
+  Medical: {
+    easy: [
+      { word: 'PILL', hint: 'Oral tablet or capsule used for treating ailments' },
+      { word: 'BONE', hint: 'Rigid calcium organ forming the human skeleton' },
+      { word: 'LUNG', hint: 'Essential respiratory organ that breathes in oxygen' },
+      { word: 'VEIN', hint: 'Blood vessel transporting deoxygenated blood toward heart' },
+      { word: 'CAST', hint: 'Rigid plaster shell stabilizing a fractured limb' },
+      { word: 'CURE', hint: 'Substance or medical procedure restoring sound health' },
+      { word: 'HEAL', hint: 'Natural biological process of recovering from injury' },
+      { word: 'GERM', hint: 'Microscopic infectious bacterium or virus' },
+      { word: 'SCAR', hint: 'Fibrous mark left behind on skin after tissue mends' },
+      { word: 'COLD', hint: 'Common viral contagion causing sniffling and sneezes' }
+    ],
+    medium: [
+      { word: 'DOCTOR', hint: 'Licensed healthcare professional who diagnoses and treats patients' },
+      { word: 'SURGEON', hint: 'Physician skilled in performing invasive operative treatments' },
+      { word: 'BANDAGE', hint: 'Sterile protective dressing wrapped over a cut or sprain' },
+      { word: 'CLINIC', hint: 'Healthcare facility providing outpatient care and checkups' },
+      { word: 'IMMUNE', hint: 'Defensive biological network fighting off disease and antigens' },
+      { word: 'SYMPTOM', hint: 'Physical indicator or subjective sign of an illness' },
+      { word: 'VACCINE', hint: 'Biological dose stimulating immune antibodies against pathogens' },
+      { word: 'THERAPY', hint: 'Systematic clinical regimen designed to rehabilitate health' },
+      { word: 'NURSE', hint: 'Trained medical caregiver supporting patient recovery and triage' },
+      { word: 'BIOPSY', hint: 'Diagnostic extraction of living cellular tissue for lab testing' }
+    ],
+    hard: [
+      { word: 'ANESTHESIA', hint: 'Controlled insensitivity to surgical pain via medical agents' },
+      { word: 'ANTIBIOTIC', hint: 'Potent prescription medication that eliminates bacterial infections' },
+      { word: 'STETHOSCOPE', hint: 'Acoustic instrument used to listen to internal heart and lung sounds' },
+      { word: 'CARDIOLOGY', hint: 'Medical branch devoted to diagnosing and treating heart conditions' },
+      { word: 'PHARMACY', hint: 'Dispensary licensed to compound and fulfill medical prescriptions' },
+      { word: 'PEDIATRICS', hint: 'Medical specialization centered on children and infants' },
+      { word: 'NEUROLOGY', hint: 'Clinical discipline dealing with the brain and nervous system' },
+      { word: 'HEMOGLOBIN', hint: 'Iron-rich blood protein carrying oxygen from lungs to muscles' },
+      { word: 'RESUSCITATE', hint: 'Emergency resuscitation technique reviving vital signs' },
+      { word: 'DIAGNOSIS', hint: 'Formal clinical identification of an underlying medical illness' }
     ]
   }
 };

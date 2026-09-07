@@ -194,6 +194,44 @@ export const WORD_DATABASE: Record<Exclude<Category, 'Random'>, Record<Difficult
       { word: 'SNOWBOARD', hint: 'Descending snow-covered slopes on a single board' },
       { word: 'SKATEBOARD', hint: 'Riding and performing tricks on an axle-wheeled deck' }
     ]
+  },
+  Medical: {
+    easy: [
+      { word: 'PILL', hint: 'Oral tablet or capsule medication' },
+      { word: 'BONE', hint: 'Rigid skeletal organ providing bodily framework' },
+      { word: 'LUNG', hint: 'Vital respiratory organ inhaling atmospheric oxygen' },
+      { word: 'VEIN', hint: 'Vessel circulating deoxygenated blood toward heart' },
+      { word: 'CAST', hint: 'Hard protective shell worn over a fractured bone' },
+      { word: 'CURE', hint: 'Medical remedy restoring good health' },
+      { word: 'HEAL', hint: 'Natural recovery from an ailment or wound' },
+      { word: 'GERM', hint: 'Microscopic pathogen that can cause illness' },
+      { word: 'SCAR', hint: 'Visible mark left after healed skin tissue' },
+      { word: 'COLD', hint: 'Common viral infection causing runny nose and chills' }
+    ],
+    medium: [
+      { word: 'DOCTOR', hint: 'Licensed professional diagnosing and treating illnesses' },
+      { word: 'SURGEON', hint: 'Doctor qualified to practice operative surgery' },
+      { word: 'BANDAGE', hint: 'Protective fabric strip bound around an injury' },
+      { word: 'CLINIC', hint: 'Medical center providing outpatient healthcare' },
+      { word: 'IMMUNE', hint: 'Bodily system preventing and resisting disease' },
+      { word: 'SYMPTOM', hint: 'Physical indicator of a medical condition' },
+      { word: 'VACCINE', hint: 'Preventative medicine building immunity against viruses' },
+      { word: 'THERAPY', hint: 'Clinical treatment aimed at healing disorders' },
+      { word: 'NURSE', hint: 'Trained professional attending to patient care' },
+      { word: 'BIOPSY', hint: 'Removal and clinical analysis of living tissue' }
+    ],
+    hard: [
+      { word: 'ANESTHESIA', hint: 'Medical induction of insensitivity to surgical pain' },
+      { word: 'ANTIBIOTIC', hint: 'Drug inhibiting growth of or destroying bacteria' },
+      { word: 'STETHOSCOPE', hint: 'Medical instrument used for listening to heartbeat' },
+      { word: 'CARDIOLOGY', hint: 'Branch of medical science focusing on the heart' },
+      { word: 'PHARMACY', hint: 'Store or dispensary where medications are prepared' },
+      { word: 'PEDIATRICS', hint: 'Medical care specializing in infants and children' },
+      { word: 'NEUROLOGY', hint: 'Medical specialty devoted to nervous system and brain' },
+      { word: 'HEMOGLOBIN', hint: 'Iron-containing oxygen-transport protein in red blood cells' },
+      { word: 'RESUSCITATE', hint: 'Revive an individual from unconsciousness or arrest' },
+      { word: 'DIAGNOSIS', hint: 'Formal identification of the nature of an illness' }
+    ]
   }
 };
 
@@ -204,13 +242,14 @@ export const CATEGORIES: Category[] = [
   'Countries',
   'Food',
   'Sports',
+  'Medical',
   'Random'
 ];
 
 export function getRandomWord(category: Category, difficulty: Difficulty): { word: string; category: Category; hint?: string } {
   let selectedCategory = category;
   if (selectedCategory === 'Random') {
-    const validCats: Exclude<Category, 'Random'>[] = ['Technology', 'Animals', 'Movies', 'Countries', 'Food', 'Sports'];
+    const validCats: Exclude<Category, 'Random'>[] = ['Technology', 'Animals', 'Movies', 'Countries', 'Food', 'Sports', 'Medical'];
     selectedCategory = validCats[Math.floor(Math.random() * validCats.length)];
   }
 

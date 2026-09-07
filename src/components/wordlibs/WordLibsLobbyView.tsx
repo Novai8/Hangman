@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { WordLibsPlayer, WordLibsRoom } from '../../types/wordLibs';
+import { WordLibsPlayer, WordLibsRoom, WordLibsSettings } from '../../types/wordLibs';
 import { sound } from '../../utils/audio';
 import {
   Copy,
@@ -14,7 +14,8 @@ import {
   Clock,
   Flame,
   CheckCircle2,
-  Hourglass
+  Hourglass,
+  Settings
 } from 'lucide-react';
 
 interface WordLibsLobbyViewProps {
@@ -24,6 +25,7 @@ interface WordLibsLobbyViewProps {
   onStartGame: () => void;
   onLeaveRoom: () => void;
   isStarting: boolean;
+  onUpdateSettings?: (settings: Partial<WordLibsSettings>) => void;
 }
 
 export const WordLibsLobbyView: React.FC<WordLibsLobbyViewProps> = ({
@@ -32,7 +34,8 @@ export const WordLibsLobbyView: React.FC<WordLibsLobbyViewProps> = ({
   onToggleReady,
   onStartGame,
   onLeaveRoom,
-  isStarting
+  isStarting,
+  onUpdateSettings
 }) => {
   const [copied, setCopied] = useState(false);
 
@@ -43,11 +46,30 @@ export const WordLibsLobbyView: React.FC<WordLibsLobbyViewProps> = ({
     navigator.clipboard.writeText(room.code);
     sound.pop();
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 2500);
   };
 
   const connectedPlayers = room.players.filter((p) => p.connectionStatus === 'connected');
   const allReady = connectedPlayers.length > 0 && connectedPlayers.every((p) => p.isReady || p.isHost);
+
+  const timerLabel =
+    room.settings.timerDuration === 0
+      ? '∞ Unlimited'
+      : room.settings.timerDuration >= 60
+      ? `${room.settings.timerDuration / 60}m Timer`
+      : `${room.settings.timerDuration}s Timer`;
+
+  const TIMER_OPTIONS = [
+    { val: 15, label: '15s' },
+    { val: 30, label: '30s' },
+    { val: 45, label: '45s' },
+    { val: 60, label: '60s' },
+    { val: 90, label: '90s' },
+    { val: 120, label: '2m' },
+    { val: 300, label: '5m' },
+    { val: 600, label: '10m' },
+    { val: 0, label: '∞ Unlimited' }
+  ];
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8 flex flex-col items-center">
@@ -62,8 +84,14 @@ export const WordLibsLobbyView: React.FC<WordLibsLobbyViewProps> = ({
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
               {room.settings.topic === 'Random' ? '🎲 Random Chaos' : `${room.settings.topic} Topic`}
             </h2>
-            <p className="text-xs font-mono text-slate-400 mt-1">
-              Mode: <span className="text-amber-400 capitalize">{room.settings.mode.replace('_', ' ')}</span> • {room.totalRounds} Rounds • {room.settings.timerDuration ? `${room.settings.timerDuration}s Timer` : 'Untimed'}
+            <p className="text-xs font-mono text-slate-400 mt-1 flex flex-wrap items-center gap-2">
+              <span>Mode: <strong className="text-amber-400 capitalize">{room.settings.mode.replace('_', ' ')}</strong></span>
+              <span>•</span>
+              <span>{room.totalRounds} Rounds</span>
+              <span>•</span>
+              <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-amber-300 font-bold">
+                {timerLabel}
+              </span>
             </p>
           </div>
 
@@ -85,6 +113,45 @@ export const WordLibsLobbyView: React.FC<WordLibsLobbyViewProps> = ({
             </button>
           </div>
         </div>
+
+        {/* Host Settings Bar (Timer Selection in Lobby) */}
+        {isHost && onUpdateSettings && (
+          <div className="py-4 border-b border-slate-800/80">
+            <div className="flex items-center justify-between gap-2 mb-2">
+              <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">
+                <Clock className="w-3.5 h-3.5" />
+                <span>Host Answer Timer Setting:</span>
+              </div>
+              <span className="text-[11px] font-mono text-slate-400">
+                {room.settings.timerDuration === 0
+                  ? 'Unlimited: wait for all players to lock in answers'
+                  : `Players have ${room.settings.timerDuration >= 60 ? `${room.settings.timerDuration / 60}m` : `${room.settings.timerDuration}s`} to answer`}
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-1.5">
+              {TIMER_OPTIONS.map((t) => {
+                const isSelected = room.settings.timerDuration === t.val;
+                return (
+                  <button
+                    key={t.val}
+                    type="button"
+                    onClick={() => {
+                      sound.keyTap();
+                      onUpdateSettings({ timerDuration: t.val });
+                    }}
+                    className={`px-3 py-1.5 rounded-lg font-mono text-xs border text-center transition-all cursor-pointer ${
+                      isSelected
+                        ? 'bg-amber-500 text-slate-950 border-amber-400 font-bold shadow-md shadow-amber-500/20'
+                        : 'bg-slate-950/80 border-slate-800 text-slate-300 hover:border-slate-700 hover:text-white'
+                    }`}
+                  >
+                    {t.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {/* Players List Grid */}
         <div className="pt-6">

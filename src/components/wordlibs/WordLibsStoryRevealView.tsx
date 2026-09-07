@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { WordLibsRoom, WordLibsStory } from '../../types/wordLibs';
 import { sound } from '../../utils/audio';
@@ -18,7 +18,15 @@ export const WordLibsStoryRevealView: React.FC<WordLibsStoryRevealViewProps> = (
   onSkipReveal
 }) => {
   const isHost = room.hostId === localPlayerId;
-  const currentStory = room.revealedStories[0]; // Active or shared story
+  
+  // In battle mode, default to a story from ANOTHER player to prevent seeing one's own answers
+  const initialStoryIndex = Math.max(
+    0,
+    room.revealedStories.findIndex((s) => s.authorPlayerId && s.authorPlayerId !== localPlayerId)
+  );
+  const [selectedStoryIndex, setSelectedStoryIndex] = useState<number>(initialStoryIndex);
+
+  const currentStory = room.revealedStories[selectedStoryIndex] || room.revealedStories[0];
 
   useEffect(() => {
     sound.revealWord();
@@ -48,8 +56,35 @@ export const WordLibsStoryRevealView: React.FC<WordLibsStoryRevealViewProps> = (
         </h2>
         {room.settings.mode === 'battle' && (
           <p className="text-xs font-mono text-amber-300/80 mt-1">
-            Anonymous Story Battle
+            Anonymous Story Battle • Viewing: {currentStory.authorAnonymousLabel}
           </p>
+        )}
+
+        {/* Multi-story switcher tabs in Battle mode */}
+        {room.revealedStories.length > 1 && (
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-4">
+            {room.revealedStories.map((story, idx) => {
+              const isOwn = story.authorPlayerId === localPlayerId;
+              const isSelected = idx === selectedStoryIndex;
+              return (
+                <button
+                  key={story.id}
+                  onClick={() => {
+                    sound.keyTap();
+                    setSelectedStoryIndex(idx);
+                  }}
+                  className={`px-3 py-1.5 rounded-xl font-mono text-xs font-bold transition-all ${
+                    isSelected
+                      ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                      : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  }`}
+                >
+                  <span>{story.authorAnonymousLabel}</span>
+                  {isOwn && <span className="ml-1 text-[10px] opacity-75">(You)</span>}
+                </button>
+              );
+            })}
+          </div>
         )}
       </div>
 

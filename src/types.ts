@@ -13,6 +13,7 @@ export type Category =
   | 'Countries' 
   | 'Food' 
   | 'Sports' 
+  | 'Medical' 
   | 'Random';
 
 export type GameStatus = 'playing' | 'won' | 'lost';

@@ -15,6 +15,7 @@ export type HangmanSoloCategory =
   | 'Vehicles'
   | 'Everyday Objects'
   | 'Professions'
+  | 'Medical'
   | 'Random';
 
 export type HangmanSoloStep =

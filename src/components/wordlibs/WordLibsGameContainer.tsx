@@ -230,6 +230,17 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
     }
   };
 
+  // Update Room Settings (Host in Lobby)
+  const handleUpdateSettings = async (settings: Partial<WordLibsSettings>) => {
+    if (!currentRoom || !localPlayerId) return;
+    try {
+      const room = await wordLibsClient.updateSettings(currentRoom.code, localPlayerId, settings);
+      setCurrentRoom(room);
+    } catch (err: any) {
+      console.error(err);
+    }
+  };
+
   // Next Round
   const handleNextRound = async () => {
     if (!currentRoom || !localPlayerId) return;
@@ -241,6 +252,17 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
       alert(err.message || 'Could not advance to next round');
     } finally {
       setIsNextLoading(false);
+    }
+  };
+
+  // Force Finalize Voting (Host)
+  const handleForceFinalizeVoting = async () => {
+    if (!currentRoom || !localPlayerId) return;
+    try {
+      const room = await wordLibsClient.forceFinalizeVoting(currentRoom.code, localPlayerId);
+      setCurrentRoom(room);
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -416,6 +438,7 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
             onStartGame={handleStartGame}
             onLeaveRoom={handleHeaderBack}
             isStarting={isStarting}
+            onUpdateSettings={handleUpdateSettings}
           />
         )}
 
@@ -442,6 +465,7 @@ export const WordLibsGameContainer: React.FC<WordLibsGameContainerProps> = ({
             room={currentRoom}
             localPlayerId={localPlayerId || ''}
             onSubmitVote={handleSubmitVote}
+            onForceFinalizeVoting={handleForceFinalizeVoting}
           />
         )}
 

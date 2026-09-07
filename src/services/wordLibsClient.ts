@@ -184,6 +184,27 @@ export class WordLibsClient {
   }
 
   /**
+   * Update room settings from lobby (Host only)
+   */
+  public async updateSettings(
+    code: string,
+    hostId: string,
+    settings: Partial<WordLibsSettings>
+  ): Promise<WordLibsRoom> {
+    const res = await fetch(`/api/wordlibs/${code}/settings`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ hostId, settings })
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ error: 'Failed to update settings' }));
+      throw new Error(err.error || 'Failed to update settings');
+    }
+    const data = await res.json();
+    return data.room;
+  }
+
+  /**
    * Start game match (Host)
    */
   public async startGame(code: string, playerId: string): Promise<WordLibsRoom> {
@@ -262,6 +283,23 @@ export class WordLibsClient {
     if (!res.ok) {
       const err = await res.json().catch(() => ({ error: 'Failed to submit vote' }));
       throw new Error(err.error || 'Failed to submit vote');
+    }
+    const data = await res.json();
+    return data.room;
+  }
+
+  /**
+   * Force finalize voting (Host only)
+   */
+  public async forceFinalizeVoting(code: string, hostId: string): Promise<WordLibsRoom> {
+    const res = await fetch(`/api/wordlibs/${code}/force-finalize-voting`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ hostId })
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ error: 'Failed to finalize voting' }));
+      throw new Error(err.error || 'Failed to finalize voting');
     }
     const data = await res.json();
     return data.room;

@@ -48,15 +48,17 @@ export const Keyboard: React.FC<KeyboardProps> = ({
               }
 
               return (
-                <button
+                <motion.button
                   key={letter}
                   id={`key-${letter}`}
+                  whileHover={!disabled && !hasBeenGuessed ? { y: -2, scale: 1.06 } : {}}
+                  whileTap={!disabled && !hasBeenGuessed ? { scale: 0.92 } : {}}
                   onClick={() => onGuess(letter)}
                   disabled={disabled || hasBeenGuessed}
                   className={`w-8 sm:w-11 md:w-12 h-11 sm:h-14 rounded-xl flex items-center justify-center font-bold text-xs sm:text-base select-none transition-all duration-150 ${keyStyle}`}
                 >
                   {letter}
-                </button>
+                </motion.button>
               );
             })}
           </div>

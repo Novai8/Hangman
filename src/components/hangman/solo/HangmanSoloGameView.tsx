@@ -38,6 +38,27 @@ export const HangmanSoloGameView: React.FC<HangmanSoloGameViewProps> = ({
   onBackToHome
 }) => {
   const [showHint, setShowHint] = React.useState(false);
+  const [lastFeedback, setLastFeedback] = React.useState<{ text: string; isPositive: boolean } | null>(null);
+  const prevGuessedCountRef = React.useRef(gameState.guessedLetters.size);
+
+  // Provide momentary feedback on guesses
+  useEffect(() => {
+    if (gameState.guessedLetters.size > prevGuessedCountRef.current) {
+      // Find newly guessed letter
+      const arr = Array.from(gameState.guessedLetters);
+      const latestLetter = arr[arr.length - 1];
+      if (latestLetter) {
+        const isHit = gameState.word.includes(latestLetter);
+        setLastFeedback({
+          text: isHit ? `Great pick! "${latestLetter}" is in the word.` : `Oops! "${latestLetter}" is not in the word.`,
+          isPositive: isHit
+        });
+        const timer = setTimeout(() => setLastFeedback(null), 2200);
+        return () => clearTimeout(timer);
+      }
+    }
+    prevGuessedCountRef.current = gameState.guessedLetters.size;
+  }, [gameState.guessedLetters, gameState.word]);
 
   // Format timer
   const formatTime = (secs: number) => {
@@ -80,27 +101,29 @@ export const HangmanSoloGameView: React.FC<HangmanSoloGameViewProps> = ({
     <div className="w-full max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-6 flex flex-col items-center">
       {/* Top Header Bar */}
       <div className="w-full flex items-center justify-between gap-2 mb-4">
-        <button
+        <motion.button
           id="btn-solo-leave-game"
+          whileHover={{ y: -1, scale: 1.02 }}
+          whileTap={{ scale: 0.96 }}
           onClick={() => {
             sound.keyTap();
             onBackToHome();
           }}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs font-mono font-bold transition-all"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs font-mono font-bold transition-all shadow-sm"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>EXIT</span>
-        </button>
+          <span>Exit Game</span>
+        </motion.button>
 
         <div className="flex items-center gap-2">
           {/* Category Chip */}
-          <div className="px-3 py-1 rounded-xl bg-slate-900/90 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-bold uppercase tracking-wide">
+          <div className="px-3 py-1 rounded-xl bg-slate-900/90 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-bold uppercase tracking-wide shadow-sm">
             {gameState.resolvedCategory}
           </div>
 
           {/* Difficulty Chip */}
           <div
-            className={`px-2.5 py-1 rounded-xl text-xs font-mono font-bold uppercase border ${
+            className={`px-2.5 py-1 rounded-xl text-xs font-mono font-bold uppercase border shadow-sm ${
               gameState.difficulty === 'hard'
                 ? 'bg-rose-950/40 text-rose-300 border-rose-500/30'
                 : gameState.difficulty === 'medium'
@@ -114,34 +137,38 @@ export const HangmanSoloGameView: React.FC<HangmanSoloGameViewProps> = ({
 
         {/* Give up / Restart */}
         <div className="flex items-center gap-1.5">
-          <button
+          <motion.button
             id="btn-solo-restart-word"
+            whileHover={{ y: -1, scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => {
               sound.keyTap();
               onRestartCurrentWord();
             }}
-            title="Restart current word"
+            title="Try this word again"
             className="p-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 text-slate-400 hover:text-white transition-colors"
           >
             <RotateCcw className="w-3.5 h-3.5" />
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             id="btn-solo-give-up"
+            whileHover={{ y: -1, scale: 1.02 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => {
               sound.keyTap();
               onGiveUp();
             }}
-            className="px-2.5 py-1 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-400 text-xs font-mono font-bold transition-all"
+            className="px-2.5 py-1 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-400 text-xs font-mono font-bold transition-all shadow-sm"
           >
-            GIVE UP
-          </button>
+            Give up
+          </motion.button>
         </div>
       </div>
 
       {/* Realtime Stats Ribbon */}
-      <div className="w-full grid grid-cols-4 gap-2 mb-5">
+      <div className="w-full grid grid-cols-4 gap-2 mb-4">
         {/* Score */}
-        <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-center">
+        <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-center shadow-sm">
           <span className="text-[10px] font-mono text-slate-400 uppercase block">Score</span>
           <span className="text-sm sm:text-base font-black text-cyan-400">
             {gameState.score}
@@ -149,10 +176,10 @@ export const HangmanSoloGameView: React.FC<HangmanSoloGameViewProps> = ({
         </div>
 
         {/* Lives / Attempts Left */}
-        <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-center">
+        <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-center shadow-sm">
           <span className="text-[10px] font-mono text-slate-400 uppercase block flex items-center justify-center gap-1">
             <Heart className="w-2.5 h-2.5 text-rose-400" />
-            Attempts
+            Lives left
           </span>
           <span
             className={`text-sm sm:text-base font-black ${
@@ -164,18 +191,18 @@ export const HangmanSoloGameView: React.FC<HangmanSoloGameViewProps> = ({
         </div>
 
         {/* Streak */}
-        <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-center">
+        <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-center shadow-sm">
           <span className="text-[10px] font-mono text-slate-400 uppercase block flex items-center justify-center gap-1">
             <Flame className="w-2.5 h-2.5 text-amber-400" />
             Streak
           </span>
           <span className="text-sm sm:text-base font-black text-amber-400">
-            {streak} {streak === 1 ? 'WIN' : 'WINS'}
+            {streak} {streak === 1 ? 'win' : 'wins'}
           </span>
         </div>
 
         {/* Timer */}
-        <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-center">
+        <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-center shadow-sm">
           <span className="text-[10px] font-mono text-slate-400 uppercase block flex items-center justify-center gap-1">
             <Timer className="w-2.5 h-2.5 text-violet-400" />
             Time
@@ -185,6 +212,22 @@ export const HangmanSoloGameView: React.FC<HangmanSoloGameViewProps> = ({
           </span>
         </div>
       </div>
+
+      {/* Momentary Guess Feedback Toast */}
+      {lastFeedback && (
+        <motion.div
+          initial={{ opacity: 0, y: -6, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0 }}
+          className={`w-full py-1.5 px-4 mb-3 rounded-xl border text-xs font-mono font-bold text-center transition-all ${
+            lastFeedback.isPositive
+              ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300 shadow-md shadow-emerald-500/10'
+              : 'bg-rose-500/15 border-rose-500/40 text-rose-300 shadow-md shadow-rose-500/10'
+          }`}
+        >
+          {lastFeedback.text}
+        </motion.div>
+      )}
 
       {/* Main Game Stage */}
       <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-5 mb-5 items-stretch">
@@ -204,24 +247,26 @@ export const HangmanSoloGameView: React.FC<HangmanSoloGameViewProps> = ({
           <div className="flex items-center justify-between pb-3 border-b border-slate-800">
             <div>
               <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest block">
-                CATEGORY CLUE
+                Category
               </span>
               <span className="text-sm font-black text-white">
                 {gameState.resolvedCategory}
               </span>
             </div>
 
-            <button
+            <motion.button
               id="btn-solo-toggle-hint"
+              whileHover={{ y: -1, scale: 1.03 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => {
                 sound.keyTap();
                 setShowHint(!showHint);
               }}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-mono font-bold transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-mono font-bold transition-colors shadow-sm"
             >
               <HelpCircle className="w-3.5 h-3.5" />
-              <span>{showHint ? 'HIDE HINT' : 'SHOW HINT'}</span>
-            </button>
+              <span>{showHint ? 'Hide hint' : 'Need a hint?'}</span>
+            </motion.button>
           </div>
 
           {/* Hint disclosure */}
@@ -245,18 +290,21 @@ export const HangmanSoloGameView: React.FC<HangmanSoloGameViewProps> = ({
                   const isRevealed = !isLetter || gameState.guessedLetters.has(char);
 
                   return (
-                    <div
+                    <motion.div
                       key={charIdx}
+                      initial={false}
+                      animate={isRevealed && isLetter ? { scale: [1, 1.15, 1] } : { scale: 1 }}
+                      transition={{ duration: 0.25 }}
                       className={`w-9 h-12 sm:w-11 sm:h-14 rounded-xl flex items-center justify-center font-black text-lg sm:text-2xl transition-all ${
                         isHyphen
                           ? 'border-b-2 border-slate-600 text-slate-400'
                           : isRevealed
-                          ? 'bg-cyan-500/10 border-2 border-cyan-400 text-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.2)]'
+                          ? 'bg-cyan-500/10 border-2 border-cyan-400 text-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.25)]'
                           : 'bg-white/5 border-b-4 border-white/20 text-transparent'
                       }`}
                     >
                       {isHyphen ? '-' : isRevealed ? char : ''}
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
@@ -265,18 +313,20 @@ export const HangmanSoloGameView: React.FC<HangmanSoloGameViewProps> = ({
 
           {/* Incorrect Guesses Tray */}
           <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-mono">
-            <span className="text-slate-500">INCORRECT GUESSES:</span>
+            <span className="text-slate-500">Misses:</span>
             <div className="flex items-center gap-1.5 flex-wrap justify-end">
               {incorrectLetters.length === 0 ? (
                 <span className="text-slate-600">None yet</span>
               ) : (
                 incorrectLetters.map((letter) => (
-                  <span
+                  <motion.span
                     key={letter}
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
                     className="w-6 h-6 rounded-md bg-rose-950/60 border border-rose-500/40 text-rose-300 flex items-center justify-center font-bold text-xs"
                   >
                     {letter}
-                  </span>
+                  </motion.span>
                 ))
               )}
             </div>
@@ -288,10 +338,10 @@ export const HangmanSoloGameView: React.FC<HangmanSoloGameViewProps> = ({
       <div className="w-full max-w-2xl bg-slate-900/80 border border-slate-800 rounded-3xl p-3 sm:p-4 shadow-xl">
         <div className="flex items-center justify-between mb-2.5 px-2">
           <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">
-            TAP LETTER OR USE PHYSICAL KEYBOARD
+            Pick a letter or use your keyboard
           </span>
           <span className="text-[10px] font-mono text-slate-500">
-            {gameState.guessedLetters.size} GUESSED
+            {gameState.guessedLetters.size} guessed
           </span>
         </div>
 
@@ -308,6 +358,7 @@ export const HangmanSoloGameView: React.FC<HangmanSoloGameViewProps> = ({
                   <motion.button
                     key={letter}
                     id={`btn-key-${letter}`}
+                    whileHover={!isGuessed && gameState.status === 'playing' ? { y: -2, scale: 1.06 } : {}}
                     whileTap={!isGuessed ? { scale: 0.92 } : {}}
                     disabled={isGuessed || gameState.status !== 'playing'}
                     onClick={() => {
@@ -315,7 +366,7 @@ export const HangmanSoloGameView: React.FC<HangmanSoloGameViewProps> = ({
                         onGuessLetter(letter);
                       }
                     }}
-                    className={`h-10 sm:h-12 rounded-lg font-black text-xs sm:text-sm font-mono transition-all flex items-center justify-center select-none ${
+                    className={`h-10 sm:h-12 rounded-lg font-black text-xs sm:text-sm font-mono transition-all flex items-center justify-center select-none shadow-sm ${
                       row.length === 10
                         ? 'flex-1 max-w-[48px]'
                         : row.length === 9

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { WordLibsPlayer, WordLibsPrompt, WordLibsRoom } from '../../types/wordLibs';
 import { sound } from '../../utils/audio';
+import { getRandomFunnyWord, FunnyWordCategory } from '../../data/randomFunnyWords';
 import {
   Clock,
   CheckCircle2,
@@ -10,7 +11,9 @@ import {
   Flame,
   Send,
   Zap,
-  HelpCircle
+  HelpCircle,
+  Dices,
+  Shuffle
 } from 'lucide-react';
 
 interface WordLibsAnsweringViewProps {
@@ -41,6 +44,25 @@ export const WordLibsAnsweringView: React.FC<WordLibsAnsweringViewProps> = ({
     setAnswers((prev) => ({ ...prev, [key]: val }));
   };
 
+  const handleRandomWordForPrompt = (key: string, category: FunnyWordCategory = 'any') => {
+    sound.pop();
+    const word = getRandomFunnyWord(category);
+    setAnswers((prev) => ({ ...prev, [key]: word }));
+  };
+
+  const handleAutoFillRemaining = () => {
+    sound.pop();
+    setAnswers((prev) => {
+      const next = { ...prev };
+      room.currentPrompts.forEach((p) => {
+        if (!next[p.key] || next[p.key].trim() === '') {
+          next[p.key] = getRandomFunnyWord('any');
+        }
+      });
+      return next;
+    });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     sound.pop();
@@ -63,8 +85,13 @@ export const WordLibsAnsweringView: React.FC<WordLibsAnsweringViewProps> = ({
             </span>
           </div>
 
-          {/* Countdown Timer */}
-          {room.timeRemaining > 0 && (
+          {/* Countdown Timer or Unlimited */}
+          {room.settings.timerDuration === 0 ? (
+            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl font-mono text-sm font-bold border bg-emerald-500/10 border-emerald-500/30 text-emerald-300">
+              <Clock className="w-4 h-4 text-emerald-400" />
+              <span>Unlimited Time</span>
+            </div>
+          ) : room.timeRemaining > 0 ? (
             <div
               className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl font-mono text-sm font-bold border transition-colors ${
                 room.timeRemaining <= 10
@@ -74,6 +101,11 @@ export const WordLibsAnsweringView: React.FC<WordLibsAnsweringViewProps> = ({
             >
               <Clock className="w-4 h-4" />
               <span>{room.timeRemaining}s REMAINING</span>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl font-mono text-sm font-bold border bg-slate-950 border-slate-700 text-slate-400">
+              <Clock className="w-4 h-4" />
+              <span>Time Expired</span>
             </div>
           )}
         </div>
@@ -105,20 +137,35 @@ export const WordLibsAnsweringView: React.FC<WordLibsAnsweringViewProps> = ({
       {/* Main Answering Section */}
       {!hasSubmitted ? (
         <form onSubmit={handleSubmit} className="w-full space-y-4">
-          <div className="text-center mb-2">
-            <h3 className="text-xl sm:text-2xl font-black text-white">
-              Fill in the Secret Words
-            </h3>
-            <p className="text-xs text-slate-400 font-mono mt-1">
-              Your words will be woven into an unpredictable original tale!
-            </p>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mb-3">
+            <div>
+              <h3 className="text-xl sm:text-2xl font-black text-white">
+                Fill in the Blanks
+              </h3>
+              <p className="text-xs text-slate-400 font-mono mt-0.5">
+                Your words will make a hilarious unexpected story!
+              </p>
+            </div>
+
+            {/* Quick Auto-Fill Button */}
+            <motion.button
+              type="button"
+              whileHover={{ y: -1, scale: 1.02 }}
+              whileTap={{ scale: 0.96 }}
+              onClick={handleAutoFillRemaining}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-mono font-bold transition-all shadow-sm"
+              title="Auto-fill empty fields with random hilarious words"
+            >
+              <Dices className="w-3.5 h-3.5" />
+              <span>Fill Empty Blanks</span>
+            </motion.button>
           </div>
 
           <div className="space-y-3">
             {room.currentPrompts.map((prompt, index) => (
               <div
                 key={prompt.id}
-                className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/40 transition-colors"
+                className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/40 transition-colors shadow-sm"
               >
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
@@ -127,11 +174,43 @@ export const WordLibsAnsweringView: React.FC<WordLibsAnsweringViewProps> = ({
                     </span>
                     <span>{prompt.inputType.replace(/_/g, ' ')}</span>
                   </span>
-                  {isOneWordMode && (
-                    <span className="text-[10px] font-mono text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/20">
-                      1 WORD ONLY
-                    </span>
-                  )}
+
+                  <div className="flex items-center gap-1.5">
+                    {/* Random word pills */}
+                    <div className="flex items-center gap-1 bg-slate-950/70 p-1 rounded-lg border border-slate-800">
+                      <button
+                        type="button"
+                        onClick={() => handleRandomWordForPrompt(prompt.key, 'any')}
+                        className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 transition-colors flex items-center gap-1"
+                        title="Random word from any funny category"
+                      >
+                        <Dices className="w-3 h-3" />
+                        <span>Random</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleRandomWordForPrompt(prompt.key, 'brainrot')}
+                        className="px-1.5 py-0.5 rounded text-[10px] font-mono hover:bg-violet-500/20 text-violet-300 transition-colors"
+                        title="Brainrot term (Skibidi, Rizzler, Sigma...)"
+                      >
+                        🧠 Brainrot
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleRandomWordForPrompt(prompt.key, 'absurd')}
+                        className="px-1.5 py-0.5 rounded text-[10px] font-mono hover:bg-rose-500/20 text-rose-300 transition-colors hidden sm:inline-block"
+                        title="Absurd hilarious phrase"
+                      >
+                        🤪 Absurd
+                      </button>
+                    </div>
+
+                    {isOneWordMode && (
+                      <span className="text-[10px] font-mono text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/20">
+                        1 WORD ONLY
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <p className="text-sm font-semibold text-slate-200 mb-2.5">
@@ -144,22 +223,24 @@ export const WordLibsAnsweringView: React.FC<WordLibsAnsweringViewProps> = ({
                   maxLength={isOneWordMode ? 20 : 50}
                   value={answers[prompt.key] || ''}
                   onChange={(e) => handleInputChange(prompt.key, e.target.value)}
-                  placeholder={prompt.placeholder || 'Enter your funniest answer...'}
-                  className="w-full bg-slate-950 border border-slate-700 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-slate-600 outline-none transition-all font-medium"
+                  placeholder={prompt.placeholder || 'Type your funniest answer...'}
+                  className="w-full bg-slate-950 border border-slate-700 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-slate-600 outline-none transition-all font-medium shadow-inner"
                 />
               </div>
             ))}
           </div>
 
-          <button
+          <motion.button
             id="wordlibs-submit-answers-btn"
             type="submit"
+            whileHover={{ y: -1, scale: 1.01 }}
+            whileTap={{ scale: 0.98 }}
             disabled={isSubmitting}
-            className="w-full py-4 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-2 shadow-xl shadow-amber-500/25 transition-all mt-6"
+            className="w-full py-4 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-2 shadow-xl shadow-amber-500/25 transition-all mt-6 cursor-pointer"
           >
             <Send className="w-4 h-4" />
             <span>{isSubmitting ? 'Locking in Answers...' : 'Lock In All Answers'}</span>
-          </button>
+          </motion.button>
         </form>
       ) : (
         /* Submitted Waiting State */

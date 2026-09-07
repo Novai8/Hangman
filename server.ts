@@ -342,6 +342,18 @@ async function startServer() {
     res.json(result);
   });
 
+  // Update room settings (Host only, in lobby)
+  app.post('/api/wordlibs/:code/settings', (req, res) => {
+    const { code } = req.params;
+    const { hostId, settings } = req.body;
+    const result = wordLibsRoomManager.updateRoomSettings(code, hostId, settings);
+    if (!result.success) {
+      res.status(400).json({ error: result.error });
+      return;
+    }
+    res.json(result);
+  });
+
   // Start game match
   app.post('/api/wordlibs/:code/start', (req, res) => {
     const { code } = req.params;
@@ -393,6 +405,30 @@ async function startServer() {
       return;
     }
     const result = wordLibsRoomManager.submitVote(code, voterId, category, targetStoryId);
+    if (!result.success) {
+      res.status(400).json({ error: result.error });
+      return;
+    }
+    res.json(result);
+  });
+
+  // Host force conclude voting
+  app.post('/api/wordlibs/:code/force-voting', (req, res) => {
+    const { code } = req.params;
+    const { hostId } = req.body;
+    const result = wordLibsRoomManager.forceFinalizeVoting(code, hostId);
+    if (!result.success) {
+      res.status(400).json({ error: result.error });
+      return;
+    }
+    res.json(result);
+  });
+
+  // Force finalize voting (Host only)
+  app.post('/api/wordlibs/:code/force-finalize-voting', (req, res) => {
+    const { code } = req.params;
+    const { hostId } = req.body;
+    const result = wordLibsRoomManager.forceFinalizeVoting(code, hostId);
     if (!result.success) {
       res.status(400).json({ error: result.error });
       return;

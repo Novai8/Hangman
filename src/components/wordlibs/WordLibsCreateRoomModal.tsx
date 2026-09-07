@@ -185,32 +185,50 @@ export const WordLibsCreateRoomModal: React.FC<WordLibsCreateRoomModalProps> = (
 
           {/* Timer Duration */}
           <div>
-            <label className="block text-xs font-mono font-bold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-amber-400" />
-              <span>Answer Timer</span>
-            </label>
-            <div className="grid grid-cols-5 gap-2">
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-amber-400" />
+                <span>Answer Timer Duration</span>
+              </label>
+              <span className="text-[11px] font-mono text-amber-400">
+                {timerDuration === 0 ? '∞ Unlimited (Wait for all players)' : `${timerDuration >= 60 ? `${timerDuration / 60} min` : `${timerDuration}s`}`}
+              </span>
+            </div>
+            <div className="grid grid-cols-5 gap-1.5">
               {[
                 { val: 15, label: '15s' },
                 { val: 30, label: '30s' },
                 { val: 45, label: '45s' },
                 { val: 60, label: '60s' },
-                { val: 0, label: 'No Limit' }
+                { val: 90, label: '90s' },
+                { val: 120, label: '2m' },
+                { val: 180, label: '3m' },
+                { val: 300, label: '5m' },
+                { val: 600, label: '10m' },
+                { val: 0, label: '∞ Unlimited' }
               ].map((t) => (
                 <button
                   key={t.val}
                   type="button"
-                  onClick={() => setTimerDuration(t.val)}
+                  onClick={() => {
+                    sound.keyTap();
+                    setTimerDuration(t.val);
+                  }}
                   className={`py-2 rounded-lg font-mono text-xs border text-center transition-all ${
                     timerDuration === t.val
-                      ? 'bg-amber-500 text-slate-950 border-amber-400 font-bold'
-                      : 'bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700'
+                      ? 'bg-amber-500 text-slate-950 border-amber-400 font-bold shadow-md shadow-amber-500/20'
+                      : 'bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700 hover:bg-slate-800/50'
                   }`}
                 >
                   {t.label}
                 </button>
               ))}
             </div>
+            <p className="text-[11px] text-slate-400 mt-2">
+              {timerDuration === 0
+                ? 'Unlimited mode: no automatic transitions. The round moves forward only when everyone submits their answers.'
+                : `Players have ${timerDuration >= 60 ? `${timerDuration / 60} minute(s)` : `${timerDuration} seconds`} to fill in their blanks before answers lock in.`}
+            </p>
           </div>
 
           {/* Public Lobby Visibility */}
