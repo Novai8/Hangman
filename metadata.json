@@ -1,0 +1,8 @@
+{
+  "name": "Remix Hangman",
+  "description": "A modern, highly interactive cyber-themed Hangman word-guessing game with multiple modes, animated SVG visuals, sound effects, and responsive design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

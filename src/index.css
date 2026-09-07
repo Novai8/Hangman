@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  --color-immersive-bg: #0a0a0c;
+  --color-immersive-surface: #12121e;
+  --color-cyan-glow: #22d3ee;
+  --color-purple-glow: #a855f7;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: var(--font-body);
+    background-color: #0a0a0c;
+    background-image: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0a0a0c 100%);
+    color: #ffffff;
+    user-select: none;
+    -webkit-user-select: none;
+    min-height: 100vh;
+  }
+}
+
+/* Custom scrollbars hidden for sleek game HUD */
+::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes glitchShake {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3px, 2px); }
+  40% { transform: translate(3px, -2px); }
+  60% { transform: translate(-2px, -1px); }
+  80% { transform: translate(2px, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-glitch-shake {
+  animation: glitchShake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4), inset 0 0 10px rgba(34, 211, 238, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.7), inset 0 0 15px rgba(34, 211, 238, 0.35);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
