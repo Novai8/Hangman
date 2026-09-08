@@ -33,6 +33,7 @@ export const HangmanSoloContainer: React.FC<HangmanSoloContainerProps> = ({
   const [selectedDifficulty, setSelectedDifficulty] = useState<HangmanSoloDifficulty>('medium');
   const [stats, setStats] = useState<HangmanSoloStats>(() => getHangmanSoloStats());
   const [gameState, setGameState] = useState<HangmanSoloGameState | null>(null);
+  const [usedWords, setUsedWords] = useState<string[]>([]);
 
   // Timer interval ref
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -40,35 +41,38 @@ export const HangmanSoloContainer: React.FC<HangmanSoloContainerProps> = ({
   // Initialize a new round
   const startNewGame = useCallback(
     (cat: HangmanSoloCategory, diff: HangmanSoloDifficulty, prevWord?: string) => {
-      const { word, resolvedCategory, hint } = getRandomSoloWord(cat, diff, prevWord);
-      const maxMistakes = getDifficultyMaxMistakes(diff);
+      setUsedWords((prevUsed) => {
+        const { word, resolvedCategory, hint } = getRandomSoloWord(cat, diff, prevWord, prevUsed);
+        const maxMistakes = getDifficultyMaxMistakes(diff);
 
-      const initialGuessed = new Set<string>();
-      // Non-letters (spaces, hyphens) are automatically revealed
-      for (const ch of word) {
-        if (!/^[A-Z]$/.test(ch)) {
-          initialGuessed.add(ch);
+        const initialGuessed = new Set<string>();
+        // Non-letters (spaces, hyphens) are automatically revealed
+        for (const ch of word) {
+          if (!/^[A-Z]$/.test(ch)) {
+            initialGuessed.add(ch);
+          }
         }
-      }
 
-      const newGameState: HangmanSoloGameState = {
-        category: cat,
-        resolvedCategory,
-        difficulty: diff,
-        word,
-        hint,
-        guessedLetters: initialGuessed,
-        mistakes: 0,
-        maxMistakes,
-        remainingAttempts: maxMistakes,
-        status: 'playing',
-        score: 0,
-        startTime: Date.now(),
-        elapsedSeconds: 0
-      };
+        const newGameState: HangmanSoloGameState = {
+          category: cat,
+          resolvedCategory,
+          difficulty: diff,
+          word,
+          hint,
+          guessedLetters: initialGuessed,
+          mistakes: 0,
+          maxMistakes,
+          remainingAttempts: maxMistakes,
+          status: 'playing',
+          score: 0,
+          startTime: Date.now(),
+          elapsedSeconds: 0
+        };
 
-      setGameState(newGameState);
-      setStep('playing');
+        setGameState(newGameState);
+        setStep('playing');
+        return [...prevUsed, word];
+      });
     },
     []
   );

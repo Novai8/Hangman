@@ -63,27 +63,28 @@ export const WordLibsStoryRevealView: React.FC<WordLibsStoryRevealViewProps> = (
         {/* Multi-story switcher tabs in Battle mode */}
         {room.revealedStories.length > 1 && (
           <div className="flex flex-wrap items-center justify-center gap-2 mt-4">
-            {room.revealedStories.map((story, idx) => {
-              const isOwn = story.authorPlayerId === localPlayerId;
-              const isSelected = idx === selectedStoryIndex;
-              return (
-                <button
-                  key={story.id}
-                  onClick={() => {
-                    sound.keyTap();
-                    setSelectedStoryIndex(idx);
-                  }}
-                  className={`px-3 py-1.5 rounded-xl font-mono text-xs font-bold transition-all ${
-                    isSelected
-                      ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                      : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800'
-                  }`}
-                >
-                  <span>{story.authorAnonymousLabel}</span>
-                  {isOwn && <span className="ml-1 text-[10px] opacity-75">(You)</span>}
-                </button>
-              );
-            })}
+            {room.revealedStories
+              .filter((s) => room.settings.mode !== 'battle' || s.authorPlayerId !== localPlayerId)
+              .map((story) => {
+                const isSelected = story.id === currentStory?.id;
+                return (
+                  <button
+                    key={story.id}
+                    onClick={() => {
+                      sound.keyTap();
+                      const realIdx = room.revealedStories.findIndex((st) => st.id === story.id);
+                      setSelectedStoryIndex(realIdx);
+                    }}
+                    className={`px-3 py-1.5 rounded-xl font-mono text-xs font-bold transition-all ${
+                      isSelected
+                        ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                        : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800'
+                    }`}
+                  >
+                    <span>{story.authorAnonymousLabel}</span>
+                  </button>
+                );
+              })}
           </div>
         )}
       </div>

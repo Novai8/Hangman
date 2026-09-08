@@ -4,6 +4,7 @@ import {
   HangmanWordItem,
   HangmanSoloScoreBreakdown
 } from '../types/hangmanSolo';
+import { WORD_DATABASE } from './words';
 
 export interface CategoryInfo {
   id: HangmanSoloCategory;
@@ -196,35 +197,7 @@ export const HANGMAN_SOLO_WORD_BANK: Record<
     ]
   },
 
-  Countries: {
-    easy: [
-      { word: 'PERU', hint: 'South American nation home to the ancient citadel of Machu Picchu' },
-      { word: 'IRAN', hint: 'Middle Eastern nation historically celebrated as ancient Persia' },
-      { word: 'CUBA', hint: 'Caribbean island nation famed for salsa rhythms and classic cars' },
-      { word: 'FIJI', hint: 'South Pacific archipelago celebrated for coral lagoons and beaches' },
-      { word: 'ITALY', hint: 'European peninsula famed for Roman history, pasta, and art' },
-      { word: 'JAPAN', hint: 'East Asian island nation known for bullet trains and cherry blossoms' },
-      { word: 'CHILE', hint: 'Long narrow South American strip bordering the Pacific Ocean' }
-    ],
-    medium: [
-      { word: 'BRAZIL', hint: 'Largest South American country, home to the Amazon basin' },
-      { word: 'CANADA', hint: 'Vast North American nation celebrated for maple leaves and Rockies' },
-      { word: 'FRANCE', hint: 'European cultural landmark known for the Eiffel Tower and wine' },
-      { word: 'GREECE', hint: 'Mediterranean cradle of Western democracy, philosophy, and ruins' },
-      { word: 'NORWAY', hint: 'Scandinavian country famous for deep coastal fjords and midnight sun' },
-      { word: 'SWEDEN', hint: 'Nordic kingdom known for design, boreal forests, and archipelagoes' },
-      { word: 'MEXICO', hint: 'Rich North American culture known for Mayan ruins and vibrant cuisine' }
-    ],
-    hard: [
-      { word: 'AUSTRALIA', hint: 'Island continent famed for the Great Barrier Reef and the Outback' },
-      { word: 'SINGAPORE', hint: 'Vibrant island city-state and global financial hub in Southeast Asia' },
-      { word: 'ARGENTINA', hint: 'Land of the Pampas plains, dramatic Andes peaks, and the Tango' },
-      { word: 'MADAGASCAR', hint: 'Biodiverse African island nation home to native ring-tailed lemurs' },
-      { word: 'SWITZERLAND', hint: 'Alpine nation renowned for mountain passes, banking, and fine timepieces' },
-      { word: 'NEW ZEALAND', hint: 'South Pacific island country celebrated for spectacular fjordlands' },
-      { word: 'SOUTH AFRICA', hint: 'Rainbow Nation at Africa southernmost tip featuring Table Mountain' }
-    ]
-  },
+  Countries: WORD_DATABASE.Countries,
 
   Cities: {
     easy: [
@@ -664,7 +637,8 @@ export function calculateHangmanSoloScore(params: {
 export function getRandomSoloWord(
   category: HangmanSoloCategory,
   difficulty: HangmanSoloDifficulty,
-  excludeWord?: string
+  excludeWord?: string,
+  usedWords?: string[]
 ): { word: string; category: HangmanSoloCategory; resolvedCategory: string; hint: string } {
   let resolvedCat: Exclude<HangmanSoloCategory, 'Random'>;
 
@@ -677,7 +651,20 @@ export function getRandomSoloWord(
 
   const pool = HANGMAN_SOLO_WORD_BANK[resolvedCat][difficulty];
   let eligible = pool;
-  if (excludeWord && pool.length > 1) {
+
+  // If usedWords is provided, prioritize unused words
+  if (usedWords && usedWords.length > 0) {
+    const usedUpper = new Set(usedWords.map((w) => w.toUpperCase().trim()));
+    const unselected = pool.filter((item) => !usedUpper.has(item.word.toUpperCase().trim()));
+    if (unselected.length > 0) {
+      eligible = unselected;
+    } else {
+      // Pool exhausted: exclude only the most recent word if possible
+      const lastWord = usedWords[usedWords.length - 1]?.toUpperCase().trim();
+      const fresh = pool.filter((item) => item.word.toUpperCase().trim() !== lastWord);
+      eligible = fresh.length > 0 ? fresh : pool;
+    }
+  } else if (excludeWord && pool.length > 1) {
     eligible = pool.filter((item) => item.word.toUpperCase() !== excludeWord.toUpperCase());
     if (eligible.length === 0) eligible = pool;
   }

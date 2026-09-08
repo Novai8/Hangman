@@ -131,7 +131,9 @@ class RoomManager {
       activePlayerIndex: 0,
       turnTimeRemaining: settings.turnDuration,
       turnStartedAt: Date.now(),
-      isPublic
+      isPublic,
+      usedWords: [wordInfo.word],
+      lastRoundWinnerId: undefined
     };
 
     this.rooms.set(code, newRoom);
@@ -305,7 +307,9 @@ class RoomManager {
     if (room.hostId !== hostId) return { success: false, error: 'Only the room host can start the game.' };
     if (room.players.length < 1) return { success: false, error: 'Cannot start with 0 players.' };
 
-    const wordInfo = getRandomWord(room.settings.category, room.settings.difficulty);
+    room.usedWords = [];
+    const wordInfo = getRandomWord(room.settings.category, room.settings.difficulty, room.usedWords);
+    room.usedWords.push(wordInfo.word);
 
     room.phase = 'playing';
     room.currentWord = wordInfo.word;
@@ -314,6 +318,7 @@ class RoomManager {
     room.guessedLetters = [];
     room.mistakes = 0;
     room.activePlayerIndex = 0;
+    room.lastRoundWinnerId = undefined;
     room.turnTimeRemaining = room.settings.turnDuration;
     room.turnStartedAt = Date.now();
     room.players = room.players.map((p) => ({
@@ -406,6 +411,9 @@ class RoomManager {
         const solveBonus = 80;
         activePlayer.score += solveBonus;
         activePlayer.roundScore += solveBonus;
+
+        // Authoritative: the player who correctly solved the word takes the first turn next round!
+        room.lastRoundWinnerId = activePlayer.id;
 
         this.stopRoomTurnTimer(room);
 
@@ -567,7 +575,45 @@ class RoomManager {
     const room = this.rooms.get(code.toUpperCase());
     if (!room) return { success: false, error: 'Room not found.' };
 
-    const nextWordInfo = getRandomWord(room.settings.category, room.settings.difficulty);
+    if (!room.usedWords) room.usedWords = [];
+    const nextWordInfo = getRandomWord(room.settings.category, room.settings.difficulty, room.usedWords);
+    room.usedWords.push(nextWordInfo.word);
+
+    // Determine who takes the first turn in the new round:
+    // The player who correctly guessed the word in the previous round starts next!
+    let nextActiveIndex = 0;
+    let turnAnnouncement = '';
+
+    if (room.lastRoundWinnerId) {
+      const winnerIndex = room.players.findIndex((p) => p.id === room.lastRoundWinnerId);
+      if (
+        winnerIndex !== -1 &&
+        !room.players[winnerIndex].isEliminated &&
+        room.players[winnerIndex].connectionStatus !== 'disconnected'
+      ) {
+        nextActiveIndex = winnerIndex;
+        turnAnnouncement = `🏆 ${room.players[winnerIndex].name} correctly guessed the previous word and starts this round!`;
+      } else {
+        nextActiveIndex = (room.activePlayerIndex + 1) % Math.max(1, room.players.length);
+      }
+    } else {
+      // If round ended without a solver (e.g. hung), rotate turn to the next player
+      nextActiveIndex = (room.activePlayerIndex + 1) % Math.max(1, room.players.length);
+    }
+
+    // In survival mode, skip eliminated players
+    if (room.settings.mode === 'survival') {
+      let attempts = 0;
+      while (room.players[nextActiveIndex]?.isEliminated && attempts < room.players.length) {
+        nextActiveIndex = (nextActiveIndex + 1) % room.players.length;
+        attempts++;
+      }
+    }
+
+    const startingPlayer = room.players[nextActiveIndex];
+    if (!turnAnnouncement && startingPlayer) {
+      turnAnnouncement = `${startingPlayer.name} takes the first turn.`;
+    }
 
     room.currentRound += 1;
     room.phase = 'playing';
@@ -576,7 +622,8 @@ class RoomManager {
     room.currentCategory = nextWordInfo.category;
     room.guessedLetters = [];
     room.mistakes = 0;
-    room.activePlayerIndex = 0;
+    room.activePlayerIndex = nextActiveIndex;
+    room.lastRoundWinnerId = undefined; // Reset for current round
     room.turnTimeRemaining = room.settings.turnDuration;
     room.turnStartedAt = Date.now();
     room.players = room.players.map((p) => ({
@@ -595,7 +642,7 @@ class RoomManager {
         playerId: 'sys',
         playerName: 'System',
         type: 'connect',
-        text: `Starting Round ${room.currentRound}! Category: ${nextWordInfo.category}`,
+        text: `Round ${room.currentRound} began! Category: ${nextWordInfo.category}. ${turnAnnouncement}`,
         timestamp: Date.now()
       }
     });
@@ -611,7 +658,9 @@ class RoomManager {
     const room = this.rooms.get(code.toUpperCase());
     if (!room) return { success: false, error: 'Room not found.' };
 
-    const firstWordInfo = getRandomWord(room.settings.category, room.settings.difficulty);
+    room.usedWords = [];
+    const firstWordInfo = getRandomWord(room.settings.category, room.settings.difficulty, room.usedWords);
+    room.usedWords.push(firstWordInfo.word);
 
     room.currentRound = 1;
     room.phase = 'playing';
@@ -621,6 +670,7 @@ class RoomManager {
     room.guessedLetters = [];
     room.mistakes = 0;
     room.activePlayerIndex = 0;
+    room.lastRoundWinnerId = undefined;
     room.turnTimeRemaining = room.settings.turnDuration;
     room.turnStartedAt = Date.now();
     room.players = room.players.map((p) => ({
@@ -963,7 +1013,9 @@ class RoomManager {
       activePlayerIndex: room.activePlayerIndex,
       turnTimeRemaining: room.turnTimeRemaining,
       turnStartedAt: room.turnStartedAt,
-      isPublic: room.isPublic
+      isPublic: room.isPublic,
+      lastRoundWinnerId: room.lastRoundWinnerId,
+      usedWords: room.usedWords
     };
   }
 }

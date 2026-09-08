@@ -33,76 +33,76 @@ export const SOLO_TOPICS: TopicInfo[] = [
 
 export const SOLO_PROMPT_DICTIONARY: Record<string, WordLibsSoloPrompt> = {
   // People, Names, Characters
-  hero_name: { id: 'p_h1', key: 'hero_name', promptText: "Name someone who would absolutely fail as a superhero.", inputType: 'Name / Person', placeholder: 'e.g. Grandma, Nicholas Cage' },
-  rival_name: { id: 'p_h2', key: 'rival_name', promptText: "Name a person you would never trust with your unlocked phone.", inputType: 'Name / Person', placeholder: 'e.g. Kevin from HR' },
-  teacher_name: { id: 'p_h3', key: 'teacher_name', promptText: "Invent a name for a substitute teacher who clearly hates teenagers.", inputType: 'Teacher Name', placeholder: 'e.g. Mr. Grumpington' },
-  boss_name: { id: 'p_h4', key: 'boss_name', promptText: "Invent a name for a manager whose favorite line is 'Per my last email'.", inputType: 'Boss Name', placeholder: 'e.g. Brenda Micromanager' },
-  detective_name: { id: 'p_h5', key: 'detective_name', promptText: "Invent a pretentious detective name for someone investigating missing office staplers.", inputType: 'Detective Name', placeholder: 'e.g. Inspector Baguette' },
-  villain_name: { id: 'p_h6', key: 'villain_name', promptText: "Name a supervillain whose evil deeds only mildly inconvenience people.", inputType: 'Villain Name', placeholder: 'e.g. Doctor Tardy' },
-  scientist_name: { id: 'p_h7', key: 'scientist_name', promptText: "Invent an unhinged scientist name with too many doctorates.", inputType: 'Scientist Name', placeholder: 'e.g. Professor Von Clatter' },
-  celebrity: { id: 'p_h8', key: 'celebrity', promptText: "Name a celebrity who looks like they eat raw lemons for fun.", inputType: 'Celebrity', placeholder: 'e.g. Gordon Ramsay' },
-  gamer_tag: { id: 'p_h9', key: 'gamer_tag', promptText: "Invent the most embarrassing Xbox 360 gamertag from 2009.", inputType: 'Gamertag', placeholder: 'e.g. xX_N00b_S1ayer_Xx' },
-  robot_name: { id: 'p_h10', key: 'robot_name', promptText: "Name an over-enthusiastic AI assistant that refuses to stop talking.", inputType: 'Robot / AI Name', placeholder: 'e.g. ChatBot-3000' },
-  knight_name: { id: 'p_h11', key: 'knight_name', promptText: "Invent a knight name for a warrior who is deeply terrified of moths.", inputType: 'Knight Name', placeholder: 'e.g. Sir Shivers-a-Lot' },
-  pirate_name: { id: 'p_h12', key: 'pirate_name', promptText: "Invent the least menacing pirate captain name on the seven seas.", inputType: 'Pirate Captain', placeholder: 'e.g. Captain Softbread' },
+  hero_name: { id: 'p_h1', key: 'hero_name', promptText: "Name a funny friend or famous hero.", inputType: 'Name / Person', placeholder: 'e.g. Grandma, Batman, Spider-Man' },
+  rival_name: { id: 'p_h2', key: 'rival_name', promptText: "Name someone who would make a funny villain.", inputType: 'Name / Person', placeholder: 'e.g. Kevin from school' },
+  teacher_name: { id: 'p_h3', key: 'teacher_name', promptText: "Name a funny teacher or school principal.", inputType: 'Teacher Name', placeholder: 'e.g. Mr. Grumpy, Mrs. Apple' },
+  boss_name: { id: 'p_h4', key: 'boss_name', promptText: "Invent a funny boss or manager name.", inputType: 'Boss Name', placeholder: 'e.g. Bossy Brenda, Mr. Bigwig' },
+  detective_name: { id: 'p_h5', key: 'detective_name', promptText: "Name a funny detective or police officer.", inputType: 'Detective Name', placeholder: 'e.g. Inspector Donut, Officer Clumsy' },
+  villain_name: { id: 'p_h6', key: 'villain_name', promptText: "Name a funny or silly bad guy.", inputType: 'Villain Name', placeholder: 'e.g. Dr. Clumsy, Captain Sneak' },
+  scientist_name: { id: 'p_h7', key: 'scientist_name', promptText: "Invent a funny mad scientist name.", inputType: 'Scientist Name', placeholder: 'e.g. Professor Von Clatter' },
+  celebrity: { id: 'p_h8', key: 'celebrity', promptText: "Name a famous actor, singer, or celebrity.", inputType: 'Celebrity', placeholder: 'e.g. Gordon Ramsay, Taylor Swift' },
+  gamer_tag: { id: 'p_h9', key: 'gamer_tag', promptText: "Invent a funny gamer username.", inputType: 'Gamertag', placeholder: 'e.g. Pro_Gamer_99, PixelKing' },
+  robot_name: { id: 'p_h10', key: 'robot_name', promptText: "Name a funny or talkative robot.", inputType: 'Robot / AI Name', placeholder: 'e.g. ChatBot-3000, Beep-Boop' },
+  knight_name: { id: 'p_h11', key: 'knight_name', promptText: "Invent a funny knight name.", inputType: 'Knight Name', placeholder: 'e.g. Sir Shivers-a-Lot, Sir Waffles' },
+  pirate_name: { id: 'p_h12', key: 'pirate_name', promptText: "Invent a funny pirate captain name.", inputType: 'Pirate Captain', placeholder: 'e.g. Captain Softbread, Captain Pegleg' },
 
   // Foods
-  worst_food: { id: 'p_f1', key: 'worst_food', promptText: "Give me a food you would never bring to a wedding.", inputType: 'Food / Snack', placeholder: 'e.g. Canned sardines, warm egg salad' },
-  birthday_food: { id: 'p_f2', key: 'birthday_food', promptText: "Name a food that should never be used as a birthday cake.", inputType: 'Food item', placeholder: 'e.g. 5-pound meatloaf' },
-  snack: { id: 'p_f3', key: 'snack', promptText: "Name a snack you would only eat if paid $500 in cash.", inputType: 'Snack', placeholder: 'e.g. Mayo-dipped pickles' },
-  beverage: { id: 'p_f4', key: 'beverage', promptText: "Name a liquid beverage that no sensible human should ever drink warm.", inputType: 'Beverage', placeholder: 'e.g. Carbonated milk' },
-  smelly_food: { id: 'p_f5', key: 'smelly_food', promptText: "Name a food capable of evacuating an office floor in 10 seconds.", inputType: 'Smelly Food', placeholder: 'e.g. Microwaved salmon' },
-  pizza_topping: { id: 'p_f6', key: 'pizza_topping', promptText: "Invent a pizza topping that would trigger an international diplomatic crisis.", inputType: 'Pizza Topping', placeholder: 'e.g. Mint toothpaste' },
+  worst_food: { id: 'p_f1', key: 'worst_food', promptText: "Name a food you would never bring to a party.", inputType: 'Food / Snack', placeholder: 'e.g. Cold soup, Canned sardines' },
+  birthday_food: { id: 'p_f2', key: 'birthday_food', promptText: "Name a funny food to replace a birthday cake.", inputType: 'Food item', placeholder: 'e.g. Giant meatloaf, Big taco' },
+  snack: { id: 'p_f3', key: 'snack', promptText: "Name a weird snack you would only eat on a dare.", inputType: 'Snack', placeholder: 'e.g. Pickle ice cream, Onion dip' },
+  beverage: { id: 'p_f4', key: 'beverage', promptText: "Name a cold drink that tastes bad when warm.", inputType: 'Beverage', placeholder: 'e.g. Carbonated soda, Milkshake' },
+  smelly_food: { id: 'p_f5', key: 'smelly_food', promptText: "Name a food that has a very strong smell.", inputType: 'Smelly Food', placeholder: 'e.g. Garlic bread, Fried onions' },
+  pizza_topping: { id: 'p_f6', key: 'pizza_topping', promptText: "Invent a crazy or silly pizza topping.", inputType: 'Pizza Topping', placeholder: 'e.g. Gummy worms, Chocolate syrup' },
 
   // Animals & Creatures
-  animal: { id: 'p_a1', key: 'animal', promptText: "Name an animal that would make a terrible high school guidance counselor.", inputType: 'Animal', placeholder: 'e.g. Screaming Goat' },
-  pet_animal: { id: 'p_a2', key: 'pet_animal', promptText: "Name an animal that acts like it pays the mortgage on your house.", inputType: 'Pet / Animal', placeholder: 'e.g. An orange tabby cat' },
-  terrifying_beast: { id: 'p_a3', key: 'terrifying_beast', promptText: "Name a mythical creature with an embarrassing weakness.", inputType: 'Creature', placeholder: 'e.g. Asthmatic Dragon' },
-  suspicious_creature: { id: 'p_a4', key: 'suspicious_creature', promptText: "Name an animal that looks like it knows all your darkest secrets.", inputType: 'Animal', placeholder: 'e.g. Giant Barn Owl' },
+  animal: { id: 'p_a1', key: 'animal', promptText: "Name a funny or noisy animal.", inputType: 'Animal', placeholder: 'e.g. Screaming Goat, Penguin, Llama' },
+  pet_animal: { id: 'p_a2', key: 'pet_animal', promptText: "Name a cute or funny pet animal.", inputType: 'Pet / Animal', placeholder: 'e.g. Orange tabby cat, Golden retriever' },
+  terrifying_beast: { id: 'p_a3', key: 'terrifying_beast', promptText: "Name a mythical creature (like dragon or unicorn).", inputType: 'Creature', placeholder: 'e.g. Friendly Dragon, Tiny Goblin' },
+  suspicious_creature: { id: 'p_a4', key: 'suspicious_creature', promptText: "Name an unusual bird or wild creature.", inputType: 'Animal', placeholder: 'e.g. Giant Barn Owl, Raccoon' },
 
   // Objects & Inventions
-  useless_object: { id: 'p_o1', key: 'useless_object', promptText: "Enter an object that would be completely useless as a weapon in a duel.", inputType: 'Object', placeholder: 'e.g. Heated eyelash curler' },
-  unnecessary_invention: { id: 'p_o2', key: 'unnecessary_invention', promptText: "Name a completely unnecessary invention.", inputType: 'Invention / Gadget', placeholder: 'e.g. Bluetooth dental floss' },
-  pocket_item: { id: 'p_o3', key: 'pocket_item', promptText: "Name something suspicious you pull from your pocket when asked for ID.", inputType: 'Pocket Item', placeholder: 'e.g. Half-eaten taco' },
-  weapon: { id: 'p_o4', key: 'weapon', promptText: "Invent an absurd improvised weapon found in an IKEA showroom.", inputType: 'Improvised Weapon', placeholder: 'e.g. Swedish meatball scoop' },
-  banned_item: { id: 'p_o5', key: 'banned_item', promptText: "Name an item that gets you pulled aside for a 2-hour airport security search.", inputType: 'Banned Item', placeholder: 'e.g. Suspicious jar of thick gravy' },
-  magical_relic: { id: 'p_o6', key: 'magical_relic', promptText: "Invent an ancient mystical artifact cursed with slight inconvenience.", inputType: 'Mystical Artifact', placeholder: 'e.g. Ring of infinite hiccups' },
-  vehicle: { id: 'p_o7', key: 'vehicle', promptText: "Name a chaotic vehicle to arrive in at a high-society gala.", inputType: 'Vehicle', placeholder: 'e.g. Motorized shopping cart' },
+  useless_object: { id: 'p_o1', key: 'useless_object', promptText: "Enter an object that is completely useless in a fight.", inputType: 'Object', placeholder: 'e.g. Eyelash curler, Selfie stick' },
+  unnecessary_invention: { id: 'p_o2', key: 'unnecessary_invention', promptText: "Name a silly gadget nobody needs.", inputType: 'Invention / Gadget', placeholder: 'e.g. Automatic Sock Flipper' },
+  pocket_item: { id: 'p_o3', key: 'pocket_item', promptText: "Name a random object you might find in a coat pocket.", inputType: 'Pocket Item', placeholder: 'e.g. Half-eaten candy bar, Shiny pebble' },
+  weapon: { id: 'p_o4', key: 'weapon', promptText: "Name a harmless everyday object used as a tool.", inputType: 'Improvised Weapon', placeholder: 'e.g. Wooden spatula, Feather duster' },
+  banned_item: { id: 'p_o5', key: 'banned_item', promptText: "Name something you should never bring on an airplane.", inputType: 'Banned Item', placeholder: 'e.g. Giant fireworks, Fog machine' },
+  magical_relic: { id: 'p_o6', key: 'magical_relic', promptText: "Invent a magical item with a silly power.", inputType: 'Mystical Artifact', placeholder: 'e.g. Ring of Hiccups, Flying Teacup' },
+  vehicle: { id: 'p_o7', key: 'vehicle', promptText: "Name a funny or unusual vehicle.", inputType: 'Vehicle', placeholder: 'e.g. Motorized shopping cart, Rusty Unicycle' },
 
   // Places & Locations
-  suspicious_place: { id: 'p_l1', key: 'suspicious_place', promptText: "Name a suspicious place to find a penguin.", inputType: 'Location / Place', placeholder: 'e.g. Inside a bank vault' },
-  haunted_place: { id: 'p_l2', key: 'haunted_place', promptText: "Name an everyday location that feels inherently cursed at midnight.", inputType: 'Location', placeholder: 'e.g. 24-hour laundromat' },
-  secret_base: { id: 'p_l3', key: 'secret_base', promptText: "Name the most obvious, poorly-hidden place to put an evil super-lair.", inputType: 'Lair Location', placeholder: 'e.g. Behind the Chuck E. Cheese ball pit' },
-  destination: { id: 'p_l4', key: 'destination', promptText: "Invent the worst possible destination for a relaxing family vacation.", inputType: 'Destination', placeholder: 'e.g. An active volcanic crater' },
+  suspicious_place: { id: 'p_l1', key: 'suspicious_place', promptText: "Name a funny place to find a penguin.", inputType: 'Location / Place', placeholder: 'e.g. Inside a bank vault, Grocery aisle' },
+  haunted_place: { id: 'p_l2', key: 'haunted_place', promptText: "Name a spooky place to visit late at night.", inputType: 'Location', placeholder: 'e.g. Dusty old attic, Empty warehouse' },
+  secret_base: { id: 'p_l3', key: 'secret_base', promptText: "Name a funny public place to hide a secret clubhouse.", inputType: 'Lair Location', placeholder: 'e.g. Behind the ice cream counter' },
+  destination: { id: 'p_l4', key: 'destination', promptText: "Name the worst vacation spot you can imagine.", inputType: 'Destination', placeholder: 'e.g. Mosquito swamp, Active volcano' },
 
   // Phrases, Excuses, Secrets, Catchphrases
-  excuse: { id: 'p_c1', key: 'excuse', promptText: "Give me an excuse for being three hours late to your own birthday party.", inputType: 'Terrible Excuse', placeholder: 'e.g. A pigeon challenged me to chess' },
-  catchphrase: { id: 'p_c2', key: 'catchphrase', promptText: "Give me something you would shout right before doing something reckless.", inputType: 'Catchphrase', placeholder: 'e.g. BUCKLE UP BUTTERCUP!' },
-  shout: { id: 'p_c3', key: 'shout', promptText: "Give me something you would shout at top volume during a sudden disaster.", inputType: 'Dramatic Shout', placeholder: 'e.g. SAVE THE CHEESEBURGER!' },
-  dark_secret: { id: 'p_c4', key: 'dark_secret', promptText: "Confess a harmless but deeply weird personal habit.", inputType: 'Weird Habit', placeholder: 'e.g. I secretly sniff new books' },
-  pirate_curse: { id: 'p_c5', key: 'pirate_curse', promptText: "Invent a bizarre insult shouted on the high seas.", inputType: 'Pirate Curse', placeholder: 'e.g. Ye barnacle-brained jelly!' },
-  robot_glitch: { id: 'p_c6', key: 'robot_glitch', promptText: "Write the error code an AI displays right before it goes completely rogue.", inputType: 'Error Message', placeholder: 'e.g. ERROR 404: MERCY NOT FOUND' },
+  excuse: { id: 'p_c1', key: 'excuse', promptText: "Give a funny excuse for being late to a party.", inputType: 'Terrible Excuse', placeholder: 'e.g. A polite cat blocked my front door' },
+  catchphrase: { id: 'p_c2', key: 'catchphrase', promptText: "Give a funny phrase you shout before doing something silly.", inputType: 'Catchphrase', placeholder: 'e.g. BUCKLE UP BUTTERCUP!' },
+  shout: { id: 'p_c3', key: 'shout', promptText: "Give something you shout loudly when startled.", inputType: 'Dramatic Shout', placeholder: 'e.g. SAVE THE CHEESEBURGER!' },
+  dark_secret: { id: 'p_c4', key: 'dark_secret', promptText: "Share a harmless, funny little secret or habit.", inputType: 'Weird Habit', placeholder: 'e.g. I secretly dance when making toast' },
+  pirate_curse: { id: 'p_c5', key: 'pirate_curse', promptText: "Invent a funny pirate cheer or exclamation.", inputType: 'Pirate Curse', placeholder: 'e.g. Ahoy there, you sea biscuit!' },
+  robot_glitch: { id: 'p_c6', key: 'robot_glitch', promptText: "Write a funny robot error message.", inputType: 'Error Message', placeholder: 'e.g. ERROR: TOASTER OVERHEAT!' },
 
   // Professions
-  fake_profession: { id: 'p_pr1', key: 'fake_profession', promptText: "Name a profession that sounds fake but could actually exist.", inputType: 'Ridiculous Profession', placeholder: 'e.g. Professional Banana Straightener' },
-  night_job: { id: 'p_pr2', key: 'night_job', promptText: "Invent a suspicious job title for someone who only works between 3 AM and 5 AM.", inputType: 'Suspicious Job', placeholder: 'e.g. Mystery Slime Inspector' },
-  circus_act: { id: 'p_pr3', key: 'circus_act', promptText: "Name a dangerous circus performer title nobody ever volunteers for.", inputType: 'Circus Title', placeholder: 'e.g. Human Cannonball Finisher' },
+  fake_profession: { id: 'p_pr1', key: 'fake_profession', promptText: "Invent a silly dream job that pays lots of money.", inputType: 'Ridiculous Profession', placeholder: 'e.g. Ice Cream Taste Tester' },
+  night_job: { id: 'p_pr2', key: 'night_job', promptText: "Invent a funny night-shift job title.", inputType: 'Suspicious Job', placeholder: 'e.g. Midnight Snack Inspector' },
+  circus_act: { id: 'p_pr3', key: 'circus_act', promptText: "Name a funny or daring circus act.", inputType: 'Circus Title', placeholder: 'e.g. Flying Acrobat, Trapeze Clown' },
 
   // Adjectives, Verbs, Numbers
-  wild_adjective: { id: 'p_adj1', key: 'wild_adjective', promptText: "Enter an adjective describing someone who has not slept in 72 hours.", inputType: 'Adjective', placeholder: 'e.g. feral, unhinged' },
-  fancy_adjective: { id: 'p_adj2', key: 'fancy_adjective', promptText: "Enter an overly dramatic Victorian adjective.", inputType: 'Dramatic Adjective', placeholder: 'e.g. scandalous, preposterous' },
-  chaotic_verb: { id: 'p_v1', key: 'chaotic_verb', promptText: "Enter an aggressive, chaotic action verb in past tense (-ed).", inputType: 'Action Verb (-ed)', placeholder: 'e.g. yeeted, drop-kicked' },
-  sound_effect: { id: 'p_s1', key: 'sound_effect', promptText: "Write a ridiculous onomatopoeia sound effect for something falling down stairs.", inputType: 'Sound Effect', placeholder: 'e.g. KER-PLOP-DING!' },
-  suspicious_number: { id: 'p_n1', key: 'suspicious_number', promptText: "Enter a strangely specific high number.", inputType: 'Specific Number', placeholder: 'e.g. 74,291' },
+  wild_adjective: { id: 'p_adj1', key: 'wild_adjective', promptText: "Enter a word that describes someone acting wild or dizzy.", inputType: 'Adjective', placeholder: 'e.g. dizzy, hyper, wild, silly' },
+  fancy_adjective: { id: 'p_adj2', key: 'fancy_adjective', promptText: "Enter a fancy describing word.", inputType: 'Dramatic Adjective', placeholder: 'e.g. royal, grand, magnificent, fancy' },
+  chaotic_verb: { id: 'p_v1', key: 'chaotic_verb', promptText: "Enter a past-tense action word (like ran, jumped, blasted).", inputType: 'Action Verb (-ed)', placeholder: 'e.g. catapulted, sprinted, blasted' },
+  sound_effect: { id: 'p_s1', key: 'sound_effect', promptText: "Write a funny cartoon sound effect (like BONK or BOING).", inputType: 'Sound Effect', placeholder: 'e.g. KER-PLOP, SPLAT, WHOOSH' },
+  suspicious_number: { id: 'p_n1', key: 'suspicious_number', promptText: "Enter a funny high number.", inputType: 'Specific Number', placeholder: 'e.g. 5,000, 999,999' },
 
   // One Word mode prompts (simple & punchy)
   simple_person: { id: 'p_ow1', key: 'simple_person', promptText: "A person or character.", inputType: 'A Person', placeholder: 'e.g. Batman, Shrek, Grandpa' },
   simple_animal: { id: 'p_ow2', key: 'simple_animal', promptText: "An animal.", inputType: 'An Animal', placeholder: 'e.g. Walrus, Pigeon, Frog' },
-  simple_food: { id: 'p_ow3', key: 'simple_food', promptText: "A food.", inputType: 'A Food', placeholder: 'e.g. Burrito, Waffle, Mayo' },
-  simple_place: { id: 'p_ow4', key: 'simple_place', promptText: "A place.", inputType: 'A Place', placeholder: 'e.g. Walmart, Mars, Subway' },
-  simple_object: { id: 'p_ow5', key: 'simple_object', promptText: "An object.", inputType: 'An Object', placeholder: 'e.g. Toaster, Plunger, Spoon' },
-  simple_adjective: { id: 'p_ow6', key: 'simple_adjective', promptText: "An adjective.", inputType: 'An Adjective', placeholder: 'e.g. Greasy, Squeaky, Glorious' },
-  simple_verb: { id: 'p_ow7', key: 'simple_verb', promptText: "A past tense verb (-ed).", inputType: 'A Verb (-ed)', placeholder: 'e.g. Slapped, Zoomed, Screamed' }
+  simple_food: { id: 'p_ow3', key: 'simple_food', promptText: "A food or snack.", inputType: 'A Food', placeholder: 'e.g. Burrito, Waffle, Taco' },
+  simple_place: { id: 'p_ow4', key: 'simple_place', promptText: "A place or city.", inputType: 'A Place', placeholder: 'e.g. Walmart, Paris, Subway' },
+  simple_object: { id: 'p_ow5', key: 'simple_object', promptText: "An everyday object.", inputType: 'An Object', placeholder: 'e.g. Toaster, Plunger, Spoon' },
+  simple_adjective: { id: 'p_ow6', key: 'simple_adjective', promptText: "A describing word (adjective).", inputType: 'An Adjective', placeholder: 'e.g. Shiny, Squeaky, Fast, Silly' },
+  simple_verb: { id: 'p_ow7', key: 'simple_verb', promptText: "An action word in past tense (-ed).", inputType: 'A Verb (-ed)', placeholder: 'e.g. Jumped, Zoomed, Screamed' }
 };
 
 // Substantial collection of Story Templates covering all 20 topics across Easy, Medium, Hard, and One-Word!

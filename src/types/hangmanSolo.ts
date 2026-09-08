@@ -26,7 +26,7 @@ export type HangmanSoloStep =
 
 export interface HangmanWordItem {
   word: string;
-  hint: string;
+  hint?: string;
 }
 
 export interface HangmanSoloScoreBreakdown {

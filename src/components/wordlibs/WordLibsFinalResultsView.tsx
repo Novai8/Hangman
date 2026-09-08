@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { WordLibsRoom } from '../../types/wordLibs';
 import { sound } from '../../utils/audio';
-import { Trophy, RotateCcw, Home, Sparkles, Crown, Flame } from 'lucide-react';
+import { Trophy, RotateCcw, Home, Sparkles, Crown, Flame, BookOpen } from 'lucide-react';
+import { WordLibsStoryReviewSection } from './WordLibsStoryReviewSection';
+import { WordLibsStoryReviewModal } from './WordLibsStoryReviewModal';
 
 interface WordLibsFinalResultsViewProps {
   room: WordLibsRoom;
@@ -17,6 +19,7 @@ export const WordLibsFinalResultsView: React.FC<WordLibsFinalResultsViewProps> =
   onPlayAgain,
   onReturnToGameHub
 }) => {
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const isHost = room.hostId === localPlayerId;
   const leaderboard = room.finalLeaderboard || [];
   const champion = leaderboard[0];
@@ -111,6 +114,9 @@ export const WordLibsFinalResultsView: React.FC<WordLibsFinalResultsViewProps> =
         </div>
       </div>
 
+      {/* Full Opponent Story & Paragraph Review Section */}
+      <WordLibsStoryReviewSection room={room} localPlayerId={localPlayerId} />
+
       {/* Action Buttons */}
       <div className="w-full max-w-md flex flex-col sm:flex-row gap-3">
         <button
@@ -133,6 +139,13 @@ export const WordLibsFinalResultsView: React.FC<WordLibsFinalResultsViewProps> =
           </button>
         )}
       </div>
+
+      <WordLibsStoryReviewModal
+        isOpen={isReviewModalOpen}
+        onClose={() => setIsReviewModalOpen(false)}
+        room={room}
+        localPlayerId={localPlayerId}
+      />
     </div>
   );
 };

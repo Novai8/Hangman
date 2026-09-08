@@ -81,6 +81,8 @@ export interface Room {
   turnTimeRemaining: number;
   turnStartedAt: number;
   isPublic: boolean;
+  lastRoundWinnerId?: string;
+  usedWords?: string[];
 }
 
 export type ReactionEmoji = '🔥' | '😂' | '😱' | '👏' | '💀' | 'GG';

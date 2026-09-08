@@ -448,24 +448,19 @@ class WordLibsRoomManager {
     const generatedStories: WordLibsStory[] = [];
 
     if (room.settings.mode === 'battle') {
-      // In Battle mode: Generate an individual anonymous story for each player
-      // Competitive Reveal Fix: Filter rawSubmissions so players do not see their own answers during the reveal phase
+      // In Battle mode: Generate each player's story constructed directly from THEIR OWN submitted answers.
+      // Every player's story accurately represents what they submitted.
       const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
       playerList.forEach((p, idx) => {
-        // Filter out p.id from the submissions pool for this story
-        const otherPlayers = playerList.filter((other) => other.id !== p.id);
-        const donorPool = otherPlayers.length > 0 ? otherPlayers : [p];
-
+        const pAnswers = room.rawSubmissions[p.id] || {};
         const insertedMap: Record<string, { word: string; submitterName?: string; submitterId?: string }> = {};
 
-        // Fill template paragraphs with answers drawn from other players
+        // Fill template paragraphs using p's own answers
         const filledParagraphs = template.paragraphs.map((para) => {
           let text = para;
-          template.requiredPromptKeys.forEach((key, kIdx) => {
-            const donor = donorPool[kIdx % donorPool.length];
-            const donorAnswers = room.rawSubmissions[donor.id] || {};
-            const word = donorAnswers[key] || 'something strange';
-            insertedMap[key] = { word, submitterName: donor.name, submitterId: donor.id };
+          template.requiredPromptKeys.forEach((key) => {
+            const word = (pAnswers[key] || 'something strange').trim();
+            insertedMap[key] = { word, submitterName: p.name, submitterId: p.id };
             text = text.replace(new RegExp(`\\{${key}\\}`, 'g'), word.toUpperCase());
           });
           return text;
@@ -515,6 +510,34 @@ class WordLibsRoomManager {
         title: template.title,
         paragraphs: filledParagraphs,
         insertedWords: insertedMap
+      });
+
+      // Also construct each individual player's story using their own answers for review
+      const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+      playerList.forEach((p, idx) => {
+        const pAnswers = room.rawSubmissions[p.id] || {};
+        const pInsertedMap: Record<string, { word: string; submitterName?: string; submitterId?: string }> = {};
+
+        const pParagraphs = template.paragraphs.map((para) => {
+          let text = para;
+          template.requiredPromptKeys.forEach((key) => {
+            const word = (pAnswers[key] || 'something strange').trim();
+            pInsertedMap[key] = { word, submitterName: p.name, submitterId: p.id };
+            text = text.replace(new RegExp(`\\{${key}\\}`, 'g'), word.toUpperCase());
+          });
+          return text;
+        });
+
+        if (!room.allMatchStories) room.allMatchStories = [];
+        room.allMatchStories.push({
+          id: `story_player_${p.id}_r${room.currentRound}`,
+          authorPlayerId: p.id,
+          authorAnonymousLabel: `Story ${letters[idx] || (idx + 1)}`,
+          authorRealName: p.name,
+          title: template.title,
+          paragraphs: pParagraphs,
+          insertedWords: pInsertedMap
+        });
       });
     }
 

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { WordLibsPlayer, WordLibsRoom } from '../../types/wordLibs';
 import { sound } from '../../utils/audio';
-import { Trophy, ArrowRight, Flame, Sparkles, Crown, Laugh } from 'lucide-react';
+import { Trophy, ArrowRight, Flame, Sparkles, Crown, Laugh, BookOpen } from 'lucide-react';
+import { WordLibsStoryReviewSection } from './WordLibsStoryReviewSection';
+import { WordLibsStoryReviewModal } from './WordLibsStoryReviewModal';
 
 interface WordLibsRoundResultsViewProps {
   room: WordLibsRoom;
@@ -17,6 +19,7 @@ export const WordLibsRoundResultsView: React.FC<WordLibsRoundResultsViewProps> =
   onNextRound,
   isNextLoading
 }) => {
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const isHost = room.hostId === localPlayerId;
   const sortedPlayers = [...room.players].sort((a, b) => b.score - a.score);
 
@@ -58,11 +61,27 @@ export const WordLibsRoundResultsView: React.FC<WordLibsRoundResultsViewProps> =
         </div>
       )}
 
+      {/* Full Opponent Story & Paragraph Review Section */}
+      <WordLibsStoryReviewSection room={room} localPlayerId={localPlayerId} />
+
       {/* Leaderboard Standings */}
       <div className="w-full bg-slate-900/90 border border-slate-800 rounded-2xl p-5 sm:p-6 mb-8 backdrop-blur-md shadow-xl">
-        <h3 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mb-4">
-          Current Standings
-        </h3>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">
+            Current Standings
+          </h3>
+          <button
+            type="button"
+            onClick={() => {
+              sound.keyTap();
+              setIsReviewModalOpen(true);
+            }}
+            className="text-xs font-mono text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1.5 transition-colors"
+          >
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>Open Full Story Viewer</span>
+          </button>
+        </div>
         <div className="space-y-2.5">
           {sortedPlayers.map((p, idx) => {
             const isLocal = p.id === localPlayerId;
@@ -133,6 +152,13 @@ export const WordLibsRoundResultsView: React.FC<WordLibsRoundResultsViewProps> =
           </div>
         )}
       </div>
+
+      <WordLibsStoryReviewModal
+        isOpen={isReviewModalOpen}
+        onClose={() => setIsReviewModalOpen(false)}
+        room={room}
+        localPlayerId={localPlayerId}
+      />
     </div>
   );
 };
