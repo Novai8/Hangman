@@ -1,0 +1,15 @@
+{
+  "name": "northwind-support-agent-video",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Programmatic render of the Customer Support Email Agent demo video (Niche 3, Demo #1), synced to the provided voiceover.",
+  "scripts": {
+    "qa": "node src/render.mjs --qa",
+    "render": "node src/render.mjs"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.80",
+    "inter-font": "^3.19.0"
+  }
+}

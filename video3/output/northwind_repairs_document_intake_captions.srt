@@ -1,0 +1,223 @@
+1
+00:00:00,000 --> 00:00:04,130
+A lot of small businesses still
+handle documents the hard way.
+
+2
+00:00:04,150 --> 00:00:06,410
+A customer emails a PDF,
+
+3
+00:00:06,430 --> 00:00:09,350
+someone opens it, finds
+the important fields,
+
+4
+00:00:09,370 --> 00:00:11,900
+types them into a spreadsheet or system,
+
+5
+00:00:11,920 --> 00:00:14,990
+renames the file and saves
+it in the right folder.
+
+6
+00:00:15,010 --> 00:00:16,880
+It works, but it is slow,
+
+7
+00:00:16,900 --> 00:00:18,530
+and it is where mistakes happen.
+
+8
+00:00:18,550 --> 00:00:21,440
+The problem is that
+documents are not consistent.
+
+9
+00:00:21,460 --> 00:00:23,810
+One form puts the address at the top,
+
+10
+00:00:23,830 --> 00:00:25,280
+another puts it at the bottom.
+
+11
+00:00:25,300 --> 00:00:27,470
+Some invoices have the same vendor name
+
+12
+00:00:27,490 --> 00:00:29,540
+with slightly different formats.
+
+13
+00:00:29,560 --> 00:00:31,640
+Important information is missing
+
+14
+00:00:31,660 --> 00:00:32,810
+or hard to read,
+
+15
+00:00:32,830 --> 00:00:35,270
+so the person doing intake ends up doing
+
+16
+00:00:35,290 --> 00:00:38,210
+manual detective work for every file.
+
+17
+00:00:38,230 --> 00:00:39,800
+That is where costs show up.
+
+18
+00:00:39,820 --> 00:00:43,250
+Data entry errors lead
+to follow-ups and rework,
+
+19
+00:00:43,270 --> 00:00:45,620
+missing fields delay processing,
+
+20
+00:00:45,640 --> 00:00:47,780
+duplicate records get created,
+
+21
+00:00:47,800 --> 00:00:51,500
+and as volume increases,
+the backlog grows quickly.
+
+22
+00:00:51,520 --> 00:00:53,270
+Here is a cleaner approach.
+
+23
+00:00:53,290 --> 00:00:55,760
+When an email arrives with an attachment,
+
+24
+00:00:55,780 --> 00:00:58,070
+the workflow saves the file,
+
+25
+00:00:58,090 --> 00:00:59,930
+extracts the key fields,
+
+26
+00:00:59,950 --> 00:01:02,690
+validates them against simple rules,
+
+27
+00:01:02,710 --> 00:01:05,600
+and writes the results to
+a database or spreadsheet.
+
+28
+00:01:05,620 --> 00:01:07,940
+If something is missing or uncertain,
+
+29
+00:01:07,960 --> 00:01:10,400
+it routes the document to a review queue
+
+30
+00:01:10,420 --> 00:01:11,630
+instead of guessing.
+
+31
+00:01:11,650 --> 00:01:13,490
+It's designed to be safe.
+
+32
+00:01:13,510 --> 00:01:16,940
+It handles duplicates by
+checking for an existing record,
+
+33
+00:01:16,960 --> 00:01:18,410
+it keeps an audit log
+
+34
+00:01:18,430 --> 00:01:20,420
+of what was extracted and when,
+
+35
+00:01:20,440 --> 00:01:23,330
+and it alerts the owner
+if the extraction fails.
+
+36
+00:01:23,350 --> 00:01:26,540
+It also keeps the original
+file linked to the record,
+
+37
+00:01:26,560 --> 00:01:30,140
+so the team can verify anything instantly.
+
+38
+00:01:30,160 --> 00:01:32,240
+Here is an illustrative estimate.
+
+39
+00:01:32,260 --> 00:01:36,500
+If manual document intake takes
+about 5 minutes per document
+
+40
+00:01:36,520 --> 00:01:39,620
+and this reduces it to
+about 1 minute of review,
+
+41
+00:01:39,640 --> 00:01:42,020
+that saves about 4 minutes per document.
+
+42
+00:01:42,040 --> 00:01:44,090
+At 300 documents per month,
+
+43
+00:01:44,110 --> 00:01:46,280
+that's about 1,200 minutes saved,
+
+44
+00:01:46,300 --> 00:01:49,640
+or roughly 20 hours saved per month.
+
+45
+00:01:49,660 --> 00:01:51,290
+This is based on assumptions
+
+46
+00:01:51,310 --> 00:01:53,300
+and is not a guaranteed result.
+
+47
+00:01:53,320 --> 00:01:55,790
+Independent portfolio prototype.
+
+48
+00:01:55,810 --> 00:01:56,960
+Fictional data.
+
+49
+00:01:56,980 --> 00:01:58,190
+Results vary.
+
+50
+00:01:58,210 --> 00:02:00,080
+The goal is faster intake,
+
+51
+00:02:00,100 --> 00:02:02,090
+fewer data entry mistakes,
+
+52
+00:02:02,110 --> 00:02:03,470
+and a clear review process
+
+53
+00:02:03,490 --> 00:02:06,140
+when something is unclear.

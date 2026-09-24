@@ -1,0 +1,7 @@
+node_modules/
+output/tmp/
+output/check/
+output/stills/
+output/mix_*.wav
+__pycache__/
+output/sheets/
