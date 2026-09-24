@@ -1,0 +1,243 @@
+1
+00:00:00,000 --> 00:00:02,330
+If booking an appointment
+takes five emails,
+
+2
+00:00:02,350 --> 00:00:04,250
+it is already too complicated.
+
+3
+00:00:04,270 --> 00:00:07,310
+Most customers just want
+to pick a time and move on.
+
+4
+00:00:07,330 --> 00:00:11,060
+Quick question—how many appointment
+requests do you handle in a week
+
+5
+00:00:11,080 --> 00:00:13,490
+that turn into back-and-forth messages?
+
+6
+00:00:13,510 --> 00:00:16,460
+Someone asks for a time,
+you suggest a slot,
+
+7
+00:00:16,480 --> 00:00:18,890
+they reply late, the slot is gone,
+
+8
+00:00:18,910 --> 00:00:20,570
+and now you're starting all over.
+
+9
+00:00:20,590 --> 00:00:24,140
+It is not difficult work, but
+it is constant coordination.
+
+10
+00:00:24,160 --> 00:00:27,830
+Most appointment requests
+arrive as unstructured messages.
+
+11
+00:00:27,850 --> 00:00:31,670
+People write “anytime next
+week,” or “after three,”
+
+12
+00:00:31,690 --> 00:00:33,680
+or “I need this urgently,”
+
+13
+00:00:33,700 --> 00:00:37,430
+and the details are spread across
+emails or form submissions.
+
+14
+00:00:37,450 --> 00:00:41,300
+Someone has to read the message,
+confirm what service they want,
+
+15
+00:00:41,320 --> 00:00:44,840
+check availability, propose
+times, confirm the booking,
+
+16
+00:00:44,860 --> 00:00:46,910
+and then remember to send reminders.
+
+17
+00:00:46,930 --> 00:00:49,310
+When it gets busy, replies get delayed
+
+18
+00:00:49,330 --> 00:00:51,080
+and customers drop off.
+
+19
+00:00:51,100 --> 00:00:52,730
+That is where problems show up.
+
+20
+00:00:52,750 --> 00:00:55,430
+You lose bookings because
+response time is slow.
+
+21
+00:00:55,450 --> 00:00:59,180
+You get double bookings because
+availability is checked manually.
+
+22
+00:00:59,200 --> 00:01:02,480
+You get no-shows because
+reminders are inconsistent.
+
+23
+00:01:02,500 --> 00:01:04,370
+And you spend time doing scheduling work
+
+24
+00:01:04,390 --> 00:01:07,340
+instead of the service work
+that actually earns revenue.
+
+25
+00:01:07,360 --> 00:01:08,900
+Here is a cleaner approach.
+
+26
+00:01:08,920 --> 00:01:10,880
+When an appointment request comes in,
+
+27
+00:01:10,900 --> 00:01:13,280
+the workflow extracts the key details,
+
+28
+00:01:13,300 --> 00:01:15,800
+such as the customer name, service type,
+
+29
+00:01:15,820 --> 00:01:19,610
+preferred days or times,
+location, and urgency.
+
+30
+00:01:19,630 --> 00:01:21,950
+It then checks the
+calendar for availability
+
+31
+00:01:21,970 --> 00:01:24,650
+and proposes a small set of time options.
+
+32
+00:01:24,670 --> 00:01:28,640
+When the customer confirms, the
+workflow creates the calendar event,
+
+33
+00:01:28,660 --> 00:01:30,440
+sends the confirmation email,
+
+34
+00:01:30,460 --> 00:01:33,200
+and sends a reminder message
+before the appointment.
+
+35
+00:01:33,220 --> 00:01:34,940
+If the request is unclear,
+
+36
+00:01:34,960 --> 00:01:38,240
+such as missing service
+type or no preferred times,
+
+37
+00:01:38,260 --> 00:01:41,570
+it sends a short set of follow-up
+questions instead of guessing.
+
+38
+00:01:41,590 --> 00:01:43,280
+It is designed to be safe.
+
+39
+00:01:43,300 --> 00:01:44,810
+It prevents double booking,
+
+40
+00:01:44,830 --> 00:01:46,190
+handles time zones,
+
+41
+00:01:46,210 --> 00:01:49,310
+and routes special cases
+to a human for approval.
+
+42
+00:01:49,330 --> 00:01:52,640
+If anything fails, such
+as calendar access issues,
+
+43
+00:01:52,660 --> 00:01:55,250
+it stops safely and alerts the owner.
+
+44
+00:01:55,270 --> 00:01:57,200
+Here is an illustrative estimate.
+
+45
+00:01:57,220 --> 00:02:00,500
+If manual scheduling takes
+about 6 minutes per request,
+
+46
+00:02:00,520 --> 00:02:03,530
+and this reduces it to
+about 1 minute of review,
+
+47
+00:02:03,550 --> 00:02:05,900
+that saves about 5 minutes per booking.
+
+48
+00:02:05,920 --> 00:02:07,880
+At 100 requests per month,
+
+49
+00:02:07,900 --> 00:02:10,100
+that is about 500 minutes saved,
+
+50
+00:02:10,120 --> 00:02:12,500
+or roughly 8 hours saved per month.
+
+51
+00:02:12,520 --> 00:02:16,040
+This is based on assumptions
+and is not a guaranteed result.
+
+52
+00:02:16,060 --> 00:02:20,510
+Independent portfolio prototype.
+Fictional data. Results vary.
+
+53
+00:02:20,530 --> 00:02:23,450
+The goal is faster
+bookings, fewer mistakes,
+
+54
+00:02:23,470 --> 00:02:28,070
+fewer no-shows, and more time
+spent delivering the service.
