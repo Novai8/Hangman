@@ -1,0 +1,57 @@
+Quick question—how much of your day *disappears*
+into answering the *same* customer emails over and over.
+Where's my order? Can I change my *address*?
+How do I reset my *password*?
+Support matters, but the *repetitive* parts quietly take over.
+The inbox does not arrive neatly *organized*.
+You open a message, figure out what *type* it is,
+search for the right *policy* or past response,
+copy the link, and *rewrite* the explanation
+in a slightly different way. Then you do that *again* and again.
+Meanwhile, *tricky* emails like refunds, complaints, and chargebacks
+are mixed in with *simple* questions.
+That is where *problems* start.
+Response times slip. Tone becomes *inconsistent*.
+Important *details* get missed,
+and customers receive replies that feel *cold*.
+This is not a bad *team* issue.
+It is an inbox *scale* issue.
+Here is a *cleaner* approach.
+When a support email comes in, the *workflow* classifies it:
+*order* status, account help, billing, returns, complaint.
+Then pulls the relevant information from a *knowledge* base
+and prepares a *draft* reply automatically.
+The draft matches the *category*
+and includes the correct steps and *links*.
+It is designed to be *safe*.
+Low-risk questions can be drafted *instantly*,
+but *high-risk* topics, such as refunds and angry complaints,
+are routed to human *approval*.
+The workflow does not *guess*.
+It drafts, flags, and *waits* for a person to approve or edit.
+It also keeps responses *consistent*.
+Policies, tone, and structure stay the *same*,
+so customers get *clear* answers
+and the team does not have to start from *scratch*.
+If something is *unclear*, such as a missing order number,
+it generates a short set of *follow-up* questions
+instead of making *assumptions*.
+Everything is *logged*.
+The system records what came in, how it was *categorized*,
+what draft was produced, who *approved* it, and what was sent.
+If anything fails, such as *missing* data
+or an unavailable knowledge source,
+it fails *safely* and sends an alert.
+Here is an *illustrative* estimate.
+If an average support email takes about *3* minutes
+to read, look up, and respond,
+and this reduces it to about *45* seconds of review for most messages,
+that saves roughly *2* minutes per email.
+At *500* emails a month,
+that is about *16* to 17 hours saved per month.
+This is based on *assumptions*
+and is not a guaranteed result.
+*Independent* portfolio prototype. Fictional data. Results vary.
+The goal is *faster* replies, more consistent support,
+and less time typing the same answers,
+so the team can focus on customers who need a *human*.
