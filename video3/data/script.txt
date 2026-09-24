@@ -1,0 +1,53 @@
+A lot of small businesses still handle *documents* the hard way.
+A customer emails a *PDF*,
+someone opens it, finds the important *fields*,
+types them into a *spreadsheet* or system,
+renames the file and saves it in the right *folder*.
+It works, but it is *slow*,
+and it is where *mistakes* happen.
+The problem is that documents are not *consistent*.
+One form puts the *address* at the top,
+another puts it at the *bottom*.
+Some invoices have the same vendor name
+with slightly different *formats*.
+Important information is *missing*
+or hard to *read*,
+so the person doing intake ends up doing
+manual *detective* work for every file.
+That is where *costs* show up.
+Data entry *errors* lead to follow-ups and rework,
+missing fields *delay* processing,
+duplicate *records* get created,
+and as volume increases, the *backlog* grows quickly.
+Here is a *cleaner* approach.
+When an email arrives with an *attachment*,
+the workflow *saves* the file,
+*extracts* the key fields,
+*validates* them against simple rules,
+and *writes* the results to a database or spreadsheet.
+If something is missing or *uncertain*,
+it routes the document to a *review* queue
+instead of *guessing*.
+It's designed to be *safe*.
+It handles *duplicates* by checking for an existing record,
+it keeps an *audit* log
+of what was extracted and when,
+and it *alerts* the owner if the extraction fails.
+It also keeps the original file *linked* to the record,
+so the team can *verify* anything instantly.
+Here is an *illustrative* estimate.
+If manual document intake takes about *5* minutes per document
+and this reduces it to about *1* minute of review,
+that saves about *4* minutes per document.
+At *300* documents per month,
+that's about *1,200* minutes saved,
+or roughly *20* hours saved per month.
+This is based on *assumptions*
+and is not a guaranteed result.
+Independent portfolio *prototype*.
+Fictional *data*.
+Results *vary*.
+The goal is *faster* intake,
+fewer data entry *mistakes*,
+and a clear *review* process
+when something is *unclear*.
