@@ -1,0 +1,22 @@
+[
+  {"scene":0,"theme":"cosmic","title":"4.54 BILLION YEARS AGO","sentence_start":0,"sentence_end":25},
+  {"scene":1,"theme":"moon","title":"THEIA","sentence_start":25,"sentence_end":70},
+  {"scene":2,"theme":"microbes","title":"FIRST LIFE","sentence_start":70,"sentence_end":102},
+  {"scene":3,"theme":"ice","title":"SNOWBALL EARTH","sentence_start":102,"sentence_end":139},
+  {"scene":4,"theme":"cambrian","title":"CAMBRIAN WORLD","sentence_start":139,"sentence_end":171},
+  {"scene":5,"theme":"forest","title":"LAND BECOMES GREEN","sentence_start":171,"sentence_end":190},
+  {"scene":6,"theme":"extinction","title":"THE GREAT DYING","sentence_start":190,"sentence_end":227},
+  {"scene":7,"theme":"impact","title":"66 MILLION YEARS AGO","sentence_start":227,"sentence_end":248},
+  {"scene":8,"theme":"mammals","title":"THE MAMMALS RISE","sentence_start":248,"sentence_end":274},
+  {"scene":9,"theme":"humans","title":"HOMO SAPIENS","sentence_start":274,"sentence_end":304},
+  {"scene":10,"theme":"agriculture","title":"CIVILIZATION","sentence_start":304,"sentence_end":320},
+  {"scene":11,"theme":"geology","title":"A LIVING PLANET","sentence_start":320,"sentence_end":342},
+  {"scene":12,"theme":"alternate","title":"ONE DIFFERENT OUTCOME","sentence_start":342,"sentence_end":366},
+  {"scene":13,"theme":"climate","title":"NO NORMAL EARTH","sentence_start":366,"sentence_end":388},
+  {"scene":14,"theme":"future","title":"EARTH AFTER US","sentence_start":388,"sentence_end":418},
+  {"scene":15,"theme":"memory","title":"EARTH KEEPS RECORDS","sentence_start":418,"sentence_end":438},
+  {"scene":16,"theme":"calendar","title":"ONE YEAR","sentence_start":438,"sentence_end":465},
+  {"scene":17,"theme":"ending","title":"A TINY MOMENT","sentence_start":465,"sentence_end":478},
+  {"scene":18,"theme":"ending","title":"A TINY MOMENT","sentence_start":478,"sentence_end":502},
+  {"scene":19,"theme":"ending","title":"A TINY MOMENT","sentence_start":502,"sentence_end":526}
+]
