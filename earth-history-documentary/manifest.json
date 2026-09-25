@@ -1,0 +1,23 @@
+{
+  "title": "Earth: The Planet That Survived Everything",
+  "runtime_seconds": 1670.173,
+  "runtime": "27:50",
+  "resolution": "1280x720",
+  "fps": 12,
+  "video_codec": "H.264",
+  "audio_codec": "AAC",
+  "palette": "purple-and-white",
+  "visual_beats": 20,
+  "caption_mode": "phrase captions with active spoken word highlighted in purple",
+  "sound_design": [
+    "documentary voiceover",
+    "low ambient beds",
+    "whoosh transitions",
+    "impact accents",
+    "rumble accent"
+  ],
+  "output_sha256": "e66bd9f90fc5e5b6d024516d70ebbd3fd2d5a4411a40d22301ede1f6b49eb6fe",
+  "branch": "earth-history-documentary",
+  "base_branch": "main",
+  "hangman_files_modified": false
+}
