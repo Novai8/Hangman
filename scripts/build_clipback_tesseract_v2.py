@@ -112,7 +112,7 @@ def moving_particle(A,i,x,y,z,c,idx,d):
 
 def main(tsrct,voice,root):
     root=Path(root); audio=root/"Audio"; assets=root/"Assets"; sdir=root/"SFX"; prev=root/"Previews"; work=root/".tesseract-work"; vers=root/"Versions"
-    for d in (audio,assets,sdir,prev,work,vers): d.mkdir(parents=True,exist_ok=True)
+    for folder in (audio,assets,sdir,prev,work,vers): folder.mkdir(parents=True,exist_ok=True)
 
     voice=Path(voice)
     assert voice.stat().st_size==VOICE_BYTES
