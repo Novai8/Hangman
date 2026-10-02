@@ -87,7 +87,7 @@ def frame(t):
 # pipe frames to ffmpeg
 ffbin='/home/user/Hangman/.venv/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2'
 os.makedirs('media',exist_ok=True)
-cmd=[ffbin,'-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(fps),'-i','-','-f','lavfi','-i','anullsrc=channel_layout=mono:sample_rate=44100','-t',str(dur),'-vf','scale=1080:1920:flags=lanczos','-c:v','libx264','-preset','medium','-crf','18','-pix_fmt','yuv420p','-c:a','aac','-b:a','128k','-shortest','media/clipback-motion-design.mp4']
+cmd=[ffbin,'-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(fps),'-i','-','-i','google_drive/Clipback','-t',str(dur),'-vf','scale=1080:1920:flags=lanczos','-c:v','libx264','-preset','medium','-crf','18','-pix_fmt','yuv420p','-map','0:v:0','-map','1:a:0','-c:a','aac','-b:a','192k','-shortest','media/Clipback_CLIP_Motion_Design.mp4']
 p=subprocess.Popen(cmd,stdin=subprocess.PIPE)
 for i in range(int(dur*fps)):
  p.stdin.write(frame(i/fps).tobytes())
