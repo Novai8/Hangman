@@ -118,6 +118,7 @@ def main(tsrct,voice,root):
     assert voice.stat().st_size==VOICE_BYTES
     sha=subprocess.check_output(["sha256sum",str(voice)],text=True).split()[0]; assert sha==VOICE_SHA256, sha
     duration=dur_ms(voice)
+    d=duration
     shutil.copy2(voice,audio/"Original_Voiceover.mp3")
     (work/"source_sha256.txt").write_text(sha+"\n"+str(duration)+"\n")
     subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y","-i",str(voice),"-filter_complex","showwavespic=s=1080x360:colors=white","-frames:v","1",str(prev/"Voiceover_Waveform.png")],check=True)
