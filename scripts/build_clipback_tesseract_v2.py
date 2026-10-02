@@ -67,10 +67,10 @@ def fade_in_out(A,i,dur,prefix,enter=320,exit=320):
     e=min(enter,max(1,dur//3)); x=max(e+1,dur-exit)
     keyframe(A,i,prefix+"o","opacity",[(0,0,"ease"),(e,100,"ease"),(x,100,"linear"),(dur,0,"ease")])
 
-def reveal_text(A,i,s,e,x,y,w,h,t,size,c,fam,sty,n):
+def reveal_text(A,i,s,e,x,y,w,h,t,size,c,fam,sty,n,enter=360):
     A.append(txt(i,n,s,e,x,y,w,h,t,size,c,fam,sty))
     dur=e-s
-    fade_in_out(A,i,dur,n)
+    fade_in_out(A,i,dur,n,enter,320)
     keyframe(A,i,n+"y","positionY",[(0,y+34,"ease"),(min(400,dur//3),y,"ease"),(dur,y,"linear")])
     keyframe(A,i,n+"x","scaleX",[(0,96,"ease"),(min(400,dur//3),100,"ease"),(dur,100,"linear")])
     return i+1
