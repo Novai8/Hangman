@@ -90,7 +90,7 @@ def main(tsrct,voice,root):
     subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y","-i",str(voice),"-filter_complex","showwavespic=s=1080x360:colors=white","-frames:v","1",str(prev/"Voiceover_Waveform.png")],check=True)
     project=root/"Clipback_CLIP_Motion_Design.tsrct"; sh([tsrct,"project","create","--project",str(project)])
     sh([tsrct,"project","import-asset","--project",str(project),"--file",str(voice),"--asset-id","master-voiceover","--kind","audio"])
-    fonts=sorted(Path("/usr/share/fonts").rglob("Inter-*.ttf")); reg=next((p for p in fonts if "Regular" in p.name),None); bold=next((p for p in fonts if "Bold" in p.name),None); assert reg and bold
+    font_root=Path("/usr/share/fonts/truetype"); reg=font_root/"dejavu"/"DejaVuSans.ttf"; bold=font_root/"dejavu"/"DejaVuSans-Bold.ttf"; assert reg.exists() and bold.exists(), "DejaVu Sans fonts missing"
     rg=j(sh([tsrct,"project","import-font","--project",str(project),"--file",str(reg)]).stdout); bd=j(sh([tsrct,"project","import-font","--project",str(project),"--file",str(bold)]).stdout)
     F=(bd["fontFamily"],bd["fontStyle"]); FR=(rg["fontFamily"],rg["fontStyle"])
     for fn,kind,ms in [("whoosh.wav","whoosh",520),("click.wav","click",95),("ping.wav","ping",210),("pulse.wav","pulse",260),("impact.wav","impact",320)]:
