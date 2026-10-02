@@ -1,0 +1,111 @@
+{
+  "file": "Clipback_CLIP_Motion_Design.mp4",
+  "when": "2026-10-02T22:36:30.235Z",
+  "results": [
+    {
+      "name": "container is mp4",
+      "pass": true,
+      "detail": "mov,mp4,m4a,3gp,3g2,mj2"
+    },
+    {
+      "name": "video codec h264",
+      "pass": true,
+      "detail": "h264 High L5.1"
+    },
+    {
+      "name": "resolution 1080x1920",
+      "pass": true,
+      "detail": "1080x1920"
+    },
+    {
+      "name": "frame rate >= 30",
+      "pass": true,
+      "detail": "60 fps"
+    },
+    {
+      "name": "pixel format yuv420p",
+      "pass": true,
+      "detail": "yuv420p"
+    },
+    {
+      "name": "audio codec aac 48k stereo",
+      "pass": true,
+      "detail": "aac 48000Hz 2ch 257k"
+    },
+    {
+      "name": "duration covers narration + tail",
+      "pass": true,
+      "detail": "44.000s (narration 40.2024s)"
+    },
+    {
+      "name": "video frame count exact",
+      "pass": true,
+      "detail": "2640 frames"
+    },
+    {
+      "name": "bitrate healthy for 1080x1920",
+      "pass": true,
+      "detail": "7.99 Mbps, 44.0 MB"
+    },
+    {
+      "name": "no letterbox / pillarbox bars",
+      "pass": true,
+      "detail": "edge peak luma T95 B23 L106 R83 (bar would be ~0)"
+    },
+    {
+      "name": "frame fully used — no cropping/pad",
+      "pass": true,
+      "detail": "SAR 1:1 DAR 9:16"
+    },
+    {
+      "name": "no static/frozen passages",
+      "pass": true,
+      "detail": "min frame delta 0.053 / mean 1.019"
+    },
+    {
+      "name": "no black frames mid-timeline",
+      "pass": true,
+      "detail": "min luma 2.04"
+    },
+    {
+      "name": "no hard cuts between scenes",
+      "pass": true,
+      "detail": "peak/mean 7.4x"
+    },
+    {
+      "name": "programme loudness in spec",
+      "pass": true,
+      "detail": "-17.3 LUFS"
+    },
+    {
+      "name": "no clipping (true peak < -0.5 dBFS)",
+      "pass": true,
+      "detail": "-1 dBFS"
+    },
+    {
+      "name": "natural dynamics preserved",
+      "pass": true,
+      "detail": "LRA 3.6 LU"
+    },
+    {
+      "name": "no clipped samples",
+      "pass": true,
+      "detail": "clipped=0"
+    },
+    {
+      "name": "narration audible for its full span",
+      "pass": true,
+      "detail": "0 quiet 0.5s windows before 40.2024s"
+    },
+    {
+      "name": "design bed continues after narration",
+      "pass": true,
+      "detail": "tail min -38.2 dB"
+    },
+    {
+      "name": "filmstrip written for human review",
+      "pass": true,
+      "detail": "clipback-video/qa/filmstrip.png"
+    }
+  ]
+}

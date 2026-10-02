@@ -1,0 +1,1025 @@
+{
+  "format": "tesseract.project",
+  "formatVersion": "1.0",
+  "name": "Clipback_CLIP_Motion_Design",
+  "notes": "Editable scene-graph project for the Clipback ($CLIP) motion-design film. Rendered by clipback-video/src/render.js, which reads this file for every creative value: palette, typography, text, world layout, camera keyframes, narration-derived sync marks and SFX cues. The narration MP3 is the master timing reference and is used unmodified (level-matched only). Pipeline: tools/analyze-vo.mjs -> tools/sfx.mjs -> tools/mix.mjs -> tools/render.mjs -> tools/qa.mjs.",
+  "composition": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 60,
+    "duration": 44.0,
+    "background": "#05060A",
+    "safeMargin": {
+      "x": 96,
+      "top": 150,
+      "bottom": 170
+    }
+  },
+  "palette": {
+    "void": "#05060A",
+    "black": "#07080D",
+    "charcoal": "#0C0E15",
+    "charcoal2": "#111420",
+    "line": "#232838",
+    "dim": "#5C6479",
+    "mute": "#8A93A8",
+    "ink": "#EEF1F7",
+    "indigo": "#4A5BD6",
+    "indigoSoft": "#6C7BEE",
+    "blue": "#2F9BFF",
+    "blueBright": "#62C2FF",
+    "violet": "#8B5CF6",
+    "violetSoft": "#A98BFF",
+    "ember": "#C7563D"
+  },
+  "typography": {
+    "display": "Space Grotesk Bold",
+    "headline": "Inter ExtraBold / Black",
+    "label": "Inter SemiBold / Bold",
+    "data": "JetBrains Mono Medium"
+  },
+  "audio": {
+    "narration": {
+      "file": "../ElevenLabs_2026-10-02T19_04_59_Justin Time - Elearning Narration_pvc_sp90_s50_sb75_se0_b_m2.mp3",
+      "role": "master",
+      "offset": 0,
+      "duration": 40.2024,
+      "locked": true,
+      "treatment": "level-matched only (no pitch shift, no time stretch, no re-recording)"
+    },
+    "sfxBus": {
+      "file": "assets/sfx/clipback_sfx_bus.wav",
+      "role": "design",
+      "duckedBy": "narration",
+      "targetHeadroomDb": -15
+    },
+    "master": {
+      "file": "clipback-video/build/clipback_master_audio.wav",
+      "integratedLoudnessLUFS": -16.8,
+      "truePeakDBFS": -1.0,
+      "loudnessRangeLU": 3.7,
+      "chain": "narration (+8.4 dB static gain) + design bus (+4.6 dB, sidechain-ducked by narration) -> sum -> true-peak limiter"
+    }
+  },
+  "textAssets": {
+    "wordmark": "CLIPBACK",
+    "token": "$CLIP",
+    "creator": "CREATOR",
+    "content": "CONTENT",
+    "campaign": "CAMPAIGN",
+    "reward": "REWARD",
+    "creatorContent": "CREATOR CONTENT",
+    "creatorFees": "CREATOR FEES",
+    "eighty": "80%",
+    "twenty": "20%",
+    "contentRewardCampaign": "CONTENT REWARD CAMPAIGN",
+    "buy": "BUY",
+    "burn": "BURN",
+    "eyebrowSystem": "SYSTEM MAP",
+    "eyebrowEcosystem": "CONTENT PLATFORM",
+    "eyebrowFees": "FEE FLOW",
+    "eyebrowAlloc": "ALLOCATION",
+    "eyebrowMech": "MECHANISM",
+    "labelSplit": "DIVIDED INTO TWO PARTS",
+    "labelCoin": "COIN LAUNCH",
+    "labelFlow": "CREATOR FEES"
+  },
+  "layout": {
+    "_units": "world units; camera at zoom 1 shows 1080 x 1920 world units",
+    "hook": {
+      "x": 0,
+      "y": -2600
+    },
+    "ecosystem": {
+      "creator": {
+        "x": -178,
+        "y": -1840,
+        "w": 448,
+        "h": 238
+      },
+      "content": {
+        "x": 184,
+        "y": -1490,
+        "w": 436,
+        "h": 238
+      },
+      "campaign": {
+        "x": -158,
+        "y": -1080,
+        "w": 462,
+        "h": 238
+      },
+      "reward": {
+        "x": 192,
+        "y": -700,
+        "w": 404,
+        "h": 224
+      },
+      "headline": {
+        "x": 0,
+        "y": -2022
+      }
+    },
+    "spine": {
+      "creatorContent": {
+        "x": 0,
+        "y": -760
+      },
+      "creatorFees": {
+        "x": 0,
+        "y": -330
+      },
+      "split": {
+        "x": 0,
+        "y": -20
+      }
+    },
+    "branch80": {
+      "chip": {
+        "x": -250,
+        "y": 215
+      },
+      "campaign": {
+        "x": -170,
+        "y": 585,
+        "w": 620,
+        "h": 236
+      }
+    },
+    "branch20": {
+      "chip": {
+        "x": 290,
+        "y": 215
+      },
+      "clip": {
+        "x": 300,
+        "y": 575
+      },
+      "buy": {
+        "x": 300,
+        "y": 850
+      },
+      "burn": {
+        "x": 300,
+        "y": 1035
+      }
+    }
+  },
+  "syncMarks": {
+    "_source": "energy-onset analysis of the master narration (seconds)",
+    "s1_have": 0.13,
+    "s1_you": 0.27,
+    "s1_heard": 0.42,
+    "s1_of": 0.72,
+    "s1_clipback": 0.93,
+    "s1_tail": 1.13,
+    "s2_in": 2.53,
+    "s2_clipback": 2.55,
+    "s2_contentFocused": 3.29,
+    "s2_platform": 4.29,
+    "s2_designed": 4.92,
+    "s2_around": 5.27,
+    "s2_creator": 5.7,
+    "s2_content": 6.47,
+    "s2_and": 7.13,
+    "s2_reward": 7.28,
+    "s2_campaigns": 7.82,
+    "s2_out": 8.27,
+    "s3_according": 9.47,
+    "s3_clipback": 10.09,
+    "s3_when": 10.95,
+    "s3_coin": 11.32,
+    "s3_launched": 11.62,
+    "s3_platform": 12.32,
+    "s3_generates": 13.01,
+    "s3_creator": 13.53,
+    "s3_fees": 13.81,
+    "s3_those": 14.93,
+    "s3_feesB": 15.35,
+    "s3_divided": 15.86,
+    "s3_divMid": 16.09,
+    "s3_divEnd": 16.38,
+    "s3_into": 16.51,
+    "s3_two": 17.11,
+    "s3_out": 17.3,
+    "s4_eighty": 18.24,
+    "s4_percent80": 18.6,
+    "s4_directed": 19.29,
+    "s4_toward": 19.71,
+    "s4_coins": 20.19,
+    "s4_contentReward": 20.39,
+    "s4_campaign": 21.45,
+    "s4_campaignEnd": 22.1,
+    "s4_while": 22.68,
+    "s4_remaining": 23.15,
+    "s4_twenty": 23.85,
+    "s4_percent20": 24.34,
+    "s4_isUsed": 24.74,
+    "s4_used": 24.95,
+    "s4_buy": 25.41,
+    "s4_and": 25.81,
+    "s4_burn": 25.98,
+    "s4_clip": 26.19,
+    "s4_out": 26.35,
+    "s5_so": 27.55,
+    "s5_basicIdea": 28.32,
+    "s5_connect": 29.43,
+    "s5_creatorFees": 29.82,
+    "s5_with": 30.73,
+    "s5_contentRewards": 30.92,
+    "s5_out": 31.88,
+    "s5b_while": 32.35,
+    "s5b_creating": 33.08,
+    "s5b_specific": 33.94,
+    "s5b_mechanism": 34.65,
+    "s5b_involving": 35.39,
+    "s5b_clip": 35.73,
+    "s5b_token": 36.15,
+    "s5b_out": 36.4,
+    "s6_thats": 36.84,
+    "s6_system": 37.19,
+    "s6_clipback": 37.58,
+    "s6_building": 38.26,
+    "s6_around": 38.83,
+    "s6_platform": 39.22,
+    "s6_end": 39.82,
+    "fin_converge": 39.3,
+    "fin_collapse": 40.45,
+    "fin_reveal": 40.78,
+    "fin_settle": 41.7,
+    "fin_fade": 43.62,
+    "fin_end": 44.0
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "name": "HOOK \u2014 network builds CLIPBACK",
+      "in": 0.0,
+      "out": 2.62,
+      "line": "Have you heard of Clipback?"
+    },
+    {
+      "id": "s2",
+      "name": "CREATOR CONTENT ECOSYSTEM",
+      "in": 2.62,
+      "out": 9.4,
+      "line": "Clipback is a content-focused platform designed around creator content and reward campaigns."
+    },
+    {
+      "id": "s3",
+      "name": "CREATOR FEES \u2014 flow and division",
+      "in": 9.4,
+      "out": 18.1,
+      "line": "According to Clipback, when a coin launched through the platform generates creator fees, those fees are divided into two parts."
+    },
+    {
+      "id": "s4",
+      "name": "80 / 20 ALLOCATION",
+      "in": 18.1,
+      "out": 27.4,
+      "line": "80% is directed toward that coin's content-reward campaign, while the remaining 20% is used to buy and burn $CLIP."
+    },
+    {
+      "id": "s5",
+      "name": "SYSTEM RECONNECTION",
+      "in": 27.4,
+      "out": 36.7,
+      "line": "So the basic idea is to connect creator fees with content rewards, while also creating a specific mechanism involving the $CLIP token."
+    },
+    {
+      "id": "s6",
+      "name": "CLIPBACK PLATFORM",
+      "in": 36.7,
+      "out": 39.45,
+      "line": "That's the system Clipback is building around its platform."
+    },
+    {
+      "id": "fin",
+      "name": "FINAL \u2014 $CLIP",
+      "in": 39.45,
+      "out": 44.0,
+      "line": "$CLIP"
+    }
+  ],
+  "camera": {
+    "_curve": "cubic-bezier easing between keys, Catmull smoothing on position",
+    "keys": [
+      {
+        "t": 0.0,
+        "x": 0,
+        "y": -2600,
+        "zoom": 1.46,
+        "e": "enter"
+      },
+      {
+        "t": 0.95,
+        "x": 0,
+        "y": -2600,
+        "zoom": 1.13,
+        "e": "camera"
+      },
+      {
+        "t": 1.45,
+        "x": 0,
+        "y": -2598,
+        "zoom": 1.015,
+        "e": "camera"
+      },
+      {
+        "t": 2.1,
+        "x": 0,
+        "y": -2592,
+        "zoom": 1.0,
+        "e": "breathe"
+      },
+      {
+        "t": 2.95,
+        "x": -10,
+        "y": -1395,
+        "zoom": 1.02,
+        "e": "camera"
+      },
+      {
+        "t": 4.3,
+        "x": -6,
+        "y": -1338,
+        "zoom": 0.992,
+        "e": "camera"
+      },
+      {
+        "t": 5.7,
+        "x": 14,
+        "y": -1290,
+        "zoom": 0.962,
+        "e": "camera"
+      },
+      {
+        "t": 7.3,
+        "x": 2,
+        "y": -1246,
+        "zoom": 0.938,
+        "e": "camera"
+      },
+      {
+        "t": 8.7,
+        "x": -10,
+        "y": -1205,
+        "zoom": 0.918,
+        "e": "breathe"
+      },
+      {
+        "t": 10.1,
+        "x": 0,
+        "y": -1010,
+        "zoom": 0.9,
+        "e": "camera"
+      },
+      {
+        "t": 11.5,
+        "x": 0,
+        "y": -770,
+        "zoom": 0.88,
+        "e": "camera"
+      },
+      {
+        "t": 13.2,
+        "x": 0,
+        "y": -566,
+        "zoom": 0.88,
+        "e": "camera"
+      },
+      {
+        "t": 15.2,
+        "x": 0,
+        "y": -330,
+        "zoom": 0.92,
+        "e": "camera"
+      },
+      {
+        "t": 16.5,
+        "x": 0,
+        "y": -132,
+        "zoom": 1.02,
+        "e": "camera"
+      },
+      {
+        "t": 17.7,
+        "x": 0,
+        "y": -26,
+        "zoom": 0.94,
+        "e": "camera"
+      },
+      {
+        "t": 18.9,
+        "x": -90,
+        "y": 60,
+        "zoom": 0.95,
+        "e": "camera"
+      },
+      {
+        "t": 20.6,
+        "x": -150,
+        "y": 330,
+        "zoom": 0.95,
+        "e": "camera"
+      },
+      {
+        "t": 22.1,
+        "x": -165,
+        "y": 470,
+        "zoom": 1.0,
+        "e": "camera"
+      },
+      {
+        "t": 23.25,
+        "x": -30,
+        "y": 330,
+        "zoom": 0.72,
+        "e": "camera"
+      },
+      {
+        "t": 24.4,
+        "x": 240,
+        "y": 400,
+        "zoom": 0.92,
+        "e": "camera"
+      },
+      {
+        "t": 25.3,
+        "x": 285,
+        "y": 575,
+        "zoom": 0.98,
+        "e": "camera"
+      },
+      {
+        "t": 26.3,
+        "x": 295,
+        "y": 740,
+        "zoom": 1.02,
+        "e": "camera"
+      },
+      {
+        "t": 27.0,
+        "x": 298,
+        "y": 800,
+        "zoom": 1.05,
+        "e": "camera"
+      },
+      {
+        "t": 28.55,
+        "x": -50,
+        "y": 70,
+        "zoom": 0.78,
+        "e": "camera"
+      },
+      {
+        "t": 30.6,
+        "x": -50,
+        "y": 58,
+        "zoom": 0.775,
+        "e": "breathe"
+      },
+      {
+        "t": 32.8,
+        "x": 20,
+        "y": 180,
+        "zoom": 0.8,
+        "e": "camera"
+      },
+      {
+        "t": 34.8,
+        "x": 170,
+        "y": 500,
+        "zoom": 0.9,
+        "e": "camera"
+      },
+      {
+        "t": 36.2,
+        "x": 252,
+        "y": 640,
+        "zoom": 0.98,
+        "e": "camera"
+      },
+      {
+        "t": 37.5,
+        "x": 20,
+        "y": 150,
+        "zoom": 0.7,
+        "e": "camera"
+      },
+      {
+        "t": 39.0,
+        "x": -20,
+        "y": 60,
+        "zoom": 0.74,
+        "e": "camera"
+      },
+      {
+        "t": 40.45,
+        "x": 0,
+        "y": 0,
+        "zoom": 0.9,
+        "e": "camera"
+      },
+      {
+        "t": 41.8,
+        "x": 0,
+        "y": 0,
+        "zoom": 1.0,
+        "e": "camera"
+      },
+      {
+        "t": 44.0,
+        "x": 0,
+        "y": -16,
+        "zoom": 1.04,
+        "e": "breathe"
+      }
+    ]
+  },
+  "sfxCues": [
+    {
+      "id": "bedLow",
+      "t": 0.0,
+      "gain": 0.5
+    },
+    {
+      "id": "bedAir",
+      "t": 0.0,
+      "gain": 0.5
+    },
+    {
+      "t": 0.02,
+      "id": "ambienceIn",
+      "gain": 0.42
+    },
+    {
+      "t": 0.13,
+      "id": "nodeBirth",
+      "gain": 0.4
+    },
+    {
+      "t": 0.27,
+      "id": "nodeBirth",
+      "gain": 0.34,
+      "pitch": 1.12
+    },
+    {
+      "t": 0.33,
+      "id": "connect",
+      "gain": 0.36
+    },
+    {
+      "t": 0.42,
+      "id": "nodeCluster",
+      "gain": 0.38
+    },
+    {
+      "t": 0.58,
+      "id": "tick",
+      "gain": 0.22
+    },
+    {
+      "t": 0.72,
+      "id": "expand",
+      "gain": 0.4
+    },
+    {
+      "t": 0.86,
+      "id": "riser",
+      "gain": 0.3
+    },
+    {
+      "t": 0.95,
+      "id": "formWord",
+      "gain": 0.52
+    },
+    {
+      "t": 1.42,
+      "id": "tick",
+      "gain": 0.18,
+      "pitch": 1.3
+    },
+    {
+      "t": 2.12,
+      "id": "sweep",
+      "gain": 0.3
+    },
+    {
+      "t": 2.55,
+      "id": "cardIn",
+      "gain": 0.34
+    },
+    {
+      "id": "latch",
+      "t": 2.7,
+      "gain": 0.26
+    },
+    {
+      "t": 3.29,
+      "id": "cardIn",
+      "gain": 0.32,
+      "pitch": 1.08
+    },
+    {
+      "id": "latch",
+      "t": 3.44,
+      "gain": 0.24,
+      "pitch": 1.1
+    },
+    {
+      "t": 3.46,
+      "id": "connect",
+      "gain": 0.26
+    },
+    {
+      "t": 4.29,
+      "id": "substrate",
+      "gain": 0.3
+    },
+    {
+      "t": 4.92,
+      "id": "tick",
+      "gain": 0.18
+    },
+    {
+      "t": 5.7,
+      "id": "dataFlowIn",
+      "gain": 0.26
+    },
+    {
+      "id": "pulseSoft",
+      "t": 6.2,
+      "gain": 0.2,
+      "pitch": 1.1
+    },
+    {
+      "t": 7.13,
+      "id": "cardIn",
+      "gain": 0.3,
+      "pitch": 0.94
+    },
+    {
+      "t": 7.28,
+      "id": "cardIn",
+      "gain": 0.3,
+      "pitch": 1.14
+    },
+    {
+      "id": "latch",
+      "t": 7.28,
+      "gain": 0.24,
+      "pitch": 0.92
+    },
+    {
+      "t": 7.82,
+      "id": "confirm",
+      "gain": 0.28
+    },
+    {
+      "id": "latch",
+      "t": 7.97,
+      "gain": 0.24,
+      "pitch": 1.06
+    },
+    {
+      "t": 8.6,
+      "id": "sweep",
+      "gain": 0.22
+    },
+    {
+      "t": 9.47,
+      "id": "tick",
+      "gain": 0.2
+    },
+    {
+      "t": 10.3,
+      "id": "merge",
+      "gain": 0.3
+    },
+    {
+      "t": 11.32,
+      "id": "nodeBirth",
+      "gain": 0.3,
+      "pitch": 0.9
+    },
+    {
+      "id": "pulseSoft",
+      "t": 11.95,
+      "gain": 0.2
+    },
+    {
+      "t": 12.32,
+      "id": "connect",
+      "gain": 0.26
+    },
+    {
+      "t": 13.01,
+      "id": "dataFlowIn",
+      "gain": 0.32
+    },
+    {
+      "t": 13.53,
+      "id": "confirm",
+      "gain": 0.26
+    },
+    {
+      "id": "latch",
+      "t": 13.81,
+      "gain": 0.22
+    },
+    {
+      "id": "pulseSoft",
+      "t": 14.3,
+      "gain": 0.2,
+      "pitch": 0.92
+    },
+    {
+      "t": 15.6,
+      "id": "riser",
+      "gain": 0.26
+    },
+    {
+      "t": 15.86,
+      "id": "aperture",
+      "gain": 0.38
+    },
+    {
+      "t": 16.09,
+      "id": "split",
+      "gain": 0.46
+    },
+    {
+      "t": 17.11,
+      "id": "tick",
+      "gain": 0.2,
+      "pitch": 1.2
+    },
+    {
+      "id": "pulseSoft",
+      "t": 17.35,
+      "gain": 0.18,
+      "pitch": 1.22
+    },
+    {
+      "t": 18.24,
+      "id": "activate",
+      "gain": 0.36
+    },
+    {
+      "t": 19.29,
+      "id": "dataFlowIn",
+      "gain": 0.3
+    },
+    {
+      "t": 20.39,
+      "id": "cardIn",
+      "gain": 0.32
+    },
+    {
+      "id": "latch",
+      "t": 20.75,
+      "gain": 0.24,
+      "pitch": 0.96
+    },
+    {
+      "t": 21.45,
+      "id": "confirm",
+      "gain": 0.3
+    },
+    {
+      "id": "pulseSoft",
+      "t": 21.9,
+      "gain": 0.2,
+      "pitch": 1.06
+    },
+    {
+      "t": 22.68,
+      "id": "sweep",
+      "gain": 0.22
+    },
+    {
+      "t": 23.85,
+      "id": "activate",
+      "gain": 0.3,
+      "pitch": 1.14
+    },
+    {
+      "id": "pulseSoft",
+      "t": 24.35,
+      "gain": 0.2,
+      "pitch": 0.9
+    },
+    {
+      "t": 24.95,
+      "id": "tokenForm",
+      "gain": 0.34
+    },
+    {
+      "t": 25.41,
+      "id": "absorb",
+      "gain": 0.34
+    },
+    {
+      "id": "latch",
+      "t": 25.45,
+      "gain": 0.22,
+      "pitch": 1.12
+    },
+    {
+      "t": 25.98,
+      "id": "burn",
+      "gain": 0.4
+    },
+    {
+      "t": 26.55,
+      "id": "ripple",
+      "gain": 0.26
+    },
+    {
+      "id": "pulseSoft",
+      "t": 27.05,
+      "gain": 0.22
+    },
+    {
+      "t": 27.55,
+      "id": "sweep",
+      "gain": 0.24
+    },
+    {
+      "id": "latch",
+      "t": 28.35,
+      "gain": 0.22,
+      "pitch": 0.9
+    },
+    {
+      "id": "latch",
+      "t": 28.72,
+      "gain": 0.2,
+      "pitch": 1.0
+    },
+    {
+      "id": "latch",
+      "t": 29.08,
+      "gain": 0.2,
+      "pitch": 1.1
+    },
+    {
+      "t": 29.43,
+      "id": "connect",
+      "gain": 0.28
+    },
+    {
+      "t": 29.82,
+      "id": "tick",
+      "gain": 0.18
+    },
+    {
+      "id": "pulseSoft",
+      "t": 29.95,
+      "gain": 0.2,
+      "pitch": 1.04
+    },
+    {
+      "id": "ripple",
+      "t": 30.1,
+      "gain": 0.2
+    },
+    {
+      "id": "dataFlowIn",
+      "t": 30.45,
+      "gain": 0.2,
+      "pitch": 1.08
+    },
+    {
+      "t": 30.92,
+      "id": "tick",
+      "gain": 0.18,
+      "pitch": 1.18
+    },
+    {
+      "id": "pulseSoft",
+      "t": 31.25,
+      "gain": 0.18,
+      "pitch": 0.94
+    },
+    {
+      "id": "tick",
+      "t": 31.7,
+      "gain": 0.16,
+      "pitch": 0.9
+    },
+    {
+      "t": 32.35,
+      "id": "dataFlowIn",
+      "gain": 0.24
+    },
+    {
+      "id": "pulseSoft",
+      "t": 33.4,
+      "gain": 0.2,
+      "pitch": 1.14
+    },
+    {
+      "id": "latch",
+      "t": 33.95,
+      "gain": 0.2
+    },
+    {
+      "t": 34.65,
+      "id": "mechanism",
+      "gain": 0.28
+    },
+    {
+      "t": 35.73,
+      "id": "activate",
+      "gain": 0.3,
+      "pitch": 0.96
+    },
+    {
+      "id": "tokenForm",
+      "t": 35.73,
+      "gain": 0.26,
+      "pitch": 1.04
+    },
+    {
+      "id": "pulseSoft",
+      "t": 36.3,
+      "gain": 0.2,
+      "pitch": 0.96
+    },
+    {
+      "t": 36.84,
+      "id": "sweep",
+      "gain": 0.22
+    },
+    {
+      "t": 37.58,
+      "id": "formWord",
+      "gain": 0.34
+    },
+    {
+      "id": "pulseSoft",
+      "t": 38.3,
+      "gain": 0.2,
+      "pitch": 1.1
+    },
+    {
+      "id": "ripple",
+      "t": 38.95,
+      "gain": 0.2,
+      "pitch": 0.95
+    },
+    {
+      "t": 39.3,
+      "id": "converge",
+      "gain": 0.34
+    },
+    {
+      "t": 40.45,
+      "id": "collapse",
+      "gain": 0.4
+    },
+    {
+      "t": 40.78,
+      "id": "finalImpact",
+      "gain": 0.46
+    },
+    {
+      "t": 41.0,
+      "id": "ambienceOut",
+      "gain": 0.34
+    },
+    {
+      "t": 41.15,
+      "id": "settle",
+      "gain": 0.3
+    },
+    {
+      "id": "ripple",
+      "t": 41.6,
+      "gain": 0.22,
+      "pitch": 0.86
+    },
+    {
+      "id": "pulseSoft",
+      "t": 42.3,
+      "gain": 0.16,
+      "pitch": 0.82
+    }
+  ],
+  "render": {
+    "output": "Clipback_CLIP_Motion_Design.mp4",
+    "codec": "libx264",
+    "pixelFormat": "yuv420p",
+    "crf": 16,
+    "preset": "medium",
+    "profile": "high",
+    "audioCodec": "aac",
+    "audioBitrate": "256k",
+    "audioSampleRate": 48000,
+    "level": "5.1",
+    "colour": "bt709 / tv range",
+    "pipeline": "deterministic canvas frames -> raw RGBA pipe -> libx264 + AAC (single pass, no intermediate images)"
+  }
+}
