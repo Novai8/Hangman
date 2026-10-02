@@ -64,25 +64,42 @@ def keyframe(A,i,prefix,p,keys):
     A.append({"type":"setFxPropertyKeyframes","compositionId":"main","property":{"layerId":i,"propertyType":p},"keyframes":frames})
 
 def scalar_motion(A,i,prefix,xkeys,ykeys):
-    # Tesseract 0.3.1 validates position as a paired spatial path. In the
-    # headless renderer that action is currently rejected even for the
-    # minimal valid shape, so preserve the intended energy with scalar
-    # transform motion instead of unsupported positional tracks.
+    # For paired X/Y movement, use Tesseract's native spatial action.
+    # This keeps particles, packets, cursors and ambient elements genuinely moving.
     times=[int(t) for t,_,_ in xkeys]
     assert times==[int(t) for t,_,_ in ykeys], (prefix,xkeys,ykeys)
-    dur=times[-1] if times else 0
+    if not times:
+        return
+    dur=times[-1]
     if dur<=0:
         return
     xspan=max(v for _,v,_ in xkeys)-min(v for _,v,_ in xkeys) if xkeys else 0
     yspan=max(v for _,v,_ in ykeys)-min(v for _,v,_ in ykeys) if ykeys else 0
-    amp=0.6 if (xspan==0 or yspan==0) else 4.0
-    if xspan>0 and yspan==0:
-        keyframe(A,i,prefix+"pulse","scaleY",[(0,94,"ease"),(dur//2,104,"ease"),(dur,100,"ease")])
-    elif yspan>0 and xspan==0:
+    if xspan>0 and yspan>0:
+        def track(keys):
+            frames=[]
+            for n,(t,value,mode) in enumerate(keys):
+                easing={"type":"linear"} if mode=="linear" else {"type":"cubicBezier","x1":0.18,"y1":0,"x2":0.18,"y2":1}
+                frames.append({
+                    "id":f"{prefix}-{n}",
+                    "layerTime":int(t),
+                    "value":{"type":"float","value":float(value)},
+                    "easing":easing,
+                    "spatialInTangent":None,
+                    "spatialOutTangent":None,
+                })
+            return {"keyframes":frames}
+        A.append({
+            "type":"setFxPositionKeyframes",
+            "compositionId":"main",
+            "layerId":i,
+            "positionX":track(xkeys),
+            "positionY":track(ykeys),
+        })
+    elif xspan==0 and yspan>0:
         keyframe(A,i,prefix+"pulse","scaleX",[(0,94,"ease"),(dur//2,104,"ease"),(dur,100,"ease")])
-    else:
-        keyframe(A,i,prefix+"pulseX","scaleX",[(0,94,"ease"),(dur//3,102,"ease"),(int(dur*.66),98,"ease"),(dur,100,"ease")])
-        keyframe(A,i,prefix+"pulseY","scaleY",[(0,94,"ease"),(dur//3,102,"ease"),(int(dur*.66),98,"ease"),(dur,100,"ease")])
+    elif xspan>0 and yspan==0:
+        keyframe(A,i,prefix+"pulse","scaleY",[(0,94,"ease"),(dur//2,104,"ease"),(dur,100,"ease")])
 
 def fade_in_out(A,i,dur,prefix,enter=320,exit=320):
     e=min(enter,max(1,dur//3)); x=max(e+1,dur-exit)
