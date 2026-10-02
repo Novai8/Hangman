@@ -69,10 +69,10 @@ def position_path(A,i,prefix,xkeys,ykeys):
     frames_x=[]; frames_y=[]
     for n,(t,v,mode) in enumerate(xkeys):
         easing={"type":"linear"} if mode=="linear" else {"type":"cubicBezier","x1":0.18,"y1":0,"x2":0.18,"y2":1}
-        frames_x.append({"id":prefix+"x"+str(n),"layerTime":int(t),"value":{"type":"float","value":float(v)},"easing":easing})
+        frames_x.append({"id":prefix+"k"+str(n),"layerTime":int(t),"value":{"type":"float","value":float(v)},"easing":easing})
     for n,(t,v,mode) in enumerate(ykeys):
         easing={"type":"linear"} if mode=="linear" else {"type":"cubicBezier","x1":0.18,"y1":0,"x2":0.18,"y2":1}
-        frames_y.append({"id":prefix+"y"+str(n),"layerTime":int(t),"value":{"type":"float","value":float(v)},"easing":easing})
+        frames_y.append({"id":prefix+"k"+str(n),"layerTime":int(t),"value":{"type":"float","value":float(v)},"easing":easing})
     A.append({"type":"setFxPositionKeyframes","compositionId":"main","layerId":i,
               "positionX":{"keyframes":frames_x},"positionY":{"keyframes":frames_y}})
 
