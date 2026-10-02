@@ -18622,7 +18622,7 @@
         "layerTime": 1800,
         "value": {
           "type": "float",
-          "value": 0
+          "value": 100
         },
         "easing": {
           "type": "cubicBezier",
