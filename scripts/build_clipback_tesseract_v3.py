@@ -275,8 +275,7 @@ def main(tsrct,voice,root):
             dur=e-(s+820); k["keyframes"]=[{"id":"finalop0","layerTime":0,"value":{"type":"float","value":0},"easing":{"type":"linear"}},
                                            {"id":"finalop1","layerTime":380,"value":{"type":"float","value":100},"easing":{"type":"cubicBezier","x1":.18,"y1":0,"x2":.18,"y2":1}},
                                            {"id":"finalop2","layerTime":dur,"value":{"type":"float","value":100},"easing":{"type":"linear"}}]
-    keyframe(A,final_id,"s7sx","scaleX",[(0,92,"ease"),(420,103,"ease"),(900,98,"linear"),(1400,103,"ease"),(2200,100,"linear"),(e-(s+820),100,"linear")])
-    keyframe(A,final_id,"s7sy","scaleY",[(0,92,"ease"),(420,103,"ease"),(900,98,"linear"),(1400,103,"ease"),(2200,100,"linear"),(e-(s+820),100,"linear")])
+    # The text reveal already owns scaleX, so pulse only on scaleY to avoid duplicate property tracks.\n    keyframe(A,final_id,"s7sy","scaleY",[(0,92,"ease"),(420,103,"ease"),(900,98,"linear"),(1400,103,"ease"),(2200,100,"linear"),(e-(s+820),100,"linear")])
     i=reveal_text(A,i,s+1550,e,220,1040,640,55,"CREATOR CONTENT  •  REWARD MECHANISM",22,BLUE,FR[0],FR[1],"S7SUB")
     i=reveal_text(A,i,s+2050,e,300,1135,480,55,"BUY  →  BURN",26,VIOLET,F[0],F[1],"S7FOOT")
 
