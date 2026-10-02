@@ -1,6 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import math, subprocess, os, sys
-W,H=540,960; fps=30; dur=36.7
+W,H=540,960; fps=30; dur=40.2
 ff='/home/user/Hangman/.venv/bin/python'
 font='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'; bold='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 def F(size,b=False): return ImageFont.truetype(bold if b else font,size)
@@ -87,7 +87,7 @@ def frame(t):
 # pipe frames to ffmpeg
 ffbin='/home/user/Hangman/.venv/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2'
 os.makedirs('media',exist_ok=True)
-cmd=[ffbin,'-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(fps),'-i','-','-i','google_drive/Clipback','-t',str(dur),'-vf','scale=1080:1920:flags=lanczos','-c:v','libx264','-preset','medium','-crf','18','-pix_fmt','yuv420p','-map','0:v:0','-map','1:a:0','-c:a','aac','-b:a','192k','-shortest','media/Clipback_CLIP_Motion_Design.mp4']
+cmd=[ffbin,'-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(fps),'-i','-','-i','google_drive/Clipback_Justin.mp3','-t',str(dur),'-vf','scale=1080:1920:flags=lanczos','-c:v','libx264','-preset','medium','-crf','18','-pix_fmt','yuv420p','-map','0:v:0','-map','1:a:0','-c:a','aac','-b:a','192k','-shortest','media/Clipback_CLIP_Motion_Design.mp4']
 p=subprocess.Popen(cmd,stdin=subprocess.PIPE)
 for i in range(int(dur*fps)):
  p.stdin.write(frame(i/fps).tobytes())
