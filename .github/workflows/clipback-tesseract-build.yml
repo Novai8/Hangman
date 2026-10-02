@@ -101,14 +101,14 @@ jobs:
               "compositionId":"main",
               "layerId":1,
               "positionX":{"keyframes":[
-                {"id":"p0","layerTime":0,"value":{"type":"float","value":100},"easing":{"type":"linear"}},
-                {"id":"p1","layerTime":500,"value":{"type":"float","value":240},"easing":{"type":"linear"}},
-                {"id":"p2","layerTime":1000,"value":{"type":"float","value":100},"easing":{"type":"linear"}}
+                {"id":"px0","layerTime":0,"value":{"type":"float","value":100},"easing":{"type":"linear"},"spatialInTangent":0,"spatialOutTangent":0},
+                {"id":"px1","layerTime":500,"value":{"type":"float","value":240},"easing":{"type":"linear"},"spatialInTangent":0,"spatialOutTangent":0},
+                {"id":"px2","layerTime":1000,"value":{"type":"float","value":100},"easing":{"type":"linear"},"spatialInTangent":0,"spatialOutTangent":0}
               ]},
               "positionY":{"keyframes":[
-                {"id":"p0","layerTime":0,"value":{"type":"float","value":100},"easing":{"type":"linear"}},
-                {"id":"p1","layerTime":500,"value":{"type":"float","value":260},"easing":{"type":"linear"}},
-                {"id":"p2","layerTime":1000,"value":{"type":"float","value":100},"easing":{"type":"linear"}}
+                {"id":"py0","layerTime":0,"value":{"type":"float","value":100},"easing":{"type":"linear"},"spatialInTangent":0,"spatialOutTangent":0},
+                {"id":"py1","layerTime":500,"value":{"type":"float","value":260},"easing":{"type":"linear"},"spatialInTangent":0,"spatialOutTangent":0},
+                {"id":"py2","layerTime":1000,"value":{"type":"float","value":100},"easing":{"type":"linear"},"spatialInTangent":0,"spatialOutTangent":0}
               ]}
             }
           ]
