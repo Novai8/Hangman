@@ -163,11 +163,11 @@ def main(tsrct,voice,root):
     sh([tsrct,"project","apply","--project",str(project),"--actions",str(ap)])
     ck=work/"editable.json"; sh([tsrct,"project","checkout","--project",str(project),"--output",str(ck)])
     doc=json.loads(ck.read_text()); doc["duration"]=d/1000.0; comp=doc["composition"]; layers=comp.setdefault("layers",[])
-    layers.append({"id":9000,"name":"MASTER VOICEOVER","type":"Audio","activeRange":{"start":0,"duration":d},"sourceRange":{"start":0,"duration":d},"sourceIntrinsicDuration":d,"source":{"assetId":"master-voiceover"},"volume":1.0,"captionsEnabled":False})
+    layers.append({"id":9000,"name":"MASTER VOICEOVER","type":"Audio","playback":{"type":"windowed","inputRange":{"start":0,"duration":d},"mapping":{"type":"linear","input":{"start":0,"duration":d},"output":{"start":0,"duration":d}},"inputOffsetMs":0},"sourceRange":{"start":0,"duration":d},"sourceIntrinsicDuration":d,"source":{"assetId":"master-voiceover"},"volume":1.0,"captionsEnabled":False})
     defs=[("whoosh",B[0][0]+650,.13),("click",B[1][0]+500,.10),("ping",B[2][0]+900,.10),("whoosh",B[3][0]+650,.11),("pulse",B[4][0]+650,.09),("impact",max(0,d-850),.10)]
     for aid,(kind,start,vol) in enumerate(defs,9100):
         ms={"whoosh":520,"click":95,"ping":210,"pulse":260,"impact":320}[kind]; start=min(max(0,int(start)),max(0,d-ms))
-        layers.append({"id":aid,"name":"SFX "+kind,"type":"Audio","activeRange":{"start":start,"duration":ms},"sourceRange":{"start":0,"duration":ms},"sourceIntrinsicDuration":ms,"source":{"assetId":kind},"volume":vol,"captionsEnabled":False})
+        layers.append({"id":aid,"name":"SFX "+kind,"type":"Audio","playback":{"type":"windowed","inputRange":{"start":start,"duration":ms},"mapping":{"type":"linear","input":{"start":0,"duration":ms},"output":{"start":start,"duration":ms}},"inputOffsetMs":0},"sourceRange":{"start":0,"duration":ms},"sourceIntrinsicDuration":ms,"source":{"assetId":kind},"volume":vol,"captionsEnabled":False})
     ck.write_text(json.dumps(doc,indent=2)); sh([tsrct,"project","commit","--project",str(project),"--file",str(ck)])
     (assets/"Palette.txt").write_text("Charcoal / Off-white / Indigo / Electric Blue / Violet. Native Tesseract shapes and text. No stock imagery.")
     (assets/"Story_Structure.txt").write_text("Hook | Platform | Creator fees split | 80/20 allocation | System connection | Platform system | $CLIP convergence")
