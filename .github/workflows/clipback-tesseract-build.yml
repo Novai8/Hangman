@@ -1,0 +1,131 @@
+name: Build Clipback Tesseract Motion Design
+
+on:
+  push:
+    branches:
+      - clipback-tesseract-build
+    paths:
+      - ".github/workflows/clipback-tesseract-build.yml"
+      - "scripts/build_clipback_tesseract.py"
+      - "ElevenLabs_2026-10-02T19_04_59_Justin Time - Elearning Narration_pvc_sp90_s50_sb75_se0_b_m2.mp3"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unzip ffmpeg python3 python3-pip fonts-inter mesa-vulkan-drivers libvulkan1 vulkan-tools
+          fc-cache -f
+
+      - name: Verify exact source voiceover
+        env:
+          VO: "ElevenLabs_2026-10-02T19_04_59_Justin Time - Elearning Narration_pvc_sp90_s50_sb75_se0_b_m2.mp3"
+          EXPECTED_BYTES: "659887"
+          EXPECTED_SHA256: "6b9ccd7e5b320a7ccbded19d095133b28325f7b355612c3ea55b6da86601a8bb"
+        run: |
+          test -f "$VO"
+          BYTES="$(stat -c %s "$VO")"
+          SHA="$(sha256sum "$VO" | awk '{print $1}')"
+          echo "Voiceover bytes: $BYTES"
+          echo "Voiceover sha256: $SHA"
+          test "$BYTES" = "$EXPECTED_BYTES"
+          test "$SHA" = "$EXPECTED_SHA256"
+          ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$VO" | tee /tmp/voice_duration.txt
+          ffprobe -v error -show_streams -of json "$VO" > /tmp/voice_streams.json
+          ffmpeg -hide_banner -loglevel error -y -i "$VO" -filter_complex "showwavespic=s=1080x360:colors=white" -frames:v 1 voiceover_waveform.png
+          mkdir -p Clipback_CLIP_Motion_Design/Audio Clipback_CLIP_Motion_Design/Assets Clipback_CLIP_Motion_Design/SFX Clipback_CLIP_Motion_Design/Previews Clipback_CLIP_Motion_Design/Versions
+          cp "$VO" "Clipback_CLIP_Motion_Design/Audio/Original_Voiceover.mp3"
+          cp /tmp/voice_duration.txt "Clipback_CLIP_Motion_Design/.tesseract-voice-duration.txt"
+          cp voiceover_waveform.png "Clipback_CLIP_Motion_Design/Previews/Voiceover_Waveform.png"
+
+      - name: Install official Tesseract 0.3.1 and verify checksum
+        env:
+          VERSION: "0.3.1"
+          ZIP: "tesseract-0.3.1-linux-x86_64.zip"
+          SHA: "tesseract-0.3.1-linux-x86_64.zip.sha256"
+          EXPECTED_SHA256: "64dcde94e2e717073b1c56d36473a03a9448fa0f19f6a3a19b567c2bcdbdad6a"
+        run: |
+          mkdir -p /tmp/tesseract-download
+          cd /tmp/tesseract-download
+          curl -fL --retry 3 -o "$ZIP" "https://github.com/mirage-hq/Tesseract/releases/download/v$VERSION/$ZIP"
+          curl -fL --retry 3 -o "$SHA" "https://github.com/mirage-hq/Tesseract/releases/download/v$VERSION/$SHA"
+          test "$(sha256sum "$ZIP" | awk '{print $1}')" = "$EXPECTED_SHA256"
+          sha256sum -c "$SHA"
+          mkdir -p /tmp/tesseract-extracted
+          unzip -q "$ZIP" -d /tmp/tesseract-extracted
+          INSTALLER="$(find /tmp/tesseract-extracted -maxdepth 3 -type f -name install.sh | head -n 1)"
+          test -n "$INSTALLER"
+          bash "$INSTALLER"
+          TSRCT="$(find "$HOME/.local/share/Tesseract" -type f -name tsrct -perm -111 | head -n 1)"
+          test -n "$TSRCT"
+          echo "TSRCT=$TSRCT" >> "$GITHUB_ENV"
+          "$TSRCT" --version
+          "$TSRCT" project --help > /tmp/tsrct-project-help.txt
+          "$TSRCT" export --help > /tmp/tsrct-export-help.txt
+
+      - name: Verify Vulkan renderer
+        run: |
+          if [ -f /usr/share/vulkan/icd.d/lvp_icd.x86_64.json ]; then
+            echo "VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/lvp_icd.x86_64.json" >> "$GITHUB_ENV"
+            VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/lvp_icd.x86_64.json vulkaninfo --summary || true
+          else
+            vulkaninfo --summary || true
+          fi
+
+      - name: Build editable Tesseract project and render
+        env:
+          VO: "ElevenLabs_2026-10-02T19_04_59_Justin Time - Elearning Narration_pvc_sp90_s50_sb75_se0_b_m2.mp3"
+          PROJECT_ROOT: "$GITHUB_WORKSPACE/Clipback_CLIP_Motion_Design"
+        run: |
+          python3 scripts/build_clipback_tesseract.py --tsrct "$TSRCT" --voiceover "$VO" --project-root "$PROJECT_ROOT"
+
+      - name: Technical QA
+        env:
+          PROJECT_ROOT: "$GITHUB_WORKSPACE/Clipback_CLIP_Motion_Design"
+        run: |
+          set -e
+          FINAL="$PROJECT_ROOT/Clipback_CLIP_Motion_Design.mp4"
+          ffprobe -v error -show_entries stream=index,codec_type,codec_name,width,height,r_frame_rate,sample_rate,channels,duration -show_entries format=duration -of json "$FINAL" > "$PROJECT_ROOT/.tesseract-work/final_ffprobe.json"
+          cat "$PROJECT_ROOT/.tesseract-work/final_ffprobe.json"
+          python3 - <<'PY'
+          import json, pathlib, sys
+          p = pathlib.Path("Clipback_CLIP_Motion_Design/.tesseract-work/final_ffprobe.json")
+          data = json.loads(p.read_text())
+          streams = data.get("streams", [])
+          v = next((s for s in streams if s.get("codec_type") == "video"), None)
+          a = next((s for s in streams if s.get("codec_type") == "audio"), None)
+          assert v and a, "Missing video or audio stream"
+          assert v.get("codec_name") == "h264", v
+          assert a.get("codec_name") == "aac", a
+          assert int(v.get("width")) == 1080 and int(v.get("height")) == 1920, v
+          assert v.get("r_frame_rate") == "30/1", v
+          assert float(a.get("duration", 0)) > 0, a
+          print("Technical QA PASS")
+          PY
+
+      - name: Commit finished project back to branch
+        run: |
+          git config user.name "Tesseract Render Bot"
+          git config user.email "actions@github.com"
+          git add Clipback_CLIP_Motion_Design
+          git diff --cached --quiet || git commit -m "Add Clipback CLIP Tesseract motion-design project"
+          git push
+
+      - name: Upload render package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Clipback_CLIP_Motion_Design
+          path: Clipback_CLIP_Motion_Design/
+          if-no-files-found: error
+          retention-days: 30
