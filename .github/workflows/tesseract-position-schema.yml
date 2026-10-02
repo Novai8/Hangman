@@ -1,3 +1,4 @@
+# Triggered schema probe for native XY motion
 name: Probe Tesseract Spatial Position Schema
 
 on:
