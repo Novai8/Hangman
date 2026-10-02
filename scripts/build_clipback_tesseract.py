@@ -11,7 +11,12 @@ GRID=[0.12,0.13,0.18,1]; INDIGO=[0.30,0.33,0.96,1]; BLUE=[0.12,0.60,1,1]; VIOLET
 
 def sh(cmd):
     print("$"," ".join(map(str,cmd)))
-    return subprocess.run(cmd,check=True,text=True,capture_output=True)
+    p=subprocess.run(cmd,check=False,text=True,capture_output=True)
+    if p.stdout.strip(): print(p.stdout)
+    if p.returncode != 0:
+        if p.stderr.strip(): print(p.stderr)
+        raise subprocess.CalledProcessError(p.returncode,cmd,p.stdout,p.stderr)
+    return p
 
 def j(raw):
     for line in reversed([x for x in raw.strip().splitlines() if x.strip()]):
