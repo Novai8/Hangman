@@ -76,7 +76,6 @@ def scalar_motion(A,i,prefix,xkeys,ykeys):
     xspan=max(v for _,v,_ in xkeys)-min(v for _,v,_ in xkeys) if xkeys else 0
     yspan=max(v for _,v,_ in ykeys)-min(v for _,v,_ in ykeys) if ykeys else 0
     amp=0.6 if (xspan==0 or yspan==0) else 4.0
-    keyframe(A,i,prefix+"rot","rotation",[(0,-amp,"ease"),(dur//2,amp,"ease"),(dur,0,"ease")])
     if xspan>0 and yspan==0:
         keyframe(A,i,prefix+"pulse","scaleY",[(0,94,"ease"),(dur//2,104,"ease"),(dur,100,"ease")])
     elif yspan>0 and xspan==0:
