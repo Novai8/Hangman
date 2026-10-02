@@ -280,6 +280,16 @@ def main(tsrct,voice,root):
     i=reveal_text(A,i,s+1550,e,220,1040,640,55,"CREATOR CONTENT  •  REWARD MECHANISM",22,BLUE,FR[0],FR[1],"S7SUB")
     i=reveal_text(A,i,s+2050,e,300,1135,480,55,"BUY  →  BURN",26,VIOLET,F[0],F[1],"S7FOOT")
 
+    bad = []
+    for idx, action in enumerate(A):
+        if action.get("type") == "setFxPropertyKeyframes":
+            p = action.get("property", {})
+            if p.get("propertyType") in ("position", "positionX", "positionY"):
+                bad.append((idx, action))
+    print("ACTION_COUNT", len(A))
+    print("POSITION_LIKE_ACTIONS", [x[0] for x in bad])
+    for idx in range(max(0, 485), min(len(A), 500)):
+        print("DIAG_ACTION", idx, json.dumps(A[idx], separators=(",", ":"))[:6000])
     actions=work/"visual-actions.json"; actions.write_text(json.dumps(A,indent=2))
     sh([tsrct,"project","apply","--project",str(project),"--actions",str(actions)])
     checked=work/"editable.json"; sh([tsrct,"project","checkout","--project",str(project),"--output",str(checked)])
