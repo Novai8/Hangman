@@ -92,6 +92,7 @@ jobs:
           VO: "ElevenLabs_2026-10-02T19_04_59_Justin Time - Elearning Narration_pvc_sp90_s50_sb75_se0_b_m2.mp3"
           PROJECT_ROOT: "${{ github.workspace }}/Clipback_CLIP_Motion_Design"
         run: |
+          rm -rf "$PROJECT_ROOT"
           python3 scripts/build_clipback_tesseract.py --tsrct "$TSRCT" --voiceover "$VO" --project-root "$PROJECT_ROOT"
 
       - name: Technical QA
