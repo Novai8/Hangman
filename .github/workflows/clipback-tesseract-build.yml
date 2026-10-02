@@ -75,7 +75,51 @@ jobs:
           print(json.dumps(defs.get("JBSetFxPositionKeyframesAction"),indent=2))
           print("=== JBPropertyKeyframeTrack ===")
           print(json.dumps(defs.get("JBPropertyKeyframeTrack"),indent=2))
+          print("=== JBPropertyKeyframe ===")
+          print(json.dumps(defs.get("JBPropertyKeyframe"),indent=2))
           PY
+
+      - name: Probe paired position action
+        run: |
+          set +e
+          rm -rf /tmp/position-probe.tsrct /tmp/probe-actions.json
+          "$TSRCT" project create --project /tmp/position-probe.tsrct
+          cat > /tmp/probe-actions.json <<'JSON'
+          [
+            {
+              "type":"createFxRectLayer",
+              "compositionId":"main",
+              "layerId":1,
+              "name":"Probe",
+              "insertIndex":0,
+              "activeRange":{"start":0,"duration":1500},
+              "transform":{"anchorPoint":[0,0],"position":[100,100],"scale":[100,100],"rotation":0,"opacity":100},
+              "rect":{"size":[80,80],"fillColor":[1,1,1,1]}
+            },
+            {
+              "type":"setFxPositionKeyframes",
+              "compositionId":"main",
+              "layerId":1,
+              "positionX":{"keyframes":[
+                {"id":"p0","layerTime":0,"value":{"type":"float","value":100},"easing":{"type":"linear"}},
+                {"id":"p1","layerTime":500,"value":{"type":"float","value":240},"easing":{"type":"linear"}},
+                {"id":"p2","layerTime":1000,"value":{"type":"float","value":100},"easing":{"type":"linear"}}
+              ]},
+              "positionY":{"keyframes":[
+                {"id":"p0","layerTime":0,"value":{"type":"float","value":100},"easing":{"type":"linear"}},
+                {"id":"p1","layerTime":500,"value":{"type":"float","value":260},"easing":{"type":"linear"}},
+                {"id":"p2","layerTime":1000,"value":{"type":"float","value":100},"easing":{"type":"linear"}}
+              ]}
+            }
+          ]
+          JSON
+          "$TSRCT" project apply --project /tmp/position-probe.tsrct --actions /tmp/probe-actions.json
+          rc=$?
+          echo "PAIRED_POSITION_PROBE_RC=$rc"
+          test $rc -eq 0
+          "$TSRCT" project checkout --project /tmp/position-probe.tsrct --output /tmp/probe-out.json
+          cat /tmp/probe-out.json | head -n 80
+          exit $rc
 
       - name: Verify Vulkan renderer
         run: |
