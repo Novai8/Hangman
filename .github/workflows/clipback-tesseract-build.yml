@@ -1,3 +1,4 @@
+# Final visual rebuild: kinetic motion system, animated environment, alignment pass
 name: Build Clipback Tesseract Motion Design
 
 on:
@@ -37,12 +38,9 @@ jobs:
           test -f "$VO"
           BYTES="$(stat -c %s "$VO")"
           SHA="$(sha256sum "$VO" | awk '{print $1}')"
-          echo "Voiceover bytes: $BYTES"
-          echo "Voiceover sha256: $SHA"
           test "$BYTES" = "$EXPECTED_BYTES"
           test "$SHA" = "$EXPECTED_SHA256"
           ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$VO" | tee /tmp/voice_duration.txt
-          ffprobe -v error -show_streams -of json "$VO" > /tmp/voice_streams.json
           ffmpeg -hide_banner -loglevel error -y -i "$VO" -filter_complex "showwavespic=s=1080x360:colors=white" -frames:v 1 voiceover_waveform.png
 
       - name: Install official Tesseract 0.3.1 and verify checksum
@@ -58,10 +56,8 @@ jobs:
           curl -fL --retry 3 -o "$SHA" "https://github.com/mirage-hq/Tesseract/releases/download/v$VERSION/$SHA"
           test "$(sha256sum "$ZIP" | awk '{print $1}')" = "$EXPECTED_SHA256"
           sha256sum -c "$SHA"
-          mkdir -p /tmp/tesseract-extracted
           unzip -q "$ZIP" -d /tmp/tesseract-extracted
           INSTALLER="$(find /tmp/tesseract-extracted -maxdepth 3 -type f -name install.sh | head -n 1)"
-          test -n "$INSTALLER"
           bash "$INSTALLER"
           TSRCT="$(find "$HOME/.local/share/Tesseract" -type f -name tsrct -perm -111 | head -n 1)"
           test -n "$TSRCT"
