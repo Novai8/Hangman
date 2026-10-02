@@ -157,7 +157,7 @@ def main(tsrct,voice,root):
     ap=root/".tesseract-work/visual-actions.json"; ap.write_text(json.dumps(A,indent=2))
     sh([tsrct,"project","apply","--project",str(project),"--actions",str(ap)])
     ck=work/"editable.json"; sh([tsrct,"project","checkout","--project",str(project),"--output",str(ck)])
-    doc=json.loads(ck.read_text()); doc["duration"]=d/1000.0; comp=doc["compositions"][0]; layers=comp.setdefault("layers",[])
+    doc=json.loads(ck.read_text()); doc["duration"]=d/1000.0; comp=doc["composition"]; layers=comp.setdefault("layers",[])
     layers.append({"id":9000,"name":"MASTER VOICEOVER","type":"Audio","activeRange":{"start":0,"duration":d},"sourceRange":{"start":0,"duration":d},"sourceIntrinsicDuration":d,"source":{"assetId":"master-voiceover"},"volume":1.0,"captionsEnabled":False})
     defs=[("whoosh",B[0][0]+650,.13),("click",B[1][0]+500,.10),("ping",B[2][0]+900,.10),("whoosh",B[3][0]+650,.11),("pulse",B[4][0]+650,.09),("impact",max(0,d-850),.10)]
     for aid,(kind,start,vol) in enumerate(defs,9100):
