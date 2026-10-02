@@ -158,6 +158,12 @@ def main(tsrct,voice,root):
         i=add_line(A,i,s+100,e,x,y,540,885,col,f"S7C{q}"); i=add_node(A,i,s+180+q*60,e,x-11,y-11,22,col,f"S7N{q}")
     A += [rect(i,"S7Core",s+420,e,400,745,280,280,[.10,.12,.17,1]),kf(i,"opacity","S7Core",int(e-(s+420)),0,100)]; i+=1
     i=add_text(A,i,s+580,e,195,800,690,150,"$CLIP",112,OFF,F[0],F[1],"S7Final")
+    # Hold the final $CLIP on screen through the exact end frame.
+    final_layer_id=i-1
+    for item in reversed(A):
+        if item.get("type")=="setFxPropertyKeyframes" and item.get("property",{}).get("layerId")==final_layer_id and item.get("property",{}).get("propertyType")=="opacity":
+            item["keyframes"][-1]["value"]["value"]=100
+            break
 
     ap=root/".tesseract-work/visual-actions.json"; ap.write_text(json.dumps(A,indent=2))
     sh([tsrct,"project","apply","--project",str(project),"--actions",str(ap)])
