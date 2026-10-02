@@ -76,25 +76,23 @@ def scalar_motion(A,i,prefix,xkeys,ykeys):
     xspan=max(v for _,v,_ in xkeys)-min(v for _,v,_ in xkeys) if xkeys else 0
     yspan=max(v for _,v,_ in ykeys)-min(v for _,v,_ in ykeys) if ykeys else 0
     if xspan>0 and yspan>0:
-        def track(keys):
+        def track(axis, keys):
             frames=[]
             for n,(t,value,mode) in enumerate(keys):
                 easing={"type":"linear"} if mode=="linear" else {"type":"cubicBezier","x1":0.18,"y1":0,"x2":0.18,"y2":1}
                 frames.append({
-                    "id":f"{prefix}-{n}",
+                    "id":f"{prefix}-{axis}-{n}",
                     "layerTime":int(t),
                     "value":{"type":"float","value":float(value)},
                     "easing":easing,
-                    "spatialInTangent":None,
-                    "spatialOutTangent":None,
                 })
             return {"keyframes":frames}
         A.append({
             "type":"setFxPositionKeyframes",
             "compositionId":"main",
             "layerId":i,
-            "positionX":track(xkeys),
-            "positionY":track(ykeys),
+            "positionX":track("x",xkeys),
+            "positionY":track("y",ykeys),
         })
     elif xspan==0 and yspan>0:
         keyframe(A,i,prefix+"pulse","scaleX",[(0,94,"ease"),(dur//2,104,"ease"),(dur,100,"ease")])
