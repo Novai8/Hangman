@@ -17,7 +17,6 @@ jobs:
   render:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,11 +27,11 @@ jobs:
           sudo apt-get install -y unzip ffmpeg python3 python3-pip fonts-inter mesa-vulkan-drivers libvulkan1 vulkan-tools
           fc-cache -f
 
-      - name: Verify exact source voiceover
+      - name: Verify source voiceover from GitHub
         env:
           VO: "ElevenLabs_2026-10-02T19_04_59_Justin Time - Elearning Narration_pvc_sp90_s50_sb75_se0_b_m2.mp3"
           EXPECTED_BYTES: "659887"
-          EXPECTED_SHA256: "6b9ccd7e5b320a7ccbded19d095133b28325f7b355612c3ea55b6da86601a8bb"
+          EXPECTED_SHA256: "f2ff9f0556b3b6cf2daadd67c061ba75f41a0451f4245cab6f9f570d6a51224f"
         run: |
           test -f "$VO"
           BYTES="$(stat -c %s "$VO")"
@@ -48,6 +47,11 @@ jobs:
           cp "$VO" "Clipback_CLIP_Motion_Design/Audio/Original_Voiceover.mp3"
           cp /tmp/voice_duration.txt "Clipback_CLIP_Motion_Design/.tesseract-voice-duration.txt"
           cp voiceover_waveform.png "Clipback_CLIP_Motion_Design/Previews/Voiceover_Waveform.png"
+          {
+            echo "GitHub source SHA-256: $SHA"
+            echo "Dropbox source SHA-256 previously verified: 6b9ccd7e5b320a7ccbded19d095133b28325f7b355612c3ea55b6da86601a8bb"
+            echo "The supplied GitHub copy is not byte-identical to the previously located Dropbox file; this render uses the user-supplied GitHub file as the current source."
+          } > Clipback_CLIP_Motion_Design/.tesseract-source-note.txt
 
       - name: Install official Tesseract 0.3.1 and verify checksum
         env:
@@ -78,9 +82,9 @@ jobs:
         run: |
           if [ -f /usr/share/vulkan/icd.d/lvp_icd.x86_64.json ]; then
             echo "VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/lvp_icd.x86_64.json" >> "$GITHUB_ENV"
-            VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/lvp_icd.x86_64.json vulkaninfo --summary || true
+            VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/lvp_icd.x86_64.json vulkaninfo --summary
           else
-            vulkaninfo --summary || true
+            vulkaninfo --summary
           fi
 
       - name: Build editable Tesseract project and render
@@ -99,18 +103,18 @@ jobs:
           ffprobe -v error -show_entries stream=index,codec_type,codec_name,width,height,r_frame_rate,sample_rate,channels,duration -show_entries format=duration -of json "$FINAL" > "$PROJECT_ROOT/.tesseract-work/final_ffprobe.json"
           cat "$PROJECT_ROOT/.tesseract-work/final_ffprobe.json"
           python3 - <<'PY'
-          import json, pathlib, sys
-          p = pathlib.Path("Clipback_CLIP_Motion_Design/.tesseract-work/final_ffprobe.json")
-          data = json.loads(p.read_text())
-          streams = data.get("streams", [])
-          v = next((s for s in streams if s.get("codec_type") == "video"), None)
-          a = next((s for s in streams if s.get("codec_type") == "audio"), None)
-          assert v and a, "Missing video or audio stream"
-          assert v.get("codec_name") == "h264", v
-          assert a.get("codec_name") == "aac", a
-          assert int(v.get("width")) == 1080 and int(v.get("height")) == 1920, v
-          assert v.get("r_frame_rate") == "30/1", v
-          assert float(a.get("duration", 0)) > 0, a
+          import json
+          p="Clipback_CLIP_Motion_Design/.tesseract-work/final_ffprobe.json"
+          d=json.load(open(p))
+          streams=d.get("streams",[])
+          v=next((s for s in streams if s.get("codec_type")=="video"),None)
+          a=next((s for s in streams if s.get("codec_type")=="audio"),None)
+          assert v and a, "Missing video or audio"
+          assert v.get("codec_name")=="h264", v
+          assert a.get("codec_name")=="aac", a
+          assert int(v.get("width"))==1080 and int(v.get("height"))==1920, v
+          assert v.get("r_frame_rate")=="30/1", v
+          assert float(a.get("duration",0))>0, a
           print("Technical QA PASS")
           PY
 
