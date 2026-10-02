@@ -9,6 +9,7 @@ on:
       - ".github/workflows/clipback-tesseract-build.yml"
       - "scripts/build_clipback_tesseract.py"
       - "scripts/build_clipback_tesseract_v2.py"
+      - "scripts/build_clipback_tesseract_v3.py"
       - "ElevenLabs_2026-10-02T19_04_59_Justin Time - Elearning Narration_pvc_sp90_s50_sb75_se0_b_m2.mp3"
   workflow_dispatch:
 
@@ -64,21 +65,6 @@ jobs:
           echo "TSRCT=$TSRCT" >> "$GITHUB_ENV"
           "$TSRCT" --version
 
-      - name: Inspect Tesseract motion action schema
-        run: |
-          "$TSRCT" project schema > /tmp/tsrct-project-schema.json
-          python3 - <<'PY'
-          import json
-          s=json.load(open("/tmp/tsrct-project-schema.json"))
-          defs=s.get("$defs",{})
-          print("=== JBSetFxPositionKeyframesAction ===")
-          print(json.dumps(defs.get("JBSetFxPositionKeyframesAction"),indent=2))
-          print("=== JBPropertyKeyframeTrack ===")
-          print(json.dumps(defs.get("JBPropertyKeyframeTrack"),indent=2))
-          print("=== JBPropertyKeyframe ===")
-          print(json.dumps(defs.get("JBPropertyKeyframe"),indent=2))
-          PY
-
       - name: Verify Vulkan renderer
         run: |
           if [ -f /usr/share/vulkan/icd.d/lvp_icd.x86_64.json ]; then
@@ -88,13 +74,19 @@ jobs:
             vulkaninfo --summary
           fi
 
+      - name: Verify checked-out builder
+        run: |
+          echo "HEAD=$(git rev-parse HEAD)"
+          sha256sum scripts/build_clipback_tesseract_v3.py
+          test -f scripts/build_clipback_tesseract_v3.py
+
       - name: Build editable Tesseract project and render
         env:
           VO: "ElevenLabs_2026-10-02T19_04_59_Justin Time - Elearning Narration_pvc_sp90_s50_sb75_se0_b_m2.mp3"
           PROJECT_ROOT: "${{ github.workspace }}/Clipback_CLIP_Motion_Design"
         run: |
           rm -rf "$PROJECT_ROOT"
-          python3 scripts/build_clipback_tesseract_v2.py --tsrct "$TSRCT" --voiceover "$VO" --project-root "$PROJECT_ROOT"
+          python3 scripts/build_clipback_tesseract_v3.py --tsrct "$TSRCT" --voiceover "$VO" --project-root "$PROJECT_ROOT"
 
       - name: Technical and visual QA
         env:
