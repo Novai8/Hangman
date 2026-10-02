@@ -67,7 +67,15 @@ jobs:
       - name: Inspect Tesseract motion action schema
         run: |
           "$TSRCT" project schema > /tmp/tsrct-project-schema.json
-          grep -n -A70 -B10 "setFxPositionKeyframes" /tmp/tsrct-project-schema.json | head -n 100 || true
+          python3 - <<'PY'
+          import json
+          s=json.load(open("/tmp/tsrct-project-schema.json"))
+          defs=s.get("$defs",{})
+          print("=== JBSetFxPositionKeyframesAction ===")
+          print(json.dumps(defs.get("JBSetFxPositionKeyframesAction"),indent=2))
+          print("=== JBPropertyKeyframeTrack ===")
+          print(json.dumps(defs.get("JBPropertyKeyframeTrack"),indent=2))
+          PY
 
       - name: Verify Vulkan renderer
         run: |
