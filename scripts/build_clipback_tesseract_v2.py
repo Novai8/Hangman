@@ -64,17 +64,26 @@ def keyframe(A,i,prefix,p,keys):
     A.append({"type":"setFxPropertyKeyframes","compositionId":"main","property":{"layerId":i,"propertyType":p},"keyframes":frames})
 
 def position_path(A,i,prefix,xkeys,ykeys):
-    assert len(xkeys)==len(ykeys), (prefix,xkeys,ykeys)
-    assert [int(t) for t,_,_ in xkeys]==[int(t) for t,_,_ in ykeys], (prefix,xkeys,ykeys)
-    frames_x=[]; frames_y=[]
-    for n,(t,v,mode) in enumerate(xkeys):
-        easing={"type":"linear"} if mode=="linear" else {"type":"cubicBezier","x1":0.18,"y1":0,"x2":0.18,"y2":1}
-        frames_x.append({"id":prefix+"k"+str(n),"layerTime":int(t),"value":{"type":"float","value":float(v)},"easing":easing})
-    for n,(t,v,mode) in enumerate(ykeys):
-        easing={"type":"linear"} if mode=="linear" else {"type":"cubicBezier","x1":0.18,"y1":0,"x2":0.18,"y2":1}
-        frames_y.append({"id":prefix+"k"+str(n),"layerTime":int(t),"value":{"type":"float","value":float(v)},"easing":easing})
-    A.append({"type":"setFxPositionKeyframes","compositionId":"main","layerId":i,
-              "positionX":{"keyframes":frames_x},"positionY":{"keyframes":frames_y}})
+    # Tesseract 0.3.1 validates position as a paired spatial path. In the
+    # headless renderer that action is currently rejected even for the
+    # minimal valid shape, so preserve the intended energy with scalar
+    # transform motion instead of unsupported positional tracks.
+    times=[int(t) for t,_,_ in xkeys]
+    assert times==[int(t) for t,_,_ in ykeys], (prefix,xkeys,ykeys)
+    dur=times[-1] if times else 0
+    if dur<=0:
+        return
+    xspan=max(v for _,v,_ in xkeys)-min(v for _,v,_ in xkeys) if xkeys else 0
+    yspan=max(v for _,v,_ in ykeys)-min(v for _,v,_ in ykeys) if ykeys else 0
+    amp=0.6 if (xspan==0 or yspan==0) else 4.0
+    keyframe(A,i,prefix+"rot","rotation",[(0,-amp,"ease"),(dur//2,amp,"ease"),(dur,0,"ease")])
+    if xspan>0 and yspan==0:
+        keyframe(A,i,prefix+"pulse","scaleY",[(0,94,"ease"),(dur//2,104,"ease"),(dur,100,"ease")])
+    elif yspan>0 and xspan==0:
+        keyframe(A,i,prefix+"pulse","scaleX",[(0,94,"ease"),(dur//2,104,"ease"),(dur,100,"ease")])
+    else:
+        keyframe(A,i,prefix+"pulseX","scaleX",[(0,94,"ease"),(dur//3,102,"ease"),(int(dur*.66),98,"ease"),(dur,100,"ease")])
+        keyframe(A,i,prefix+"pulseY","scaleY",[(0,94,"ease"),(dur//3,102,"ease"),(int(dur*.66),98,"ease"),(dur,100,"ease")])
 
 def fade_in_out(A,i,dur,prefix,enter=320,exit=320):
     e=min(enter,max(1,dur//3)); x=max(e+1,dur-exit)
@@ -84,7 +93,6 @@ def reveal_text(A,i,s,e,x,y,w,h,t,size,c,fam,sty,n,enter=360):
     A.append(txt(i,n,s,e,x,y,w,h,t,size,c,fam,sty))
     dur=e-s
     fade_in_out(A,i,dur,n,enter,320)
-    position_path(A,i,n+"pos",[(0,x,"ease"),(min(400,dur//3),x,"ease"),(dur,x,"linear")],[(0,y+34,"ease"),(min(400,dur//3),y,"ease"),(dur,y,"linear")])
     keyframe(A,i,n+"x","scaleX",[(0,96,"ease"),(min(400,dur//3),100,"ease"),(dur,100,"linear")])
     return i+1
 
@@ -106,7 +114,6 @@ def dot(A,i,s,e,x,y,z,c,n,drift=70):
     A.append(rect(i,n,s,e,x,y,z,z,c))
     dur=e-s; fade_in_out(A,i,dur,n,300,260)
     position_path(A,i,n+"pos",[(0,x-drift,"linear"),(dur//2,x+drift,"linear"),(dur,x-drift,"linear")],[(0,y+drift,"linear"),(dur//2,y-drift,"linear"),(dur,y+drift,"linear")])
-    keyframe(A,i,n+"r","rotation",[(0,-8,"linear"),(dur//2,8,"linear"),(dur,0,"linear")])
     return i+1
 
 def scene_tag(A,i,s,e,num,label,F,FR):
