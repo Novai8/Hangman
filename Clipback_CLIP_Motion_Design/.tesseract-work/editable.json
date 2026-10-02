@@ -763,62 +763,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos0pulseX0",
+                "id": "ambpos0-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 100.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos0pulseX1",
-                "layerTime": 13400,
+                "id": "ambpos0-x-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 5.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos0pulseX2",
+                "id": "ambpos0-x-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 30.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos0pulseX3",
+                "id": "ambpos0-x-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 155.0
                 }
               }
             ],
@@ -827,7 +811,7 @@
           "target": {
             "kind": "layer",
             "layerId": 15,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -836,62 +820,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos0pulseY0",
+                "id": "ambpos0-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 290.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos0pulseY1",
-                "layerTime": 13400,
+                "id": "ambpos0-y-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 250.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos0pulseY2",
+                "id": "ambpos0-y-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 350.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos0pulseY3",
+                "id": "ambpos0-y-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 290.0
                 }
               }
             ],
@@ -900,7 +868,7 @@
           "target": {
             "kind": "layer",
             "layerId": 15,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -955,62 +923,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos1pulseX0",
+                "id": "ambpos1-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 890.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos1pulseX1",
-                "layerTime": 13400,
+                "id": "ambpos1-x-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 890.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos1pulseX2",
+                "id": "ambpos1-x-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 750.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos1pulseX3",
+                "id": "ambpos1-x-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 835.0
                 }
               }
             ],
@@ -1019,7 +971,7 @@
           "target": {
             "kind": "layer",
             "layerId": 16,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -1028,62 +980,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos1pulseY0",
+                "id": "ambpos1-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 250.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos1pulseY1",
-                "layerTime": 13400,
+                "id": "ambpos1-y-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 290.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos1pulseY2",
+                "id": "ambpos1-y-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 250.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos1pulseY3",
+                "id": "ambpos1-y-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 250.0
                 }
               }
             ],
@@ -1092,7 +1028,7 @@
           "target": {
             "kind": "layer",
             "layerId": 16,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -1147,62 +1083,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos2pulseX0",
+                "id": "ambpos2-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 180.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos2pulseX1",
-                "layerTime": 13400,
+                "id": "ambpos2-x-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 275.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos2pulseX2",
+                "id": "ambpos2-x-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 110.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos2pulseX3",
+                "id": "ambpos2-x-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 235.0
                 }
               }
             ],
@@ -1211,7 +1131,7 @@
           "target": {
             "kind": "layer",
             "layerId": 17,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -1220,62 +1140,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos2pulseY0",
+                "id": "ambpos2-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 980.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos2pulseY1",
-                "layerTime": 13400,
+                "id": "ambpos2-y-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 940.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos2pulseY2",
+                "id": "ambpos2-y-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 920.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos2pulseY3",
+                "id": "ambpos2-y-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 980.0
                 }
               }
             ],
@@ -1284,7 +1188,7 @@
           "target": {
             "kind": "layer",
             "layerId": 17,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -1339,62 +1243,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos3pulseX0",
+                "id": "ambpos3-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 830.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos3pulseX1",
-                "layerTime": 13400,
+                "id": "ambpos3-x-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 735.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos3pulseX2",
+                "id": "ambpos3-x-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 690.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos3pulseX3",
+                "id": "ambpos3-x-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 775.0
                 }
               }
             ],
@@ -1403,7 +1291,7 @@
           "target": {
             "kind": "layer",
             "layerId": 18,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -1412,62 +1300,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos3pulseY0",
+                "id": "ambpos3-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1120.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos3pulseY1",
-                "layerTime": 13400,
+                "id": "ambpos3-y-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1160.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos3pulseY2",
+                "id": "ambpos3-y-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 1180.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos3pulseY3",
+                "id": "ambpos3-y-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1120.0
                 }
               }
             ],
@@ -1476,7 +1348,7 @@
           "target": {
             "kind": "layer",
             "layerId": 18,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -1531,62 +1403,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos4pulseX0",
+                "id": "ambpos4-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 320.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos4pulseX1",
-                "layerTime": 13400,
+                "id": "ambpos4-x-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 320.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos4pulseX2",
+                "id": "ambpos4-x-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 250.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos4pulseX3",
+                "id": "ambpos4-x-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 375.0
                 }
               }
             ],
@@ -1595,7 +1451,7 @@
           "target": {
             "kind": "layer",
             "layerId": 19,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -1604,62 +1460,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos4pulseY0",
+                "id": "ambpos4-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1510.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos4pulseY1",
-                "layerTime": 13400,
+                "id": "ambpos4-y-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1470.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos4pulseY2",
+                "id": "ambpos4-y-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 1510.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos4pulseY3",
+                "id": "ambpos4-y-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1510.0
                 }
               }
             ],
@@ -1668,7 +1508,7 @@
           "target": {
             "kind": "layer",
             "layerId": 19,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -1723,62 +1563,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos5pulseX0",
+                "id": "ambpos5-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 950.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos5pulseX1",
-                "layerTime": 13400,
+                "id": "ambpos5-x-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1045.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos5pulseX2",
+                "id": "ambpos5-x-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 810.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos5pulseX3",
+                "id": "ambpos5-x-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 895.0
                 }
               }
             ],
@@ -1787,7 +1611,7 @@
           "target": {
             "kind": "layer",
             "layerId": 20,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -1796,62 +1620,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos5pulseY0",
+                "id": "ambpos5-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1600.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos5pulseY1",
-                "layerTime": 13400,
+                "id": "ambpos5-y-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1640.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos5pulseY2",
+                "id": "ambpos5-y-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 1540.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos5pulseY3",
+                "id": "ambpos5-y-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1600.0
                 }
               }
             ],
@@ -1860,7 +1668,7 @@
           "target": {
             "kind": "layer",
             "layerId": 20,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -1915,62 +1723,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos6pulseX0",
+                "id": "ambpos6-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 520.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos6pulseX1",
-                "layerTime": 13400,
+                "id": "ambpos6-x-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 425.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos6pulseX2",
+                "id": "ambpos6-x-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 450.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos6pulseX3",
+                "id": "ambpos6-x-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 575.0
                 }
               }
             ],
@@ -1979,7 +1771,7 @@
           "target": {
             "kind": "layer",
             "layerId": 21,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -1988,62 +1780,46 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos6pulseY0",
+                "id": "ambpos6-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 240.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos6pulseY1",
-                "layerTime": 13400,
+                "id": "ambpos6-y-1",
+                "layerTime": 13266,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 200.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos6pulseY2",
+                "id": "ambpos6-y-2",
                 "layerTime": 26533,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 300.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "ambpos6pulseY3",
+                "id": "ambpos6-y-3",
                 "layerTime": 40202,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 240.0
                 }
               }
             ],
@@ -2052,7 +1828,7 @@
           "target": {
             "kind": "layer",
             "layerId": 21,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -2961,62 +2737,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT0pospulseX0",
+                "id": "S1DOT0pos-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 30.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT0pospulseX1",
-                "layerTime": 1793,
+                "id": "S1DOT0pos-x-1",
+                "layerTime": 2690,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 230.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT0pospulseX2",
-                "layerTime": 3550,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S1DOT0pospulseX3",
+                "id": "S1DOT0pos-x-2",
                 "layerTime": 5380,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 30.0
                 }
               }
             ],
@@ -3025,7 +2774,7 @@
           "target": {
             "kind": "layer",
             "layerId": 30,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -3034,62 +2783,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT0pospulseY0",
+                "id": "S1DOT0pos-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 610.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT0pospulseY1",
-                "layerTime": 1793,
+                "id": "S1DOT0pos-y-1",
+                "layerTime": 2690,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 410.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT0pospulseY2",
-                "layerTime": 3550,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S1DOT0pospulseY3",
+                "id": "S1DOT0pos-y-2",
                 "layerTime": 5380,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 610.0
                 }
               }
             ],
@@ -3098,7 +2820,7 @@
           "target": {
             "kind": "layer",
             "layerId": 30,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -3299,62 +3021,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT1pospulseX0",
+                "id": "S1DOT1pos-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 830.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT1pospulseX1",
-                "layerTime": 1793,
+                "id": "S1DOT1pos-x-1",
+                "layerTime": 2690,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1030.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT1pospulseX2",
-                "layerTime": 3550,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S1DOT1pospulseX3",
+                "id": "S1DOT1pos-x-2",
                 "layerTime": 5380,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 830.0
                 }
               }
             ],
@@ -3363,7 +3058,7 @@
           "target": {
             "kind": "layer",
             "layerId": 32,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -3372,62 +3067,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT1pospulseY0",
+                "id": "S1DOT1pos-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 610.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT1pospulseY1",
-                "layerTime": 1793,
+                "id": "S1DOT1pos-y-1",
+                "layerTime": 2690,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 410.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT1pospulseY2",
-                "layerTime": 3550,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S1DOT1pospulseY3",
+                "id": "S1DOT1pos-y-2",
                 "layerTime": 5380,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 610.0
                 }
               }
             ],
@@ -3436,7 +3104,7 @@
           "target": {
             "kind": "layer",
             "layerId": 32,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -3637,62 +3305,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT2pospulseX0",
+                "id": "S1DOT2pos-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 60.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT2pospulseX1",
-                "layerTime": 1793,
+                "id": "S1DOT2pos-x-1",
+                "layerTime": 2690,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 260.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT2pospulseX2",
-                "layerTime": 3550,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S1DOT2pospulseX3",
+                "id": "S1DOT2pos-x-2",
                 "layerTime": 5380,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 60.0
                 }
               }
             ],
@@ -3701,7 +3342,7 @@
           "target": {
             "kind": "layer",
             "layerId": 34,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -3710,62 +3351,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT2pospulseY0",
+                "id": "S1DOT2pos-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1340.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT2pospulseY1",
-                "layerTime": 1793,
+                "id": "S1DOT2pos-y-1",
+                "layerTime": 2690,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1140.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT2pospulseY2",
-                "layerTime": 3550,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S1DOT2pospulseY3",
+                "id": "S1DOT2pos-y-2",
                 "layerTime": 5380,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1340.0
                 }
               }
             ],
@@ -3774,7 +3388,7 @@
           "target": {
             "kind": "layer",
             "layerId": 34,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -3975,62 +3589,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT3pospulseX0",
+                "id": "S1DOT3pos-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 800.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT3pospulseX1",
-                "layerTime": 1793,
+                "id": "S1DOT3pos-x-1",
+                "layerTime": 2690,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1000.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT3pospulseX2",
-                "layerTime": 3550,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S1DOT3pospulseX3",
+                "id": "S1DOT3pos-x-2",
                 "layerTime": 5380,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 800.0
                 }
               }
             ],
@@ -4039,7 +3626,7 @@
           "target": {
             "kind": "layer",
             "layerId": 36,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -4048,62 +3635,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT3pospulseY0",
+                "id": "S1DOT3pos-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1330.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT3pospulseY1",
-                "layerTime": 1793,
+                "id": "S1DOT3pos-y-1",
+                "layerTime": 2690,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1130.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT3pospulseY2",
-                "layerTime": 3550,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S1DOT3pospulseY3",
+                "id": "S1DOT3pos-y-2",
                 "layerTime": 5380,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1330.0
                 }
               }
             ],
@@ -4112,7 +3672,7 @@
           "target": {
             "kind": "layer",
             "layerId": 36,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -4313,62 +3873,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT4pospulseX0",
+                "id": "S1DOT4pos-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 430.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT4pospulseX1",
-                "layerTime": 1793,
+                "id": "S1DOT4pos-x-1",
+                "layerTime": 2690,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 630.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT4pospulseX2",
-                "layerTime": 3550,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S1DOT4pospulseX3",
+                "id": "S1DOT4pos-x-2",
                 "layerTime": 5380,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 430.0
                 }
               }
             ],
@@ -4377,7 +3910,7 @@
           "target": {
             "kind": "layer",
             "layerId": 38,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -4386,62 +3919,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT4pospulseY0",
+                "id": "S1DOT4pos-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 490.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT4pospulseY1",
-                "layerTime": 1793,
+                "id": "S1DOT4pos-y-1",
+                "layerTime": 2690,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 290.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT4pospulseY2",
-                "layerTime": 3550,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S1DOT4pospulseY3",
+                "id": "S1DOT4pos-y-2",
                 "layerTime": 5380,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 490.0
                 }
               }
             ],
@@ -4450,7 +3956,7 @@
           "target": {
             "kind": "layer",
             "layerId": 38,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -4651,62 +4157,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT5pospulseX0",
+                "id": "S1DOT5pos-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 430.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT5pospulseX1",
-                "layerTime": 1793,
+                "id": "S1DOT5pos-x-1",
+                "layerTime": 2690,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 630.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT5pospulseX2",
-                "layerTime": 3550,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S1DOT5pospulseX3",
+                "id": "S1DOT5pos-x-2",
                 "layerTime": 5380,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 430.0
                 }
               }
             ],
@@ -4715,7 +4194,7 @@
           "target": {
             "kind": "layer",
             "layerId": 40,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -4724,62 +4203,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT5pospulseY0",
+                "id": "S1DOT5pos-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1480.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT5pospulseY1",
-                "layerTime": 1793,
+                "id": "S1DOT5pos-y-1",
+                "layerTime": 2690,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1280.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S1DOT5pospulseY2",
-                "layerTime": 3550,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S1DOT5pospulseY3",
+                "id": "S1DOT5pos-y-2",
                 "layerTime": 5380,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1480.0
                 }
               }
             ],
@@ -4788,7 +4240,7 @@
           "target": {
             "kind": "layer",
             "layerId": 40,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -7781,11 +7233,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s2cursorpulseX0",
+                "id": "s2cursor-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 515.0
                 }
               },
               {
@@ -7796,11 +7248,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s2cursorpulseX1",
-                "layerTime": 2000,
+                "id": "s2cursor-x-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 760.0
                 }
               },
               {
@@ -7811,11 +7263,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s2cursorpulseX2",
-                "layerTime": 3960,
+                "id": "s2cursor-x-2",
+                "layerTime": 1600,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 300.0
                 }
               },
               {
@@ -7826,11 +7278,26 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s2cursorpulseX3",
+                "id": "s2cursor-x-3",
+                "layerTime": 2400,
+                "value": {
+                  "type": "float",
+                  "value": 760.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.18,
+                  "x2": 0.18,
+                  "y1": 0.0,
+                  "y2": 1.0
+                },
+                "id": "s2cursor-x-4",
                 "layerTime": 6000,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 515.0
                 }
               }
             ],
@@ -7839,7 +7306,7 @@
           "target": {
             "kind": "layer",
             "layerId": 66,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -7854,11 +7321,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s2cursorpulseY0",
+                "id": "s2cursor-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 655.0
                 }
               },
               {
@@ -7869,11 +7336,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s2cursorpulseY1",
-                "layerTime": 2000,
+                "id": "s2cursor-y-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 570.0
                 }
               },
               {
@@ -7884,11 +7351,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s2cursorpulseY2",
-                "layerTime": 3960,
+                "id": "s2cursor-y-2",
+                "layerTime": 1600,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 1060.0
                 }
               },
               {
@@ -7899,11 +7366,26 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s2cursorpulseY3",
+                "id": "s2cursor-y-3",
+                "layerTime": 2400,
+                "value": {
+                  "type": "float",
+                  "value": 1010.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.18,
+                  "x2": 0.18,
+                  "y1": 0.0,
+                  "y2": 1.0
+                },
+                "id": "s2cursor-y-4",
                 "layerTime": 6000,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 655.0
                 }
               }
             ],
@@ -7912,7 +7394,7 @@
           "target": {
             "kind": "layer",
             "layerId": 66,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -8960,62 +8442,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S3SPLITpospulseX0",
+                "id": "S3SPLITpos-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 455.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S3SPLITpospulseX1",
-                "layerTime": 1300,
+                "id": "S3SPLITpos-x-1",
+                "layerTime": 1950,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 595.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S3SPLITpospulseX2",
-                "layerTime": 2574,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S3SPLITpospulseX3",
+                "id": "S3SPLITpos-x-2",
                 "layerTime": 3900,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 455.0
                 }
               }
             ],
@@ -9024,7 +8479,7 @@
           "target": {
             "kind": "layer",
             "layerId": 78,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -9033,62 +8488,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S3SPLITpospulseY0",
+                "id": "S3SPLITpos-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1000.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S3SPLITpospulseY1",
-                "layerTime": 1300,
+                "id": "S3SPLITpos-y-1",
+                "layerTime": 1950,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 860.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S3SPLITpospulseY2",
-                "layerTime": 2574,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S3SPLITpospulseY3",
+                "id": "S3SPLITpos-y-2",
                 "layerTime": 3900,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1000.0
                 }
               }
             ],
@@ -9097,7 +8525,7 @@
           "target": {
             "kind": "layer",
             "layerId": 78,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -10819,11 +10247,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos0pulseX0",
+                "id": "s4pos0-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 135.0
                 }
               },
               {
@@ -10834,11 +10262,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos0pulseX1",
-                "layerTime": 2766,
+                "id": "s4pos0-x-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 650.0
                 }
               },
               {
@@ -10849,26 +10277,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos0pulseX2",
-                "layerTime": 5478,
+                "id": "s4pos0-x-2",
+                "layerTime": 1500,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 850.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos0pulseX3",
+                "id": "s4pos0-x-3",
                 "layerTime": 8300,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 930.0
                 }
               }
             ],
@@ -10877,7 +10301,7 @@
           "target": {
             "kind": "layer",
             "layerId": 96,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -10886,17 +10310,13 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos0pulseY0",
+                "id": "s4pos0-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1340.0
                 }
               },
               {
@@ -10907,11 +10327,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos0pulseY1",
-                "layerTime": 2766,
+                "id": "s4pos0-y-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1280.0
                 }
               },
               {
@@ -10922,26 +10342,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos0pulseY2",
-                "layerTime": 5478,
+                "id": "s4pos0-y-2",
+                "layerTime": 1500,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 1370.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos0pulseY3",
+                "id": "s4pos0-y-3",
                 "layerTime": 8300,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1320.0
                 }
               }
             ],
@@ -10950,7 +10366,7 @@
           "target": {
             "kind": "layer",
             "layerId": 96,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -10965,11 +10381,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos1pulseX0",
+                "id": "s4pos1-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 183.0
                 }
               },
               {
@@ -10980,11 +10396,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos1pulseX1",
-                "layerTime": 2766,
+                "id": "s4pos1-x-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 685.0
                 }
               },
               {
@@ -10995,26 +10411,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos1pulseX2",
-                "layerTime": 5478,
+                "id": "s4pos1-x-2",
+                "layerTime": 1500,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 865.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos1pulseX3",
+                "id": "s4pos1-x-3",
                 "layerTime": 8300,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 930.0
                 }
               }
             ],
@@ -11023,7 +10435,7 @@
           "target": {
             "kind": "layer",
             "layerId": 97,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -11032,17 +10444,13 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos1pulseY0",
+                "id": "s4pos1-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1340.0
                 }
               },
               {
@@ -11053,11 +10461,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos1pulseY1",
-                "layerTime": 2766,
+                "id": "s4pos1-y-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1260.0
                 }
               },
               {
@@ -11068,26 +10476,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos1pulseY2",
-                "layerTime": 5478,
+                "id": "s4pos1-y-2",
+                "layerTime": 1500,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 1370.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos1pulseY3",
+                "id": "s4pos1-y-3",
                 "layerTime": 8300,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1320.0
                 }
               }
             ],
@@ -11096,7 +10500,7 @@
           "target": {
             "kind": "layer",
             "layerId": 97,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -11111,11 +10515,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos2pulseX0",
+                "id": "s4pos2-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 231.0
                 }
               },
               {
@@ -11126,11 +10530,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos2pulseX1",
-                "layerTime": 2766,
+                "id": "s4pos2-x-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 720.0
                 }
               },
               {
@@ -11141,26 +10545,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos2pulseX2",
-                "layerTime": 5478,
+                "id": "s4pos2-x-2",
+                "layerTime": 1500,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 880.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos2pulseX3",
+                "id": "s4pos2-x-3",
                 "layerTime": 8300,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 930.0
                 }
               }
             ],
@@ -11169,7 +10569,7 @@
           "target": {
             "kind": "layer",
             "layerId": 98,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -11178,17 +10578,13 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos2pulseY0",
+                "id": "s4pos2-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1340.0
                 }
               },
               {
@@ -11199,11 +10595,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos2pulseY1",
-                "layerTime": 2766,
+                "id": "s4pos2-y-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1240.0
                 }
               },
               {
@@ -11214,26 +10610,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos2pulseY2",
-                "layerTime": 5478,
+                "id": "s4pos2-y-2",
+                "layerTime": 1500,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 1370.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos2pulseY3",
+                "id": "s4pos2-y-3",
                 "layerTime": 8300,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1320.0
                 }
               }
             ],
@@ -11242,7 +10634,7 @@
           "target": {
             "kind": "layer",
             "layerId": 98,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -11257,11 +10649,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos3pulseX0",
+                "id": "s4pos3-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 279.0
                 }
               },
               {
@@ -11272,11 +10664,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos3pulseX1",
-                "layerTime": 2766,
+                "id": "s4pos3-x-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 755.0
                 }
               },
               {
@@ -11287,26 +10679,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos3pulseX2",
-                "layerTime": 5478,
+                "id": "s4pos3-x-2",
+                "layerTime": 1500,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 895.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos3pulseX3",
+                "id": "s4pos3-x-3",
                 "layerTime": 8300,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 930.0
                 }
               }
             ],
@@ -11315,7 +10703,7 @@
           "target": {
             "kind": "layer",
             "layerId": 99,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -11324,17 +10712,13 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos3pulseY0",
+                "id": "s4pos3-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1340.0
                 }
               },
               {
@@ -11345,11 +10729,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos3pulseY1",
-                "layerTime": 2766,
+                "id": "s4pos3-y-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1220.0
                 }
               },
               {
@@ -11360,26 +10744,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos3pulseY2",
-                "layerTime": 5478,
+                "id": "s4pos3-y-2",
+                "layerTime": 1500,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 1370.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos3pulseY3",
+                "id": "s4pos3-y-3",
                 "layerTime": 8300,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1320.0
                 }
               }
             ],
@@ -11388,7 +10768,7 @@
           "target": {
             "kind": "layer",
             "layerId": 99,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -11403,11 +10783,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos4pulseX0",
+                "id": "s4pos4-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 327.0
                 }
               },
               {
@@ -11418,11 +10798,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos4pulseX1",
-                "layerTime": 2766,
+                "id": "s4pos4-x-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 790.0
                 }
               },
               {
@@ -11433,26 +10813,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos4pulseX2",
-                "layerTime": 5478,
+                "id": "s4pos4-x-2",
+                "layerTime": 1500,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 910.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos4pulseX3",
+                "id": "s4pos4-x-3",
                 "layerTime": 8300,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 930.0
                 }
               }
             ],
@@ -11461,7 +10837,7 @@
           "target": {
             "kind": "layer",
             "layerId": 100,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -11470,17 +10846,13 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos4pulseY0",
+                "id": "s4pos4-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1340.0
                 }
               },
               {
@@ -11491,11 +10863,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos4pulseY1",
-                "layerTime": 2766,
+                "id": "s4pos4-y-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1200.0
                 }
               },
               {
@@ -11506,26 +10878,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos4pulseY2",
-                "layerTime": 5478,
+                "id": "s4pos4-y-2",
+                "layerTime": 1500,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 1370.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos4pulseY3",
+                "id": "s4pos4-y-3",
                 "layerTime": 8300,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1320.0
                 }
               }
             ],
@@ -11534,7 +10902,7 @@
           "target": {
             "kind": "layer",
             "layerId": 100,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -11549,11 +10917,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos5pulseX0",
+                "id": "s4pos5-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 375.0
                 }
               },
               {
@@ -11564,11 +10932,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos5pulseX1",
-                "layerTime": 2766,
+                "id": "s4pos5-x-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 825.0
                 }
               },
               {
@@ -11579,26 +10947,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos5pulseX2",
-                "layerTime": 5478,
+                "id": "s4pos5-x-2",
+                "layerTime": 1500,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 925.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos5pulseX3",
+                "id": "s4pos5-x-3",
                 "layerTime": 8300,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 930.0
                 }
               }
             ],
@@ -11607,7 +10971,7 @@
           "target": {
             "kind": "layer",
             "layerId": 101,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -11616,17 +10980,13 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos5pulseY0",
+                "id": "s4pos5-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1340.0
                 }
               },
               {
@@ -11637,11 +10997,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos5pulseY1",
-                "layerTime": 2766,
+                "id": "s4pos5-y-1",
+                "layerTime": 800,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1180.0
                 }
               },
               {
@@ -11652,26 +11012,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s4pos5pulseY2",
-                "layerTime": 5478,
+                "id": "s4pos5-y-2",
+                "layerTime": 1500,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 1370.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s4pos5pulseY3",
+                "id": "s4pos5-y-3",
                 "layerTime": 8300,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1320.0
                 }
               }
             ],
@@ -11680,7 +11036,7 @@
           "target": {
             "kind": "layer",
             "layerId": 101,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -14110,11 +13466,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos0pulseX0",
+                "id": "s5pos0-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 265.0
                 }
               },
               {
@@ -14125,11 +13481,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos0pulseX1",
-                "layerTime": 2266,
+                "id": "s5pos0-x-1",
+                "layerTime": 900,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 300.0
                 }
               },
               {
@@ -14140,11 +13496,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos0pulseX2",
-                "layerTime": 4488,
+                "id": "s5pos0-x-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 265.0
                 }
               },
               {
@@ -14155,11 +13511,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos0pulseX3",
+                "id": "s5pos0-x-3",
                 "layerTime": 6800,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 300.0
                 }
               }
             ],
@@ -14168,7 +13524,7 @@
           "target": {
             "kind": "layer",
             "layerId": 120,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -14183,11 +13539,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos0pulseY0",
+                "id": "s5pos0-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 744.0
                 }
               },
               {
@@ -14198,11 +13554,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos0pulseY1",
-                "layerTime": 2266,
+                "id": "s5pos0-y-1",
+                "layerTime": 900,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 634.0
                 }
               },
               {
@@ -14213,11 +13569,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos0pulseY2",
-                "layerTime": 4488,
+                "id": "s5pos0-y-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 744.0
                 }
               },
               {
@@ -14228,11 +13584,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos0pulseY3",
+                "id": "s5pos0-y-3",
                 "layerTime": 6800,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 634.0
                 }
               }
             ],
@@ -14241,7 +13597,7 @@
           "target": {
             "kind": "layer",
             "layerId": 120,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -14379,11 +13735,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos1pulseX0",
+                "id": "s5pos1-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 455.0
                 }
               },
               {
@@ -14394,11 +13750,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos1pulseX1",
-                "layerTime": 2266,
+                "id": "s5pos1-x-1",
+                "layerTime": 900,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 500.0
                 }
               },
               {
@@ -14409,11 +13765,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos1pulseX2",
-                "layerTime": 4488,
+                "id": "s5pos1-x-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 455.0
                 }
               },
               {
@@ -14424,11 +13780,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos1pulseX3",
+                "id": "s5pos1-x-3",
                 "layerTime": 6800,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 500.0
                 }
               }
             ],
@@ -14437,7 +13793,7 @@
           "target": {
             "kind": "layer",
             "layerId": 122,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -14452,11 +13808,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos1pulseY0",
+                "id": "s5pos1-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 634.0
                 }
               },
               {
@@ -14467,11 +13823,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos1pulseY1",
-                "layerTime": 2266,
+                "id": "s5pos1-y-1",
+                "layerTime": 900,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 744.0
                 }
               },
               {
@@ -14482,11 +13838,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos1pulseY2",
-                "layerTime": 4488,
+                "id": "s5pos1-y-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 634.0
                 }
               },
               {
@@ -14497,11 +13853,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos1pulseY3",
+                "id": "s5pos1-y-3",
                 "layerTime": 6800,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 744.0
                 }
               }
             ],
@@ -14510,7 +13866,7 @@
           "target": {
             "kind": "layer",
             "layerId": 122,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -14648,11 +14004,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos2pulseX0",
+                "id": "s5pos2-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 655.0
                 }
               },
               {
@@ -14663,11 +14019,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos2pulseX1",
-                "layerTime": 2266,
+                "id": "s5pos2-x-1",
+                "layerTime": 900,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 700.0
                 }
               },
               {
@@ -14678,11 +14034,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos2pulseX2",
-                "layerTime": 4488,
+                "id": "s5pos2-x-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 655.0
                 }
               },
               {
@@ -14693,11 +14049,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos2pulseX3",
+                "id": "s5pos2-x-3",
                 "layerTime": 6800,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 700.0
                 }
               }
             ],
@@ -14706,7 +14062,7 @@
           "target": {
             "kind": "layer",
             "layerId": 124,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -14721,11 +14077,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos2pulseY0",
+                "id": "s5pos2-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 744.0
                 }
               },
               {
@@ -14736,11 +14092,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos2pulseY1",
-                "layerTime": 2266,
+                "id": "s5pos2-y-1",
+                "layerTime": 900,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 634.0
                 }
               },
               {
@@ -14751,11 +14107,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos2pulseY2",
-                "layerTime": 4488,
+                "id": "s5pos2-y-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 744.0
                 }
               },
               {
@@ -14766,11 +14122,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos2pulseY3",
+                "id": "s5pos2-y-3",
                 "layerTime": 6800,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 634.0
                 }
               }
             ],
@@ -14779,7 +14135,7 @@
           "target": {
             "kind": "layer",
             "layerId": 124,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -14917,11 +14273,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos3pulseX0",
+                "id": "s5pos3-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 655.0
                 }
               },
               {
@@ -14932,11 +14288,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos3pulseX1",
-                "layerTime": 2266,
+                "id": "s5pos3-x-1",
+                "layerTime": 900,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 700.0
                 }
               },
               {
@@ -14947,11 +14303,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos3pulseX2",
-                "layerTime": 4488,
+                "id": "s5pos3-x-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 655.0
                 }
               },
               {
@@ -14962,11 +14318,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos3pulseX3",
+                "id": "s5pos3-x-3",
                 "layerTime": 6800,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 700.0
                 }
               }
             ],
@@ -14975,7 +14331,7 @@
           "target": {
             "kind": "layer",
             "layerId": 126,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -14990,11 +14346,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos3pulseY0",
+                "id": "s5pos3-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 744.0
                 }
               },
               {
@@ -15005,11 +14361,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos3pulseY1",
-                "layerTime": 2266,
+                "id": "s5pos3-y-1",
+                "layerTime": 900,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 894.0
                 }
               },
               {
@@ -15020,11 +14376,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos3pulseY2",
-                "layerTime": 4488,
+                "id": "s5pos3-y-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 744.0
                 }
               },
               {
@@ -15035,11 +14391,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos3pulseY3",
+                "id": "s5pos3-y-3",
                 "layerTime": 6800,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 894.0
                 }
               }
             ],
@@ -15048,7 +14404,7 @@
           "target": {
             "kind": "layer",
             "layerId": 126,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -15186,11 +14542,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos4pulseX0",
+                "id": "s5pos4-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 855.0
                 }
               },
               {
@@ -15201,11 +14557,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos4pulseX1",
-                "layerTime": 2266,
+                "id": "s5pos4-x-1",
+                "layerTime": 900,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 885.0
                 }
               },
               {
@@ -15216,11 +14572,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos4pulseX2",
-                "layerTime": 4488,
+                "id": "s5pos4-x-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 855.0
                 }
               },
               {
@@ -15231,11 +14587,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos4pulseX3",
+                "id": "s5pos4-x-3",
                 "layerTime": 6800,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 885.0
                 }
               }
             ],
@@ -15244,7 +14600,7 @@
           "target": {
             "kind": "layer",
             "layerId": 128,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -15259,11 +14615,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos4pulseY0",
+                "id": "s5pos4-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 634.0
                 }
               },
               {
@@ -15274,11 +14630,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos4pulseY1",
-                "layerTime": 2266,
+                "id": "s5pos4-y-1",
+                "layerTime": 900,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 744.0
                 }
               },
               {
@@ -15289,11 +14645,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos4pulseY2",
-                "layerTime": 4488,
+                "id": "s5pos4-y-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 634.0
                 }
               },
               {
@@ -15304,11 +14660,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s5pos4pulseY3",
+                "id": "s5pos4-y-3",
                 "layerTime": 6800,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 744.0
                 }
               }
             ],
@@ -15317,7 +14673,7 @@
           "target": {
             "kind": "layer",
             "layerId": 128,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -16787,62 +16143,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB0pospulseX0",
+                "id": "S6ORB0pos-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 145.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB0pospulseX1",
-                "layerTime": 2086,
+                "id": "S6ORB0pos-x-1",
+                "layerTime": 3130,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 305.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB0pospulseX2",
-                "layerTime": 4131,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S6ORB0pospulseX3",
+                "id": "S6ORB0pos-x-2",
                 "layerTime": 6260,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 145.0
                 }
               }
             ],
@@ -16851,7 +16180,7 @@
           "target": {
             "kind": "layer",
             "layerId": 140,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -16860,62 +16189,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB0pospulseY0",
+                "id": "S6ORB0pos-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 750.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB0pospulseY1",
-                "layerTime": 2086,
+                "id": "S6ORB0pos-y-1",
+                "layerTime": 3130,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 590.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB0pospulseY2",
-                "layerTime": 4131,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S6ORB0pospulseY3",
+                "id": "S6ORB0pos-y-2",
                 "layerTime": 6260,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 750.0
                 }
               }
             ],
@@ -16924,7 +16226,7 @@
           "target": {
             "kind": "layer",
             "layerId": 140,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -17125,62 +16427,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB1pospulseX0",
+                "id": "S6ORB1pos-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 775.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB1pospulseX1",
-                "layerTime": 2050,
+                "id": "S6ORB1pos-x-1",
+                "layerTime": 3075,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 935.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB1pospulseX2",
-                "layerTime": 4059,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S6ORB1pospulseX3",
+                "id": "S6ORB1pos-x-2",
                 "layerTime": 6150,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 775.0
                 }
               }
             ],
@@ -17189,7 +16464,7 @@
           "target": {
             "kind": "layer",
             "layerId": 142,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -17198,62 +16473,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB1pospulseY0",
+                "id": "S6ORB1pos-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 750.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB1pospulseY1",
-                "layerTime": 2050,
+                "id": "S6ORB1pos-y-1",
+                "layerTime": 3075,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 590.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB1pospulseY2",
-                "layerTime": 4059,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S6ORB1pospulseY3",
+                "id": "S6ORB1pos-y-2",
                 "layerTime": 6150,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 750.0
                 }
               }
             ],
@@ -17262,7 +16510,7 @@
           "target": {
             "kind": "layer",
             "layerId": 142,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -17463,62 +16711,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB2pospulseX0",
+                "id": "S6ORB2pos-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 160.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB2pospulseX1",
-                "layerTime": 2013,
+                "id": "S6ORB2pos-x-1",
+                "layerTime": 3020,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 320.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB2pospulseX2",
-                "layerTime": 3986,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S6ORB2pospulseX3",
+                "id": "S6ORB2pos-x-2",
                 "layerTime": 6040,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 160.0
                 }
               }
             ],
@@ -17527,7 +16748,7 @@
           "target": {
             "kind": "layer",
             "layerId": 144,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -17536,62 +16757,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB2pospulseY0",
+                "id": "S6ORB2pos-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1170.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB2pospulseY1",
-                "layerTime": 2013,
+                "id": "S6ORB2pos-y-1",
+                "layerTime": 3020,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1010.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB2pospulseY2",
-                "layerTime": 3986,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S6ORB2pospulseY3",
+                "id": "S6ORB2pos-y-2",
                 "layerTime": 6040,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1170.0
                 }
               }
             ],
@@ -17600,7 +16794,7 @@
           "target": {
             "kind": "layer",
             "layerId": 144,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -17801,62 +16995,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB3pospulseX0",
+                "id": "S6ORB3pos-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 760.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB3pospulseX1",
-                "layerTime": 1976,
+                "id": "S6ORB3pos-x-1",
+                "layerTime": 2965,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 920.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB3pospulseX2",
-                "layerTime": 3913,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S6ORB3pospulseX3",
+                "id": "S6ORB3pos-x-2",
                 "layerTime": 5930,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 760.0
                 }
               }
             ],
@@ -17865,7 +17032,7 @@
           "target": {
             "kind": "layer",
             "layerId": 146,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -17874,62 +17041,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB3pospulseY0",
+                "id": "S6ORB3pos-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1170.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB3pospulseY1",
-                "layerTime": 1976,
+                "id": "S6ORB3pos-y-1",
+                "layerTime": 2965,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 1010.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB3pospulseY2",
-                "layerTime": 3913,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S6ORB3pospulseY3",
+                "id": "S6ORB3pos-y-2",
                 "layerTime": 5930,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 1170.0
                 }
               }
             ],
@@ -17938,7 +17078,7 @@
           "target": {
             "kind": "layer",
             "layerId": 146,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -18139,62 +17279,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB4pospulseX0",
+                "id": "S6ORB4pos-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 460.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB4pospulseX1",
-                "layerTime": 1940,
+                "id": "S6ORB4pos-x-1",
+                "layerTime": 2910,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 620.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB4pospulseX2",
-                "layerTime": 3841,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S6ORB4pospulseX3",
+                "id": "S6ORB4pos-x-2",
                 "layerTime": 5820,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 460.0
                 }
               }
             ],
@@ -18203,7 +17316,7 @@
           "target": {
             "kind": "layer",
             "layerId": 148,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -18212,62 +17325,35 @@
             "keyframes": [
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB4pospulseY0",
+                "id": "S6ORB4pos-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 580.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB4pospulseY1",
-                "layerTime": 1940,
+                "id": "S6ORB4pos-y-1",
+                "layerTime": 2910,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 420.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "S6ORB4pospulseY2",
-                "layerTime": 3841,
-                "value": {
-                  "type": "float",
-                  "value": 98.0
-                }
-              },
-              {
-                "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
-                },
-                "id": "S6ORB4pospulseY3",
+                "id": "S6ORB4pos-y-2",
                 "layerTime": 5820,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 580.0
                 }
               }
             ],
@@ -18276,7 +17362,7 @@
           "target": {
             "kind": "layer",
             "layerId": 148,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -18906,11 +17992,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos0pulseX0",
+                "id": "s7pos0-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 130.0
                 }
               },
               {
@@ -18921,11 +18007,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos0pulseX1",
-                "layerTime": 2167,
+                "id": "s7pos0-x-1",
+                "layerTime": 850,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 540.0
                 }
               },
               {
@@ -18936,26 +18022,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos0pulseX2",
-                "layerTime": 4291,
+                "id": "s7pos0-x-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 540.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s7pos0pulseX3",
+                "id": "s7pos0-x-3",
                 "layerTime": 6502,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 540.0
                 }
               }
             ],
@@ -18964,7 +18046,7 @@
           "target": {
             "kind": "layer",
             "layerId": 155,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -18979,11 +18061,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos0pulseY0",
+                "id": "s7pos0-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 600.0
                 }
               },
               {
@@ -18994,11 +18076,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos0pulseY1",
-                "layerTime": 2167,
+                "id": "s7pos0-y-1",
+                "layerTime": 850,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 935.0
                 }
               },
               {
@@ -19009,26 +18091,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos0pulseY2",
-                "layerTime": 4291,
+                "id": "s7pos0-y-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 935.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s7pos0pulseY3",
+                "id": "s7pos0-y-3",
                 "layerTime": 6502,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 935.0
                 }
               }
             ],
@@ -19037,7 +18115,7 @@
           "target": {
             "kind": "layer",
             "layerId": 155,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -19175,11 +18253,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos1pulseX0",
+                "id": "s7pos1-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 950.0
                 }
               },
               {
@@ -19190,11 +18268,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos1pulseX1",
-                "layerTime": 2167,
+                "id": "s7pos1-x-1",
+                "layerTime": 850,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 540.0
                 }
               },
               {
@@ -19205,26 +18283,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos1pulseX2",
-                "layerTime": 4291,
+                "id": "s7pos1-x-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 540.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s7pos1pulseX3",
+                "id": "s7pos1-x-3",
                 "layerTime": 6502,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 540.0
                 }
               }
             ],
@@ -19233,7 +18307,7 @@
           "target": {
             "kind": "layer",
             "layerId": 157,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -19248,11 +18322,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos1pulseY0",
+                "id": "s7pos1-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 600.0
                 }
               },
               {
@@ -19263,11 +18337,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos1pulseY1",
-                "layerTime": 2167,
+                "id": "s7pos1-y-1",
+                "layerTime": 850,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 935.0
                 }
               },
               {
@@ -19278,26 +18352,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos1pulseY2",
-                "layerTime": 4291,
+                "id": "s7pos1-y-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 935.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s7pos1pulseY3",
+                "id": "s7pos1-y-3",
                 "layerTime": 6502,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 935.0
                 }
               }
             ],
@@ -19306,7 +18376,7 @@
           "target": {
             "kind": "layer",
             "layerId": 157,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -19444,11 +18514,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos2pulseX0",
+                "id": "s7pos2-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 170.0
                 }
               },
               {
@@ -19459,11 +18529,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos2pulseX1",
-                "layerTime": 2167,
+                "id": "s7pos2-x-1",
+                "layerTime": 850,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 540.0
                 }
               },
               {
@@ -19474,26 +18544,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos2pulseX2",
-                "layerTime": 4291,
+                "id": "s7pos2-x-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 540.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s7pos2pulseX3",
+                "id": "s7pos2-x-3",
                 "layerTime": 6502,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 540.0
                 }
               }
             ],
@@ -19502,7 +18568,7 @@
           "target": {
             "kind": "layer",
             "layerId": 159,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -19517,11 +18583,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos2pulseY0",
+                "id": "s7pos2-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1320.0
                 }
               },
               {
@@ -19532,11 +18598,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos2pulseY1",
-                "layerTime": 2167,
+                "id": "s7pos2-y-1",
+                "layerTime": 850,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 935.0
                 }
               },
               {
@@ -19547,26 +18613,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos2pulseY2",
-                "layerTime": 4291,
+                "id": "s7pos2-y-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 935.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s7pos2pulseY3",
+                "id": "s7pos2-y-3",
                 "layerTime": 6502,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 935.0
                 }
               }
             ],
@@ -19575,7 +18637,7 @@
           "target": {
             "kind": "layer",
             "layerId": 159,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
@@ -19713,11 +18775,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos3pulseX0",
+                "id": "s7pos3-x-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 910.0
                 }
               },
               {
@@ -19728,11 +18790,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos3pulseX1",
-                "layerTime": 2167,
+                "id": "s7pos3-x-1",
+                "layerTime": 850,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 540.0
                 }
               },
               {
@@ -19743,26 +18805,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos3pulseX2",
-                "layerTime": 4291,
+                "id": "s7pos3-x-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 540.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s7pos3pulseX3",
+                "id": "s7pos3-x-3",
                 "layerTime": 6502,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 540.0
                 }
               }
             ],
@@ -19771,7 +18829,7 @@
           "target": {
             "kind": "layer",
             "layerId": 161,
-            "propertyType": "scaleX"
+            "propertyType": "positionX"
           }
         },
         {
@@ -19786,11 +18844,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos3pulseY0",
+                "id": "s7pos3-y-0",
                 "layerTime": 0,
                 "value": {
                   "type": "float",
-                  "value": 94.0
+                  "value": 1320.0
                 }
               },
               {
@@ -19801,11 +18859,11 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos3pulseY1",
-                "layerTime": 2167,
+                "id": "s7pos3-y-1",
+                "layerTime": 850,
                 "value": {
                   "type": "float",
-                  "value": 102.0
+                  "value": 935.0
                 }
               },
               {
@@ -19816,26 +18874,22 @@
                   "y1": 0.0,
                   "y2": 1.0
                 },
-                "id": "s7pos3pulseY2",
-                "layerTime": 4291,
+                "id": "s7pos3-y-2",
+                "layerTime": 1800,
                 "value": {
                   "type": "float",
-                  "value": 98.0
+                  "value": 935.0
                 }
               },
               {
                 "easing": {
-                  "type": "cubicBezier",
-                  "x1": 0.18,
-                  "x2": 0.18,
-                  "y1": 0.0,
-                  "y2": 1.0
+                  "type": "linear"
                 },
-                "id": "s7pos3pulseY3",
+                "id": "s7pos3-y-3",
                 "layerTime": 6502,
                 "value": {
                   "type": "float",
-                  "value": 100.0
+                  "value": 935.0
                 }
               }
             ],
@@ -19844,7 +18898,7 @@
           "target": {
             "kind": "layer",
             "layerId": 161,
-            "propertyType": "scaleY"
+            "propertyType": "positionY"
           }
         },
         {
