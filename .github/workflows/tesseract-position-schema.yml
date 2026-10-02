@@ -1,4 +1,4 @@
-# Triggered schema probe for native XY motion
+# Probe the exact native XY position action schema in Tesseract 0.3.1
 name: Probe Tesseract Spatial Position Schema
 
 on:
@@ -31,15 +31,26 @@ jobs:
           echo "TSRCT=$TSRCT" >> "$GITHUB_ENV"
           "$TSRCT" --version
 
-      - name: Extract spatial keyframe schema
+      - name: Extract exact spatial keyframe schema
         run: |
           "$TSRCT" project schema > /tmp/schema.json
           python3 - <<'PY'
           import json
           d=json.load(open('/tmp/schema.json'))
           defs=d.get('$defs',{})
-          names=[k for k in defs if 'Position' in k or 'position' in k or 'Spatial' in k or 'spatial' in k]
-          for name in names:
+          for name in [
+              "JBSetFxPositionKeyframesAction",
+              "JBPropertyKeyframeTrack",
+              "JBPropertyKeyframe",
+              "JBBezierControl",
+              "JBKeyframeValue",
+          ]:
               print("\n=== DEF",name,"===")
-              print(json.dumps(defs[name],indent=2))
+              print(json.dumps(defs.get(name, {"missing": True}),indent=2))
+          print("\n=== RELATED DEFINITIONS ===")
+          for name in sorted(defs):
+              if any(k in name.lower() for k in ["tangent","positionkey","position"]):
+                  if name not in {"JBSetFxPositionKeyframesAction"}:
+                      print("\n---",name,"---")
+                      print(json.dumps(defs[name],indent=2))
           PY
