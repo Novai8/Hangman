@@ -64,6 +64,11 @@ jobs:
           echo "TSRCT=$TSRCT" >> "$GITHUB_ENV"
           "$TSRCT" --version
 
+      - name: Inspect Tesseract motion action schema
+        run: |
+          "$TSRCT" project schema > /tmp/tsrct-project-schema.json
+          grep -n -A70 -B10 "setFxPositionKeyframes" /tmp/tsrct-project-schema.json | head -n 100 || true
+
       - name: Verify Vulkan renderer
         run: |
           if [ -f /usr/share/vulkan/icd.d/lvp_icd.x86_64.json ]; then
