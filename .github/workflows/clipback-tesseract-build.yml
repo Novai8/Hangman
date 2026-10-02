@@ -96,7 +96,7 @@ jobs:
 
       - name: Technical QA
         env:
-          PROJECT_ROOT: "$GITHUB_WORKSPACE/Clipback_CLIP_Motion_Design"
+          PROJECT_ROOT: "${{ github.workspace }}/Clipback_CLIP_Motion_Design"
         run: |
           set -e
           FINAL="$PROJECT_ROOT/Clipback_CLIP_Motion_Design.mp4"
