@@ -1,8 +1,0 @@
-{
-  "name": "Remix Hangman",
-  "description": "A multiplayer game hub featuring Cyber Hangman and Word Libs party storytelling game with real-time multiplayer rooms, live synchronization, sound effects, and custom story modes.",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
-}
